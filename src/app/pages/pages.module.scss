@@ -1,0 +1,227 @@
+.abouts{
+    width: 100%;
+    padding: 0 100px;
+
+    @media screen and (max-width:1200px) {
+        .arod{
+            display: block;
+        }
+    }
+        .about_one{
+            width: 100%;
+            color: #000;
+
+            h1{
+                font-size: 34px;
+                font-weight: 300;
+                text-transform: uppercase;
+            }
+            h3{
+                padding: 80px 0 20px;
+                font-size: 34px;
+                font-weight: 300;
+                line-height: 120%; 
+                span{
+                    font-size: 40px;
+                    font-weight: 600;
+                    line-height: 120%;
+                }
+            }
+            .border{
+                max-width: 70px;
+                width: 100%;
+                height: 2.5px;
+                background-color: #000;
+            }
+            .p{
+                font-size: 24px;
+                font-weight: 300;
+                line-height: 120%; 
+            }
+           
+            .fleX{
+                color: #000;
+                width: 100%;
+                display: flex;
+                @media screen and (max-width:500px) {
+                    .arod{
+                        display: block;
+                    }
+                }
+
+                h2{
+                    font-size: 40px;
+                    font-weight: 100;
+                }
+                h6{
+                    color: #000;
+                    font-size: 16px;
+                    font-weight: 300;
+                    line-height: 120%;
+                }
+
+            }
+    }
+    .img{
+        width: 100%;
+    }
+}
+
+.smailik{
+    width: 100%;
+
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        grid-gap: 32px;
+        grid-auto-flow: dense;
+        margin: 40px 0;
+        padding: 0 100px;
+
+        h3{
+            color: #000;
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 120%; 
+            padding: 20px 0;
+        }
+        p{
+            color: #000;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 150%; 
+        }
+    }
+}
+
+.lorem{
+    width: 100%;
+    color: #000;
+    padding: 0 100px;
+    margin: 20px 0;
+    @media screen and (max-width:1200px) {
+        .arod{
+            display: block;
+            margin: 20px 0;
+        }
+    }
+
+    h2{
+        font-size: 40px;
+        font-weight: 100;
+        line-height: 120%; 
+        text-transform: uppercase;
+
+        span{
+            font-size: 40px;
+            font-weight: 600;
+            line-height: 120%;
+            text-transform: uppercase;
+        }
+    }
+    .border{
+        // max-width: 100px;
+        width: 100%;
+        height: 2px;
+        background-color: #000;
+    }
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        grid-gap: 52px;
+        grid-auto-flow: dense;
+    }
+
+}
+
+.ourServices{
+    width: 100%;
+    padding: 0 100px;
+    h3{
+        color: #000;
+        font-size: 40px;
+        font-weight: 400;
+    }
+
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        grid-gap: 32px;
+        grid-auto-flow: dense;
+        div{
+            position: relative;
+            max-width: 200px;
+            width: 100%;
+            height: 400px;
+            img{
+                width: 100%;
+                height: 300px;
+                margin: 20px 0;
+            }
+            p{
+                color: #000;
+                font-size: 16px;
+                font-weight: 400;
+            }
+        }
+    }
+}
+
+.contact{
+    width: 100%;
+    margin: 40px 0;
+
+    h3{
+        color: #000;
+        font-size: 32px;
+        font-weight: 700;
+        margin: 20px 0;
+    }
+    .kontact_img{
+        max-width: 56px;
+        width: 100%;
+        height: 56px;
+        border-radius: 50%;
+        border: 1px solid #EFEFEF;
+        text-align: center;
+        color: #000;
+        img{
+            max-width: 19px;
+            width: 100%;
+            height: 19px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+    }
+        .ofice{
+            max-width: 396px;
+            width: 100%;
+            height: 100px;
+            padding: 12px;
+            color: #000;
+            border-radius: 8px;
+            background: #F1F1F1;
+            margin: 10px 0;
+
+
+            h4{
+                font-size: 14px;
+                font-weight: 700;
+            }
+            h6{
+                font-size: 14px;
+                font-weight: 400;
+            }
+            a{
+                color: var(--733-e-8-f, #8F27C6);
+                font-size: 14px;
+                font-weight: 400;
+                text-decoration-line: underline;
+            }
+            p{
+                font-size: 12px;
+                font-weight: 400;
+            }
+        }
+
+}
