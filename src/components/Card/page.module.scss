@@ -8,6 +8,9 @@
   .box {
     width: 100%;
     height: 340px;
+    @media screen and (max-width: 600px) {
+      height: 225px;
+    }
   }
   .img {
     background-position: center;
@@ -16,6 +19,9 @@
     width: 100%;
     height: 302px;
     border-radius: 8px 8px 0px 0px;
+    @media screen and (max-width: 600px) {
+      height: 190px;
+    }
   }
 
   .Popular {
@@ -26,7 +32,6 @@
     display: inline-block;
     color: #fff;
     text-align: center;
-    font-family: Inter;
     font-size: 14px;
     font-style: normal;
     font-weight: 700;
@@ -35,6 +40,11 @@
     padding: 11px;
     border-radius: 8px;
     background: linear-gradient(90deg, #fe0e0e 0%, #ff8484 100%);
+    @media screen and (max-width: 600px) {
+      left: 9px;
+      font-size: 12px;
+      background: var(--lin, linear-gradient(90deg, #ee5922 0%, #f97a72 100%));
+    }
   }
 
   .star {
@@ -49,6 +59,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @media screen and (max-width: 600px) {
+      top: 22px;
+      right: 9px;
+      width: 24px;
+      height: 24px;
+    }
 
     .stars {
       fill: #f7e200;
@@ -60,6 +76,9 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    @media screen and (max-width: 600px) {
+      padding: 16px 8px;
+    }
 
     h2 {
       color: #1e1e1e;
@@ -128,12 +147,13 @@
         border-radius: 40px;
         background: #e02525;
         display: flex;
-        width: 122px;
         padding: 12px;
         justify-content: center;
         align-items: center;
-        gap: 8px;
-        align-self: stretch;
+        @media screen and (max-width: 600px) {
+          font-size: 12px;
+          background: #ee5922;
+        }
       }
     }
   }

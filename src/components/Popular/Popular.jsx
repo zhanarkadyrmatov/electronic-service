@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import s from "../Home/Home.module.scss";
+import s from "./page.module.scss";
 import { CiStar } from "react-icons/ci";
 import Card from "../Card/Card";
 
