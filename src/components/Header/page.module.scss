@@ -232,6 +232,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      @media screen and (max-width: 600px) {
+        border-radius: 1000px;
+      }
 
       input {
         color: var(--1-e-1-e-1-e, #1e1e1e);

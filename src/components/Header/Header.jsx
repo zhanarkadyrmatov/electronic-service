@@ -92,12 +92,12 @@ export default function Header() {
                 </div>
                 <p>Избранные</p>
               </div>
-              <div className={s.item}>
+              <Link href={"/pages/Basket"} className={s.item}>
                 <div className={s.image}>
                   <Image src={basket} alt="" width={14} height={14} />
                 </div>
                 <p>Корзина</p>
-              </div>
+              </Link>
               <div className={s.item} onClick={handleOpen}>
                 <div className={s.login}>
                   <Image src={registr} alt="" width={14} height={14} />

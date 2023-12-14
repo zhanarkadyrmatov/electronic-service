@@ -67,7 +67,6 @@ export default function Card({ item }) {
       <span className={s.star}>
         <FaStar className={s.stars} />
       </span>
-
       <div className={s.title}>
         <h2>Название товара</h2>
         <p>
@@ -85,6 +84,7 @@ export default function Card({ item }) {
         <div className={s.rating}>
           <Rating
             name="text-feedback"
+            size="small"
             value={3.5}
             readOnly
             precision={0.5}
