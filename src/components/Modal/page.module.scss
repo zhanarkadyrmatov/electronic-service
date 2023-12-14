@@ -12,10 +12,13 @@
     .wrapper {
         position: fixed;
         max-width: 420px;
-        width: 90%;
+        width: 100%;
         padding: 24px;
         border-radius: 16px;
         background: #FFF;
+        @media screen and (max-width:500px) {
+            bottom: 0;
+        }
 
         h2 {
             color: var(--151515, #151515);
@@ -101,11 +104,14 @@
     .wrappers {
         position: fixed;
         max-width: 522px;
-        width: 90%;
+        width: 100%;
         padding: 24px;
         border-radius: 16px;
         background: #FFF;
 
+        @media screen and (max-width:500px) {
+            bottom: 0;
+        }
         img {
             max-width: 221px;
             width: 100%;
