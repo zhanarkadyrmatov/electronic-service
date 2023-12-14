@@ -94,11 +94,11 @@ function page() {
             <div className={s.about_one}>
               <h1>О компании</h1>
               <h3>
-                Lorem ipsum{" "}
+                Lorem ipsum
                 <span>
                   dolor sit amet, <br />
                   consectetur adipiscing elit.
-                </span>{" "}
+                </span>
                 Lacus,
                 <br />
                 purus pulvinar elit tellus massa erat <br />
@@ -111,7 +111,13 @@ function page() {
                   tempora incidunt ut labore et dolore magnam
                 </p>
               </div>
-              <div className={`${s.fleX} ${s.arod}`} style={{ gap: "40px" }}>
+              
+            </div>
+            <div>
+              <Image className={s.img} src={img} alt="" />
+            </div>
+          </div>
+          <div className={`${s.fleX} ${s.arod}`} style={{ gap: "40px" }}>
                 <div>
                   <h2>2 000</h2>
                   <h6>Ut enim ad minima </h6>
@@ -135,11 +141,6 @@ function page() {
                   </h6>
                 </div>
               </div>
-            </div>
-            <div>
-              <Image className={s.img} src={img} alt="" />
-            </div>
-          </div>
         </div>
         <div className={`${s.smailik} around`}>
           <div className={s.grid}>
@@ -156,11 +157,11 @@ function page() {
           <div className={`${s.arod} between`}>
             <div className="column">
               <h2>
-                Lorem ipsum <br />{" "}
+                Lorem ipsum <br />
                 <span>
                   dolor sit <br /> adipiscing <br />
-                </span>{" "}
-                elitaa dwet{" "}
+                </span>
+                elitaa dwet
               </h2>
               <div className={s.border}></div>
             </div>

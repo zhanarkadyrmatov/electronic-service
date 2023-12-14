@@ -11,6 +11,7 @@
       align-items: center;
       gap: 32px;
       padding: 10px 0;
+
       @media screen and (max-width: 600px) {
         padding: 0;
       }
@@ -25,7 +26,8 @@
         display: flex;
         align-items: center;
         gap: 32px;
-        @media screen and (max-width: 600px) {
+
+        @media screen and (max-width: 1138px) {
           display: none;
         }
 
@@ -47,24 +49,20 @@
     .phone {
       .link {
         color: #1e1e1e;
-        font-family: Inter;
         font-size: 29px;
-        font-style: normal;
         font-weight: 500;
-        line-height: normal;
+
         @media screen and (max-width: 600px) {
-          font-size: 18px;
+          font-size: 14px;
         }
       }
 
       p {
         color: #1e1e1e;
         opacity: 0.5;
-        font-family: Inter;
         font-size: 14px;
-        font-style: normal;
         font-weight: 600;
-        line-height: normal;
+
         @media screen and (max-width: 600px) {
           font-size: 8px;
         }
@@ -75,7 +73,8 @@
       width: 35px;
       height: 35px;
       display: none;
-      @media screen and (max-width: 600px) {
+
+      @media screen and (max-width: 1138px) {
         display: block;
       }
     }
@@ -90,6 +89,7 @@
     border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
     border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
     margin-bottom: 26px;
+
     @media screen and (max-width: 600px) {
       border: none;
       padding: 0;
@@ -114,25 +114,22 @@
       justify-content: space-between;
       align-items: center;
       margin-right: 20px;
+
       @media screen and (max-width: 600px) {
         display: none;
       }
+
       input {
         color: var(--1-e-1-e-1-e, #1e1e1e);
-        font-family: Inter;
         font-size: 14px;
-        font-style: normal;
         font-weight: 400;
-        line-height: normal;
         background: #f2f2f3;
 
         &::placeholder {
           color: var(--1-e-1-e-1-e, #1e1e1e);
           font-family: Inter;
           font-size: 14px;
-          font-style: normal;
           font-weight: 400;
-          line-height: normal;
           opacity: 0.4;
         }
       }
@@ -144,6 +141,7 @@
     justify-content: center;
     align-items: center;
     gap: 40px;
+
     @media screen and (max-width: 600px) {
       gap: 20px;
     }
@@ -153,6 +151,13 @@
       flex-direction: column;
       align-items: center;
       gap: 2px;
+      cursor: pointer;
+
+      p {
+        color: #282b3d;
+        font-size: 13px;
+        font-weight: 500;
+      }
 
       .image {
         width: 46px;
@@ -176,11 +181,8 @@
 
       p {
         color: #282b3d;
-        font-family: Inter;
         font-size: 13px;
-        font-style: normal;
         font-weight: 500;
-        line-height: normal;
       }
     }
 
@@ -189,6 +191,7 @@
       flex-direction: column;
       align-items: center;
       gap: 2px;
+
       @media screen and (max-width: 600px) {
         display: none;
       }
@@ -202,19 +205,18 @@
         justify-content: center;
         align-items: center;
       }
+
       p {
         color: #282b3d;
-        font-family: Inter;
         font-size: 13px;
-        font-style: normal;
         font-weight: 500;
-        line-height: normal;
       }
     }
   }
 
   .mobil_input {
     display: none;
+
     @media screen and (max-width: 600px) {
       display: flex;
       justify-content: space-between;
@@ -236,24 +238,19 @@
 
       input {
         color: var(--1-e-1-e-1-e, #1e1e1e);
-        font-family: Inter;
         font-size: 14px;
-        font-style: normal;
         font-weight: 400;
-        line-height: normal;
         background: #f2f2f3;
 
         &::placeholder {
           color: var(--1-e-1-e-1-e, #1e1e1e);
-          font-family: Inter;
           font-size: 14px;
-          font-style: normal;
           font-weight: 400;
-          line-height: normal;
           opacity: 0.4;
         }
       }
     }
+
     .logo {
       width: 56px;
       height: 56px;
