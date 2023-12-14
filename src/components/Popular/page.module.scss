@@ -23,8 +23,16 @@
   .products {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(302px, 1fr));
     grid-gap: 24px;
     grid-auto-flow: dense;
+
+    @media screen and (max-width:190px) {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      grid-gap: 16px;
+      grid-auto-flow: dense;
+    }
   }
 }

@@ -61,7 +61,7 @@ export default function Header() {
               </nav>
             </div>
             <div className={s.phone}>
-              <Link className={s.link} href={""}>
+              <Link className={s.link} href="tel:+996 777 438 992">
                 +996 777 438 992
               </Link>
               <p>Бесплатный звонок по Кыргызстану</p>
@@ -81,26 +81,26 @@ export default function Header() {
             <div className={s.button}>
               <Link href={"/pages/Filter"} className={s.filter}>
                 <div className={s.image}>
-                  <Image src={filtr} alt="" width={24} height={24} />
+                  <Image src={filtr} alt="" width={14} height={14} />
                 </div>
                 <p>Фильтр</p>
               </Link>
 
               <div className={s.item}>
                 <div className={s.image}>
-                  <Image src={favorites} alt="" width={24} height={24} />
+                  <Image src={favorites} alt="" width={14} height={14} />
                 </div>
                 <p>Избранные</p>
               </div>
               <div className={s.item}>
                 <div className={s.image}>
-                  <Image src={basket} alt="" width={24} height={24} />
+                  <Image src={basket} alt="" width={14} height={14} />
                 </div>
                 <p>Корзина</p>
               </div>
               <div className={s.item} onClick={handleOpen}>
                 <div className={s.login}>
-                  <Image src={registr} alt="" width={24} height={24} />
+                  <Image src={registr} alt="" width={14} height={14} />
                 </div>
                 <p>Войти</p>
               </div>
@@ -112,7 +112,7 @@ export default function Header() {
               <FiSearch className={s.search} size={20} />
             </div>
             <div className={s.logo}>
-              <Image src={filtr} alt="" width={24} height={24} />
+              <Image src={filtr} alt="" width={14} height={14} />
             </div>
           </div>
         </div>
