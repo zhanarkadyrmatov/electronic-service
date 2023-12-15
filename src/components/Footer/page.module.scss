@@ -52,20 +52,14 @@
 
           .link {
             color: #b0b0b0;
-            font-family: Inter;
             font-size: 29px;
-            font-style: normal;
             font-weight: 500;
-            line-height: normal;
           }
           p {
             color: #b0b0b0;
             opacity: 0.5;
-            font-family: Inter;
             font-size: 13px;
-            font-style: normal;
             font-weight: 600;
-            line-height: normal;
           }
         }
 
@@ -76,11 +70,8 @@
 
           .menu_item {
             color: #b0b0b0;
-            font-family: Inter;
             font-size: 19px;
-            font-style: normal;
             font-weight: 500;
-            line-height: normal;
           }
         }
       }
@@ -89,11 +80,8 @@
         gap: 16px;
         h2 {
           color: #b0b0b0;
-          font-family: Inter;
           font-size: 19px;
-          font-style: normal;
           font-weight: 700;
-          line-height: normal;
           @media screen and (max-width: 600px) {
             text-align: center;
           }

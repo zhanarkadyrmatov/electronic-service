@@ -141,17 +141,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px;
 
-    @media screen and (max-width: 600px) {
-      gap: 20px;
-    }
+   
 
     .item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2px;
       cursor: pointer;
 
       p {
@@ -161,7 +157,8 @@
       }
 
       .image {
-        width: 46px;
+        max-width: 46px;
+        width: 100%;
         height: 46px;
         border-radius: 10px;
         background: #f2f2f3;
