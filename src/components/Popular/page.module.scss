@@ -23,21 +23,14 @@
   .products {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(302px, 1fr));
-    grid-gap: 24px;
+    grid-gap: 10px;
     grid-auto-flow: dense;
 
-    @media screen and (max-width:190px) {
-      width: 100%;
+    @media screen and (max-width:500px) {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      grid-gap: 16px;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 5px;
       grid-auto-flow: dense;
-    grid-template-columns: repeat(auto-fit, minmax(290px, 3fr));
-    grid-gap: 24px;
-    grid-auto-flow: dense;
-    @media screen and (max-width: 600px) {
-      grid-template-columns: repeat(auto-fit, minmax(150px, 6fr));
-      grid-gap: 16px;
     }
   }
 }

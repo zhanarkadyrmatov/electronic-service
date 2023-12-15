@@ -80,7 +80,7 @@ function page() {
               </div>
             ))}
           </div>
-          <YandexMap />
+          <YandexMap className={s.kart_bottom} />
         </div>
       </div>
     </>

@@ -49,7 +49,13 @@ export default function Header() {
                 </Link>
                 <Link href={""}>Условия покупки</Link>
                 <Link href={""}>Условия доставки</Link>
-                <Link href={""}>Анкета</Link>
+                <Link 
+                  href={"/pages/Questionnaire"}
+                  className={cm(s.s, {
+                    [s.active]: page === "/pages/Questionnaire",
+                  })}
+                  >
+                    Анкета</Link>
                 <Link
                   href={"/pages/Contact"}
                   className={cm(s.s, {
@@ -88,10 +94,18 @@ export default function Header() {
 
               <div className={s.item}>
                 <div className={s.image}>
+                  <Image src={'/img/motif.svg'} alt="" width={14} height={14} />
+                </div>
+                <p>Уведомление</p>
+              </div>
+
+              <div className={s.item}>
+                <div className={s.image}>
                   <Image src={favorites} alt="" width={14} height={14} />
                 </div>
                 <p>Избранные</p>
               </div>
+
               <Link href={"/pages/Basket"} className={s.item}>
                 <div className={s.image}>
                   <Image src={basket} alt="" width={14} height={14} />

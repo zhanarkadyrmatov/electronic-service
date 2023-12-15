@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import s from "./page.module.scss";
 import Image from "next/image";
 
+
 export default function Modal({ handleOpen }) {
   const [modal, setModal] = useState(1);
   const handleModal = (id) => {
@@ -21,7 +22,7 @@ export default function Modal({ handleOpen }) {
               <label htmlFor="">Пароль</label>
               <input type="password" placeholder="******" />
               <div className="between" style={{ margin: "21px 0" }}>
-                <button onClick={() => handleModal(3)}>Забыл пароль</button>
+                <span onClick={() => handleModal(3)}>Забыл пароль</span>
                 <div className="flex" style={{ gap: "5px" }}>
                   <p>Запомнить</p>
                   <input className={s.chek} type="checkbox" />
@@ -55,7 +56,7 @@ export default function Modal({ handleOpen }) {
               <input type="password" placeholder="***************" />
               <div className="between" style={{ margin: "21px 0" }}>
                 <div className="flex" style={{ gap: "3px" }}>
-                  <p>Принимаю</p> <span href="">условия соглашения</span>
+                  <p>Принимаю</p> <span>условия соглашения</span>
                 </div>
                 <input className={s.chek} type="checkbox" />
               </div>
@@ -159,18 +160,6 @@ export default function Modal({ handleOpen }) {
               <button onClick={() => handleOpen()}>Отмена</button>
               <button>Сбросить пароль</button>
             </div>
-          </div>
-          <label htmlFor="">Повторите пароль</label>
-          <input type="password" placeholder="***************" />
-          <div className="between" style={{ margin: "21px 0" }}>
-            <div>
-              <span>Принимаю</span> <a href="">условия соглашения</a>
-            </div>
-            <input className={s.chek} type="checkbox" />
-          </div>
-          <div className={`${s.btns} between`} style={{ gap: "16px" }}>
-            <button onClick={() => handleOpen()}>Отмена</button>
-            <button>Зарегистрироваться</button>
           </div>
         </div>
       )}
