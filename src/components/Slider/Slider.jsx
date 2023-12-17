@@ -6,9 +6,7 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import s from "./page.module.scss";
-
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
-import Image from "next/image";
 
 export default function Slider() {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -16,46 +14,82 @@ export default function Slider() {
   return (
     <div>
       <Swiper
-        style={{
-          "--swiper-navigation-color": "#fff",
-          "--swiper-pagination-color": "#fff",
-        }}
         loop={true}
         spaceBetween={10}
-        // navigation={true}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper2"
+        className={s.mySwiper2}
       >
         <SwiperSlide>
-          <Image width={687} height={340} src="/img/tele.png" />
+          <div
+            style={{
+              backgroundImage: "url('/img/tele.png')",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+          <div
+            style={{
+              backgroundImage:
+                "url('https://max.kg/nal/img/12039/b_tov_100440_dd43314a.png')",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          <div
+            style={{
+              backgroundImage:
+                "url('https://www.gadget.kg/upload/catalog/61/item_6027/e360e8d20e56adc05138bf99b48487c0.jpg')",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+          <div
+            style={{
+              backgroundImage:
+                "url('https://object.pscloud.io/cms/cms/Photo/img_0_95_1948_0_1.jpg')",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+          <div
+            style={{
+              backgroundImage:
+                "url('https://teknomir.kg/image/cache/catalog/Elista%20B55UHD4EKC-700x700.jpg')",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
+          <div
+            style={{
+              backgroundImage:
+                "url('https://max.kg/nal/img/12039/b_tov_11431949_4a395044.jpg')",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              width: "100%",
+              height: "100%",
+            }}
+          />
         </SwiperSlide>
       </Swiper>
       <Swiper
@@ -66,38 +100,49 @@ export default function Slider() {
         freeMode={true}
         watchSlidesProgress={true}
         modules={[FreeMode, Navigation, Thumbs]}
-        className="mySwiper"
+        className={s.mySwiper}
       >
-        <SwiperSlide>
-          <Image width={50} height={50} src="/img/tele.png" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-        </SwiperSlide>
+        <SwiperSlide
+          className={s.slide}
+          style={{
+            backgroundImage: "url(/img/tele.png)",
+          }}
+        ></SwiperSlide>
+        <SwiperSlide
+          className={s.slide}
+          style={{
+            backgroundImage:
+              "url('https://max.kg/nal/img/12039/b_tov_100440_dd43314a.png')",
+          }}
+        ></SwiperSlide>
+        <SwiperSlide
+          className={s.slide}
+          style={{
+            backgroundImage:
+              "url('https://www.gadget.kg/upload/catalog/61/item_6027/e360e8d20e56adc05138bf99b48487c0.jpg')",
+          }}
+        ></SwiperSlide>
+        <SwiperSlide
+          className={s.slide}
+          style={{
+            backgroundImage:
+              "url('https://object.pscloud.io/cms/cms/Photo/img_0_95_1948_0_1.jpg')",
+          }}
+        ></SwiperSlide>
+        <SwiperSlide
+          className={s.slide}
+          style={{
+            backgroundImage:
+              "url('https://teknomir.kg/image/cache/catalog/Elista%20B55UHD4EKC-700x700.jpg')",
+          }}
+        ></SwiperSlide>
+        <SwiperSlide
+          className={s.slide}
+          style={{
+            backgroundImage:
+              "url('https://max.kg/nal/img/12039/b_tov_11431949_4a395044.jpg')",
+          }}
+        ></SwiperSlide>
       </Swiper>
     </div>
   );
