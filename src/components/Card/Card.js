@@ -18,7 +18,7 @@ export default function Card({ item }) {
           dynamicBullets: true,
         }}
         modules={[Pagination]}
-        className="mySwiper"
+        className="mySwiper" 
       >
         <SwiperSlide>
           <div className={s.box}>
