@@ -1,12 +1,10 @@
 "use client";
 import React, { useRef, useState } from "react";
 import s from "./page.module.scss";
-import Images from "../../../public/img/pop.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import Image from "next/image";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import Box from "@mui/material/Box";

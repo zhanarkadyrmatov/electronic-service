@@ -72,23 +72,7 @@ const Questionnaire = () => {
                 <input {...register('firstName')} placeholder="****************************" />
                 <button className={s.btn_orange}>ОТПРАВИТЬ АНКЕТУ</button>
             </form>
-
         </div>
     )
 }
 export default Questionnaire
-
-// <h4>Контактные данные родных</h4>
-// <label htmlFor="">Фио</label>
-// <input type="text" placeholder="Напишите свою фамилию" />
-// <label htmlFor="">Кем приходится №1</label>
-// <input type="text" placeholder="Сын сестры соседя" />
-// <label htmlFor="">Адрес проживания</label>
-// <input type="text" placeholder="Пишите свою адрес" />
-// <label htmlFor="">Фио</label>
-// <input type="text" placeholder="Напишите свою фамилию" />
-// <label htmlFor="">Кем приходится №2</label>
-// <input type="text" placeholder="Сын сестры соседя" />
-// <label htmlFor="">Адрес проживания</label>
-// <input type="text" placeholder="Тыныстанова, 54б, 2" />
-// </div> 
