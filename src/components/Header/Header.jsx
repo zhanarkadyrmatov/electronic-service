@@ -1,7 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./page.module.scss";
-import servis from "../../../public/img/servis.svg";
 import Image from "next/image";
 import Link from "next/link";
 import cm from "classnames";
@@ -14,6 +13,7 @@ import favorites from "@/../../public/img/aa3.svg";
 import basket from "@/../../public/img/aa1.svg";
 import registr from "@/../../public/img/aa4.svg";
 import Modal from "../Modal/Modal";
+import { BurgerMenu } from "../Menu/page";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 export default function Header() {
@@ -22,14 +22,36 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+  }, [open])
+
+
+  const [time, setTime] = useState(false);
+
+
+  useEffect(() => {
+    if (time) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+
+  }, [time])
+
   return (
     <>
       {open && <Modal handleOpen={handleOpen} />}
+      {time && <BurgerMenu setTime={setTime} time={time} />}
       <div className={s.header}>
         <div className="container">
           <div className={s.nav}>
             <div className={s.wrapper}>
-              <Image src={servis} className={s.logo} alt="" />
+              <Image src={'/img/servis.svg'} className={s.logo} alt="" width={120} height={50} />
               <nav className={s.nav_bar}>
                 <Link
                   href={"/"}
@@ -49,13 +71,13 @@ export default function Header() {
                 </Link>
                 <Link href={""}>Условия покупки</Link>
                 <Link href={""}>Условия доставки</Link>
-                <Link 
+                <Link
                   href={"/pages/Questionnaire"}
                   className={cm(s.s, {
                     [s.active]: page === "/pages/Questionnaire",
                   })}
-                  >
-                    Анкета</Link>
+                >
+                  Анкета</Link>
                 <Link
                   href={"/pages/Contact"}
                   className={cm(s.s, {
@@ -72,19 +94,19 @@ export default function Header() {
               </Link>
               <p>Бесплатный звонок по Кыргызстану</p>
             </div>
-            <RxHamburgerMenu className={s.burger} />
+            <RxHamburgerMenu onClick={() => setTime(!time)} className={s.burger} />
           </div>
-          <div className={`${s.blok}`}>
+          <div className={`${s.blok} between`}>
             <button className={`${s.btn_catalog} flex ${s.top}`}>
               <TfiMenuAlt size={18} />
               Каталог
               <MdKeyboardArrowDown size={20} />
             </button>
-            <div className={`${s.input_go}`}>
+            <div className={`${s.input_go} between`}>
               <input type="text" placeholder="Что найти?" />
               <FiSearch className={s.search} size={20} />
             </div>
-            <div className={s.button}>
+            <div className={`${s.button} flex`}>
               <Link href={"/pages/Filter"} className={s.filter}>
                 <div className={s.image}>
                   <Image src={filtr} alt="" width={14} height={14} />
