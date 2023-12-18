@@ -26,6 +26,7 @@ export default function Slider() {
               backgroundImage: "url('/img/tele.png')",
               backgroundPosition: "center",
               backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
               width: "100%",
               height: "100%",
             }}
@@ -38,6 +39,7 @@ export default function Slider() {
                 "url('https://max.kg/nal/img/12039/b_tov_100440_dd43314a.png')",
               backgroundPosition: "center",
               backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
               width: "100%",
               height: "100%",
             }}
@@ -50,6 +52,7 @@ export default function Slider() {
                 "url('https://www.gadget.kg/upload/catalog/61/item_6027/e360e8d20e56adc05138bf99b48487c0.jpg')",
               backgroundPosition: "center",
               backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
               width: "100%",
               height: "100%",
             }}
@@ -62,6 +65,7 @@ export default function Slider() {
                 "url('https://object.pscloud.io/cms/cms/Photo/img_0_95_1948_0_1.jpg')",
               backgroundPosition: "center",
               backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
               width: "100%",
               height: "100%",
             }}
@@ -74,6 +78,7 @@ export default function Slider() {
                 "url('https://teknomir.kg/image/cache/catalog/Elista%20B55UHD4EKC-700x700.jpg')",
               backgroundPosition: "center",
               backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
               width: "100%",
               height: "100%",
             }}
@@ -86,6 +91,7 @@ export default function Slider() {
                 "url('https://max.kg/nal/img/12039/b_tov_11431949_4a395044.jpg')",
               backgroundPosition: "center",
               backgroundSize: "cover",
+              backgroundRepeat: "no-repeat",
               width: "100%",
               height: "100%",
             }}
