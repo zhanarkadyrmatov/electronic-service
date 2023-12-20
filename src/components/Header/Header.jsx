@@ -61,6 +61,7 @@ export default function Header() {
                 >
                   Главная
                 </Link>
+                
                 <Link
                   href={"/pages/AboutUs"}
                   className={cm(s.s, {
@@ -69,6 +70,7 @@ export default function Header() {
                 >
                   О нас
                 </Link>
+
                 <Link href={""}>Условия покупки</Link>
                 <Link href={""}>Условия доставки</Link>
                 <Link
@@ -88,6 +90,7 @@ export default function Header() {
                 </Link>
               </nav>
             </div>
+
             <div className={s.phone}>
               <Link className={s.link} href="tel:+996 777 438 992">
                 +996 777 438 992
@@ -96,12 +99,14 @@ export default function Header() {
             </div>
             <RxHamburgerMenu onClick={() => setTime(!time)} className={s.burger} />
           </div>
+
           <div className={`${s.blok} between`}>
             <button className={`${s.btn_catalog} flex ${s.top}`}>
               <TfiMenuAlt size={18} />
               Каталог
               <MdKeyboardArrowDown size={20} />
             </button>
+
             <div className={`${s.input_go} between`}>
               <input type="text" placeholder="Что найти?" />
               <FiSearch className={s.search} size={20} />
@@ -113,13 +118,6 @@ export default function Header() {
                 </div>
                 <p>Фильтр</p>
               </Link>
-
-              <div className={s.item}>
-                <div className={s.image}>
-                  <Image src={'/img/motif.svg'} alt="" width={14} height={14} />
-                </div>
-                <p>Уведомление</p>
-              </div>
 
               <div className={s.item}>
                 <div className={s.image}>

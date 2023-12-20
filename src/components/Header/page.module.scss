@@ -98,13 +98,13 @@
     }
 
     .input_go {
-      max-width: 600px;
+      // max-width: 600px;
       width: 100%;
       padding: 21.5px 20px;
       border-radius: 10px;
       background: #f2f2f3;
 
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 770px) {
         display: none;
       }
 
@@ -128,8 +128,13 @@
   .button {
     gap: 20px;
 
+    @media screen and  (max-width:860px){
+      gap: 10px;
+    }
+    @media screen and (max-width:500px) {
+      gap: 5px;
+    }
    
-// sadgv
     .item {
       display: flex;
       flex-direction: column;
@@ -176,7 +181,7 @@
       align-items: center;
       gap: 2px;
 
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 770px) {
         display: none;
       }
 
@@ -201,7 +206,7 @@
   .mobil_input {
     display: none;
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 770px) {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -216,7 +221,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 770px) {
         border-radius: 1000px;
       }
 
