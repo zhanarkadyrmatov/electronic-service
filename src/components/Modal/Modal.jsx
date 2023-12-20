@@ -5,9 +5,11 @@ import Image from "next/image";
 
 
 export default function Modal({ handleOpen }) {
+  
   const [modal, setModal] = useState(1);
   const handleModal = (id) => {
     setModal(id);
+
   };
 
   return (
@@ -159,6 +161,20 @@ export default function Modal({ handleOpen }) {
             <div className={`${s.btns} between`} style={{ gap: "16px" }}>
               <button onClick={() => handleOpen()}>Отмена</button>
               <button>Сбросить пароль</button>
+            </div>
+          </div>
+        </div>
+      )}
+      {modal === 6 && (
+        <div className={`${s.modal} center`}>
+          <div className={s.wrapper}>
+            <Image src={'/img/exit.svg'} alt="" width={32} height={32} />
+            <h3>Выйти?</h3>
+            <h6>Выйти из учётной записи</h6>
+            <div className={s.border}></div>
+            <div className="between">
+              <p onClick={() => handleOpen()}>Нет</p>
+              <p className={s.yes}>Да</p>
             </div>
           </div>
         </div>

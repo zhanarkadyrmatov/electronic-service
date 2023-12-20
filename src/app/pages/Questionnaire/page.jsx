@@ -2,8 +2,6 @@
 import React from "react";
 import s from "../pages.module.scss";
 import { LuFileInput } from "react-icons/lu";
-
-
 import { useForm } from 'react-hook-form'
 
 const Questionnaire = () => {
