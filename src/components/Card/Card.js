@@ -12,10 +12,12 @@ import { FaStar } from "react-icons/fa6";
 import Link from "next/link";
 
 export default function Card({ item }) {
+  console.log(item);
   return (
     <Link href={"/pages/id"}>
       <div className={s.Card}>
-        <Swiper
+        <img src={item.product_variation.images} alt="" />
+        {/* <Swiper
           pagination={{
             dynamicBullets: true,
           }}
@@ -26,7 +28,7 @@ export default function Card({ item }) {
             <div className={s.box}>
               <div
                 style={{
-                  backgroundImage: `url(${item.img})`,
+                  backgroundImage: `url(${item.product_variation.images})`,
                 }}
                 className={s.img}
               ></div>
@@ -62,13 +64,13 @@ export default function Card({ item }) {
               ></div>
             </div>
           </SwiperSlide>
-        </Swiper>
+        </Swiper> */}
         <p className={s.Popular}>Популярные</p>
         <span className={s.star}>
           <FaStar className={s.stars} />
         </span>
         <div className={s.title}>
-          <h2>Название товара</h2>
+          <h2>{item.title.slice(0, 20)}...</h2>
           <p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +98,10 @@ export default function Card({ item }) {
           </div>
           <div className={s.price}>
             <div className={s.prices}>
-              <h5>500.35 С</h5>
+              <h5>
+                {item.product_variation.product_price}{" "}
+                {item.product_variation.currency_unit.currency}
+              </h5>
               <h6>500.35 С</h6>
             </div>
             <button className={s.btn}>В корзину</button>

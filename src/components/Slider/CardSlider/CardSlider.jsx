@@ -23,7 +23,8 @@ export default function Slider() {
         <SwiperSlide>
           <div
             style={{
-              backgroundImage: "url('/img/tele.png')",
+              backgroundImage:
+                "url('https://www.lg.com/ru/images/televisions/md07548695/D-3.jpg')",
               backgroundPosition: "center",
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
@@ -111,7 +112,8 @@ export default function Slider() {
         <SwiperSlide
           className={s.slide}
           style={{
-            backgroundImage: "url(/img/tele.png)",
+            backgroundImage:
+              "url(https://www.lg.com/ru/images/televisions/md07548695/D-3.jpg)",
           }}
         ></SwiperSlide>
         <SwiperSlide

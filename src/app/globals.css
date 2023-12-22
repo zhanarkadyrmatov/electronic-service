@@ -103,6 +103,40 @@ li {
 
 .container {
   max-width: 1280px;
-  width: 90%;
+  padding: 0 20px;
   margin: 0 auto;
+}
+
+.prev {
+  position: absolute;
+  bottom: 45px;
+  left: -30px;
+  box-shadow: (0px 4px 8px rgba(0, 0, 0, 0.15));
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.next {
+  position: absolute;
+  bottom: 45px;
+  right: -30px;
+  box-shadow: (0px 4px 8px rgba(0, 0, 0, 0.15));
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+.swiper-pagination-bullet-active {
+  width: 30px;
+  height: 10px;
+  border-radius: 50%;
 }

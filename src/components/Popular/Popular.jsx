@@ -1,8 +1,11 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import s from "./page.module.scss";
 import { CiStar } from "react-icons/ci";
 import Card from "../Card/Card";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPopularData } from "@/app/store/slice/popularSlice";
 
 const product = [
   {
@@ -52,6 +55,16 @@ const product = [
 ];
 
 export default function Popular() {
+  const { data } = useSelector((state) => state.popular);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPopularData());
+  }, []);
+
+  const fffffff = data?.results;
+  console.log(data);
+
   return (
     <div className={s.popular}>
       <div className={`${s.block} between`} style={{ margin: "20px 0" }}>
@@ -59,7 +72,7 @@ export default function Popular() {
         <button className={s.btn_white}>Показать все</button>
       </div>
       <div className={s.products}>
-        {product.map((item) => (
+        {fffffff?.map((item) => (
           <Card item={item} />
         ))}
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./page.module.scss";
-import Slider from "@/components/Slider/Slider";
+import Slider from "@/components/Slider/CardSlider/CardSlider";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaStar } from "react-icons/fa6";
 import { AiOutlineRight } from "react-icons/ai";
@@ -112,7 +112,13 @@ export default function page() {
               {[1, 2, 3, 4, 5, 6, 7, 8].map((e) => {
                 return (
                   <div>
-                    <img className={s.img} src={"/img/Rectangle.png"} alt="" />
+                    <img
+                      className={s.img}
+                      src={
+                        "https://png.pngtree.com/background/20230411/original/pngtree-natural-landscape-snow-mountain-background-picture-image_2390197.jpg"
+                      }
+                      alt=""
+                    />
                   </div>
                 );
               })}
@@ -184,7 +190,13 @@ export default function page() {
             {[1, 2, 3, 4, 5, 6, 7, 8].map((e) => {
               return (
                 <div key={e}>
-                  <img className={s.img} src={"/img/Rectangle.png"} alt="" />
+                  <img
+                    className={s.img}
+                    src={
+                      "https://png.pngtree.com/background/20230411/original/pngtree-natural-landscape-snow-mountain-background-picture-image_2390197.jpg"
+                    }
+                    alt=""
+                  />
                 </div>
               );
             })}
