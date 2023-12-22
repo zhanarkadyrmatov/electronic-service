@@ -61,7 +61,7 @@ export default function Header() {
                 >
                   Главная
                 </Link>
-                
+
                 <Link
                   href={"/pages/AboutUs"}
                   className={cm(s.s, {
@@ -111,6 +111,7 @@ export default function Header() {
               <input type="text" placeholder="Что найти?" />
               <FiSearch className={s.search} size={20} />
             </div>
+            
             <div className={`${s.button} flex`}>
               <Link href={"/pages/Filter"} className={s.filter}>
                 <div className={s.image}>

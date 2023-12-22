@@ -198,10 +198,10 @@ function Profil() {
               <div className={`${s.images} center`}>
                 <Image src={'/img/pen3.svg'} alt='' width={16} height={16} />
                 <Image className={s.none} src={'/img/app1.svg'} alt='' width={24} height={24} />
-
               </div>
               <p>Редактировать личные данны</p>
             </div>
+            
             <div className="flex" style={{ gap: '8px', marginBottom: '16px', cursor: 'pointer' }}>
               <div className={`${s.images} center`}>
                 <Image src={'/img/pen2.svg'} alt='' width={16} height={16} />
