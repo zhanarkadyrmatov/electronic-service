@@ -3,6 +3,9 @@
   background: #f2f5f9;
   margin-bottom: 24px;
   padding: 24px;
+  @media screen and (max-width: 600px) {
+    margin-top: 24px;
+  }
   h2 {
     color: var(--Base-Black, #000);
     font-size: 24px;
@@ -10,14 +13,25 @@
     font-weight: 700;
     line-height: normal;
     margin-bottom: 40px;
+    @media screen and (max-width: 600px) {
+      margin-bottom: 20px;
+      font-size: 20px;
+    }
   }
   .wraper {
     position: relative;
     padding: 0 30px;
+    @media screen and (max-width: 600px) {
+      padding: 0 15px;
+    }
 
     .logo {
       width: 20px;
       height: 20px;
+      @media screen and (max-width: 600px) {
+        width: 16px;
+        height: 16px;
+      }
     }
 
     .story {
@@ -26,6 +40,10 @@
       padding: 5px;
       background: #fff;
       border-radius: 50%;
+      @media screen and (max-width: 600px) {
+        width: 85px;
+        height: 85px;
+      }
 
       .border {
         width: 100%;

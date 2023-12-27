@@ -135,8 +135,17 @@ li {
   background-color: #fff;
 }
 
-.swiper-pagination-bullet-active {
-  width: 30px;
-  height: 10px;
-  border-radius: 50%;
+@media screen and (max-width: 600px) {
+  .next {
+    width: 30px;
+    height: 30px;
+    bottom: 25px;
+    right: -30px;
+  }
+  .prev {
+    width: 30px;
+    height: 30px;
+    bottom: 25px;
+    right: -30px;
+  }
 }

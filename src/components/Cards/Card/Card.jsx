@@ -10,13 +10,20 @@ import StarIcon from "@mui/icons-material/Star";
 import Box from "@mui/material/Box";
 import { FaStar } from "react-icons/fa6";
 import Link from "next/link";
+import { IoMdInformationCircle } from "react-icons/io";
 
 export default function Card({ item }) {
-  console.log(item);
+  console.log();
   return (
-    <Link href={"/pages/id"}>
-      <div className={s.Card}>
-        <img src={item.product_variation.images} alt="" />
+    <div className={s.Card}>
+      <Link href={"/pages/id"}>
+        {item?.product_variation.images ? (
+          <img src={item.product_variation.images} alt="" />
+        ) : (
+          <div className={s.card_logo}>
+            <IoMdInformationCircle className={s.logo} />
+          </div>
+        )}
         {/* <Swiper
           pagination={{
             dynamicBullets: true,
@@ -107,7 +114,7 @@ export default function Card({ item }) {
             <button className={s.btn}>В корзину</button>
           </div>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

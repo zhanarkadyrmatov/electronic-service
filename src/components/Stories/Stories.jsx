@@ -15,19 +15,27 @@ export const Stories = () => {
         <h2>Истории</h2>
         <div className={s.wraper}>
           <Swiper
-            slidesPerView={8}
+            slidesPerView={3}
             spaceBetween={16}
             freeMode={true}
             navigation={{
               prevEl: ".prev",
               nextEl: ".next",
             }}
-            // breakpoints={{
-            //   1024: {
-            //     slidesPerView: 2,
-            //     pagination: true,
-            //   },
-            // }}
+            breakpoints={{
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 16,
+              },
+              1024: {
+                slidesPerView: 6,
+                spaceBetween: 16,
+              },
+              1280: {
+                slidesPerView: 8,
+                spaceBetween: 16,
+              },
+            }}
             modules={[Navigation, FreeMode]}
             className="mySwiper"
           >

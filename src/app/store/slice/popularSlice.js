@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const backendURL = "http://api.cheberel.kg";
+const backendURL = "https://api.cheberel.kg";
 
 export const fetchPopularData = createAsyncThunk(
   "products/fetchPopularData",
@@ -12,7 +12,6 @@ export const fetchPopularData = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      console.error("Error fetching data:", error);
       return rejectWithValue(error);
     }
   }
@@ -32,7 +31,7 @@ const popularSlice = createSlice({
     });
     builder.addCase(fetchPopularData.fulfilled, (state, { payload }) => {
       state.status = "succeeded";
-      state.data = payload.data;
+      state.data = payload;
     });
     builder.addCase(fetchPopularData.rejected, (state, { payload }) => {
       state.status = "failed";
