@@ -267,7 +267,7 @@ function Profil() {
 
             </div>
           </div>
-        </div>
+        </div>j
 
         <div className={s.border}></div>
         <div className={s.btnsol}>
