@@ -1,12 +1,13 @@
 .mySwiper {
   margin-bottom: 100px;
   .new_slide {
-    background-image: url("/img/весь.svg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     width: 100%;
-    height: 396px;
+    height: 450px;
+    img {
+      width: 100%;
+      height: 396px;
+      object-fit: cover;
+    }
   }
 
   .custom-pagination-class {

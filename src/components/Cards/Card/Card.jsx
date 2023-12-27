@@ -10,7 +10,7 @@ import StarIcon from "@mui/icons-material/Star";
 import Box from "@mui/material/Box";
 import { FaStar } from "react-icons/fa6";
 import Link from "next/link";
-import { IoMdInformationCircle } from "react-icons/io";
+import { BsExclamationCircleFill } from "react-icons/bs";
 
 export default function Card({ item }) {
   console.log();
@@ -21,7 +21,7 @@ export default function Card({ item }) {
           <img src={item.product_variation.images} alt="" />
         ) : (
           <div className={s.card_logo}>
-            <IoMdInformationCircle className={s.logo} />
+            <BsExclamationCircleFill className={s.logo} />
           </div>
         )}
         {/* <Swiper

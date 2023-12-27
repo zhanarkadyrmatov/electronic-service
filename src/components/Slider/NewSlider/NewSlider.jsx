@@ -7,11 +7,12 @@ import "swiper/css/pagination";
 
 import { Autoplay, Pagination } from "swiper/modules";
 export default function NewSlider() {
-  const customPaginationClass = "custom-pagination-class";
+  // const customPaginationClass = `${s.custom-pagination-class}`
 
   const handlePaginationRef = (pagination) => {
+    console.log(pagination);
     if (pagination && pagination.el) {
-      pagination.el.classList.add(customPaginationClass);
+      pagination.el.classList.add(`${s.custom_pagination}`);
     }
   };
   return (
@@ -25,18 +26,25 @@ export default function NewSlider() {
         }}
         pagination={{
           clickable: true,
-          // renderBullet: function (index, className) {
-          //   return `<span class="${s.pagi} ${className}"></span>`;
-          // },
+          renderBullet: (index, className) => {
+            return `<span class=${className}></span>;`;
+          },
+          bulletClass: `${s.bullet}`,
+          bulletActiveClass: "swiperactive",
         }}
         modules={[Autoplay, Pagination]}
         className={s.mySwiper}
         onSwiper={(swiper) => {
+          console.log(swiper.pagination);
           handlePaginationRef(swiper.pagination);
         }}
       >
         {[1, 2, 3].map((e) => {
-          return <SwiperSlide key={e} className={s.new_slide}></SwiperSlide>;
+          return (
+            <SwiperSlide key={e} className={s.new_slide}>
+              <img src="/img/весь.svg" alt="" />
+            </SwiperSlide>
+          );
         })}
       </Swiper>
     </div>

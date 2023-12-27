@@ -23,8 +23,6 @@ export default function page({ params: { id } }) {
 
   const filterCard = product?.results;
 
-  console.log(filterCard);
-
   return (
     <div className={s.brand}>
       <div className="container">
@@ -48,11 +46,11 @@ export default function page({ params: { id } }) {
             ) : (
               <div className={s.brandNone}>
                 <img src="/img/brandNone.svg" alt="" />
-                {/* <h4>Ничего не найдено</h4>
+                <h4>Ничего не найдено</h4>
                 <p>
                   По вашему запросу ничего не найдено, вы можете повторить поиск
                   с другими словами.
-                </p> */}
+                </p>
               </div>
             )}
           </div>

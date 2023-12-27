@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./page.module.scss";
-import { IoMdInformationCircle } from "react-icons/io";
+import { BsExclamationCircleFill } from "react-icons/bs";
 import Link from "next/link";
 
 export default function BrandCard({ item }) {
@@ -10,7 +10,7 @@ export default function BrandCard({ item }) {
         {item.logo ? (
           <img src={item.logo} alt="" />
         ) : (
-          <IoMdInformationCircle className={s.logo} />
+          <BsExclamationCircleFill className={s.logo} />
         )}
         <h3>{item.title}</h3>
       </div>

@@ -1,17 +1,39 @@
 .brands {
   .wrapper {
     margin: 36px 0;
-    h2 {
-      color: var(--Base-Black, #000);
-      font-size: 32px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: normal;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      h2 {
+        color: var(--Base-Black, #000);
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+
+      .button {
+        padding: 16px;
+        border-radius: 8px;
+        background: #fff;
+        color: var(--main, #ee5922);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+    }
+
+    .brand {
+      display: grid;
+      grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
+      gap: 40px;
+      padding: 30px 0;
     }
 
     .mySwiper {
-      padding: 30px 0;
-
       .pagin {
         margin: 20px;
       }
