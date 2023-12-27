@@ -61,6 +61,8 @@ function Profil() {
   let page = usePathname();
 
   const [time, setTime] = useState(false);
+  const  [pages , setPage] = useState(1)
+
 
   useEffect(() => {
     if (time) {
@@ -93,8 +95,6 @@ function Profil() {
       document.body.style.overflow = ''
     }
   }, [password])
-
-  
 
 
 
@@ -142,9 +142,9 @@ function Profil() {
             <label htmlFor="">Номер телефона</label>
             {/* {errors.lastName && <p>Last name is required.</p>} */}
             <input {...register('age',)} placeholder="+996-###-###" />
-             {/* {errors.age && <p>Please enter number for age.</p>} */}
-                {/* <input type="submit" /> */}
-              
+            {/* {errors.age && <p>Please enter number for age.</p>} */}
+            {/* <input type="submit" /> */}
+
 
             <button className={s.btn_orange}>Сохранить</button>
           </form>
@@ -152,8 +152,8 @@ function Profil() {
       </div>}
 
       {password && <div id={s.password} className={`${s.modal} `}>
-              <div className={`${s.wrappers}`}>
-            <form className={s.block} onSubmit={handleSubmit((data) => handleSubmitDara(data))}>
+        <div className={`${s.wrappers}`}>
+          <form className={s.block} onSubmit={handleSubmit((data) => handleSubmitDara(data))}>
             <div className="between">
               <h3>Смена пароля</h3>
               <h1 onClick={() => setPass(!password)}>x</h1>
@@ -165,12 +165,12 @@ function Profil() {
             <label htmlFor="">повторите Новый пароль</label>
             {/* {errors.lastName && <p>Last name is required.</p>} */}
             <input type='password' {...register('age',)} placeholder="asdasdasdasdasd" />
-             {/* {errors.age && <p>Please enter number for age.</p>} */}
-                {/* <input type="submit" /> */}
+            {/* {errors.age && <p>Please enter number for age.</p>} */}
+            {/* <input type="submit" /> */}
             <button className={s.btn_orange}>Сохранить</button>
           </form>
-               </div>
-            </div>}
+        </div>
+      </div>}
 
 
       <div className="container">
@@ -178,21 +178,24 @@ function Profil() {
         <div className={s.blog} >
           <div className={`${s.flexes} flex`} style={{ gap: '24px' }}>
             <div className={`${s.adam} center`}>
+
               <Image src={'/img/adam.svg'} alt='/' width={40} height={40} />
             </div>
-            <div>
-              <h2 className={s.setting}>Настройки приложения</h2>
+            <div className={s.centerAdap}>
               <h4>Елена Воронова</h4>
               <div className={s.flexe}>
-              <p>+996 777 438 992</p>
-              <p>username@mail.com</p>
+                <p>+996 777 438 992</p>
+                <p>username@mail.com</p>
               </div>
               <h6 className={s.none} onClick={() => setTime(!time)}>Выйти из учётной записи</h6>
             </div>
           </div>
+
           <div className={s.zoom}>
-            <div id={s.prof} className="flex" style={{
-              gap: '8px', marginBottom: '16px',
+          <h3 className={s.setting}>Настройки приложения</h3>
+
+            <div id={s.prof} className={`${s.ret} flex`} style={{
+              gap: '13px', marginBottom: '16px',
               cursor: 'pointer'
             }} onClick={() => setPen(!pen)}>
               <div className={`${s.images} center`}>
@@ -201,8 +204,10 @@ function Profil() {
               </div>
               <p>Редактировать личные данны</p>
             </div>
-            
-            <div className="flex" style={{ gap: '8px', marginBottom: '16px', cursor: 'pointer' }}>
+
+            <div className={`${s.ret} flex`} style={{
+               gap: '13px', marginBottom: '16px', cursor: 'pointer'
+                }}>
               <div className={`${s.images} center`}>
                 <Image src={'/img/pen2.svg'} alt='' width={16} height={16} />
                 <Image className={s.none} src={'/img/app2.svg'} alt='' width={24} height={24} />
@@ -210,11 +215,11 @@ function Profil() {
               <p>Сменить фото профиля</p>
             </div>
 
-            <div id={s.password} className="flex" style={{ 
-              gap: '8px', marginBottom: '16px', cursor: 'pointer' 
-              }}
+            <div id={s.password} className={`${s.ret} flex`} style={{
+              gap: '13px', marginBottom: '16px', cursor: 'pointer'
+            }}
               onClick={() => setPass(!password)}
-              >
+            >
               <div className={`${s.images} center`}>
                 <Image src={'/img/pen1.svg'} alt='' width={16} height={16} />
                 <Image className={s.none} src={'/img/app3.svg'} alt='' width={24} height={24} />
@@ -223,68 +228,70 @@ function Profil() {
             </div>
 
             <div className={s.zakazy}>
-              <h3>Заказы и товары</h3>
-               <div id={s.password} className={`${s.none} flex`} style={{ 
-              gap: '8px', marginBottom: '16px', cursor: 'pointer' 
-              }}
-              onClick={() => setPass(!password)}
-              >
-              <div className={`${s.images} center`}>
-                <Image src={'/img/app4.svg'} alt='' width={24} height={24} />
-              </div>
-              <p>История заявок</p>
-            </div>
+              <h3 className={s.setting}>Заказы и товары</h3>
 
-            <div id={s.password} className={`${s.none} flex`} style={{ 
-              gap: '8px', marginBottom: '16px', cursor: 'pointer' 
-              }}
-              onClick={() => setPass(!password)}
-              >
-              <div className={`${s.images} center`}>
-              <Image src={'/img/app5.svg'} alt='/' width={24} height={24} />
-              </div>
-              <p>Избранные товары</p>
-            </div>
+              <Link href={'/pages/ApplicationHistory'}>
+                <div className={`${s.none} flex`} style={{
+                  gap: '8px', marginBottom: '16px', cursor: 'pointer'
+                }}
+                  onClick={() => setPass(!password)}
+                >
+                  <div className={`${s.images} center`}>
+                    <Image src={'/img/app4.svg'} alt='' width={24} height={24} />
+                  </div>
+                  <p>История заявок</p>
+                </div>
+              </Link>
 
-            <div id={s.password} className={`${s.none} flex`} style={{ 
-              gap: '8px', marginBottom: '16px', cursor: 'pointer' 
+              <div id={s.password} className={`${s.none} flex`} style={{
+                gap: '8px', marginBottom: '16px', cursor: 'pointer'
               }}
-              onClick={() => setTime(!time)}
+                onClick={() => setPass(!password)}
               >
-              <div className={`${s.images} center`}>
-              <Image src={'/img/app6.svg'} alt='/' width={24} height={24} />
+                <div className={`${s.images} center`}>
+                  <Image src={'/img/app5.svg'} alt='/' width={24} height={24} />
+                </div>
+                <p>Избранные товары</p>
               </div>
-              <p>Выйти из учётной записи</p>
-            </div>
+
+              <div id={s.password} className={`${s.none} flex`} style={{
+                gap: '8px', marginBottom: '16px', cursor: 'pointer'
+              }}
+                onClick={() => setTime(!time)}
+              >
+                <div className={`${s.images} center`}>
+                  <Image src={'/img/app6.svg'} alt='/' width={24} height={24} />
+                </div>
+                <p>Выйти из учётной записи</p>
+              </div>
 
             </div>
           </div>
         </div>
-        <h2 className={s.setting}>Заказы и товары</h2>
 
         <div className={s.border}></div>
         <div className={s.btnsol}>
           <div className={`${s.btns} flex`}>
 
-            <Link href={'/page/Profil'}
-              className={cm(s.s, {
-                [s.active]: page === "/page/Profil",
-              })}
+            <div 
+             onClick={()=>setPage(1)} className={cm( s.isActive, {
+              [s.countrysUlActive]: pages === 1
+          })}
             >
               <button className={`${s.btn_orange} center`}>
                 <Image src={'/img/aas.svg'} alt='/' width={21} height={21} />
                 История заявок</button>
-            </Link>
+            </div>
 
-            <Link href={'/pages/'}
-              className={cm(s.s, {
-                [s.active]: page === "/",
-              })}
+            <div 
+             onClick={()=>setPage(2)} className={cm( s.isActive, {
+              [s.countrysUlActive]: pages === 2
+          })}
             >
               <button className={`${s.btn_white} center`}>
                 <Image src={'/img/historyA.svg'} alt='/' width={21} height={21} />
                 Избранные</button>
-            </Link>
+            </div>
 
           </div>
         </div>
