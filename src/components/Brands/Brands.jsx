@@ -63,17 +63,6 @@ export default function Brands() {
               );
             })}
           </Swiper>
-          {/* <div className={s.brand}>
-            {cartData?.slice(0, 6).map((item) => {
-              return (
-                <div key={item.id}>
-                  <Link href={`/pages/Brand/${item.id}`}>
-                    <BrandCard item={item} />
-                  </Link>
-                </div>
-              );
-            })}
-          </div> */}
         </div>
       </div>
     </div>
