@@ -30,7 +30,40 @@ export default function Brands() {
               Показать все
             </Link>
           </div>
-          <div className={s.brand}>
+          <Swiper
+            slidesPerView={2}
+            spaceBetween={20}
+            freeMode={true}
+            breakpoints={{
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 6,
+                spaceBetween: 40,
+              },
+              1280: {
+                slidesPerView: 6,
+                spaceBetween: 40,
+              },
+            }}
+            modules={[FreeMode]}
+            className={s.mySwiper}
+          >
+            {cartData?.slice(0, 6).map((item) => {
+              return (
+                <SwiperSlide>
+                  <div key={item.id}>
+                    <Link href={`/pages/Brand/${item.id}`}>
+                      <BrandCard item={item} />
+                    </Link>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+          {/* <div className={s.brand}>
             {cartData?.slice(0, 6).map((item) => {
               return (
                 <div key={item.id}>
@@ -40,7 +73,7 @@ export default function Brands() {
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -1,8 +1,10 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./page.module.scss";
 import Image from "next/image";
 import ios from "../../../public/img/весь.svg";
+import { fetchCategoryData } from "@/app/store/slice/categorySlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const cards = [
   {
@@ -62,6 +64,14 @@ const cards = [
 ];
 
 export default function Categories() {
+  const dispatch = useDispatch();
+  const { category } = useSelector((state) => state.category);
+
+  useEffect(() => {
+    dispatch(fetchCategoryData());
+  }, []);
+
+  console.log(category);
   return (
     <>
       <div className={s.categories}>
