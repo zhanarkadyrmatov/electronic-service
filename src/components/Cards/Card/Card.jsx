@@ -17,7 +17,7 @@ export default function Card({ item }) {
   return (
     <div className={s.Card}>
       <Link href={"/pages/id"}>
-        {item?.product_variation.images ? (
+        {item?.product_variation?.images ? (
           <img src={item.product_variation.images} alt="" />
         ) : (
           <div className={s.card_logo}>
@@ -77,7 +77,7 @@ export default function Card({ item }) {
           <FaStar className={s.stars} />
         </span>
         <div className={s.title}>
-          <h2>{item.title.slice(0, 20)}...</h2>
+          <h2>{item.title?.slice(0, 20)}...</h2>
           <p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -106,8 +106,8 @@ export default function Card({ item }) {
           <div className={s.price}>
             <div className={s.prices}>
               <h5>
-                {item.product_variation.product_price}{" "}
-                {item.product_variation.currency_unit.currency}
+                {item.product_variation?.product_price}
+                {item.product_variation?.currency_unit.currency}
               </h5>
               <h6>500.35 С</h6>
             </div>

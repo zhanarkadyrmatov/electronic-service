@@ -20,16 +20,13 @@ export default function Brands() {
   }, []);
 
   const cartData = data?.results;
-
-  console.log(cartData);
-
   return (
     <div className={s.brands}>
       <div className="container">
         <div className={s.wrapper}>
           <div className={s.title}>
             <h2>Бренды</h2>
-            <Link className={s.button} href={`/pages/Brand/id`}>
+            <Link className={s.button} href={`/pages/Brand/all`}>
               Показать все
             </Link>
           </div>
@@ -37,7 +34,9 @@ export default function Brands() {
             {cartData?.slice(0, 6).map((item) => {
               return (
                 <div key={item.id}>
-                  <BrandCard item={item} />
+                  <Link href={`/pages/Brand/${item.id}`}>
+                    <BrandCard item={item} />
+                  </Link>
                 </div>
               );
             })}

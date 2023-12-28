@@ -5,15 +5,13 @@ import Link from "next/link";
 
 export default function BrandCard({ item }) {
   return (
-    <Link href={`/pages/Brand/${item.id}`}>
-      <div className={s.cart}>
-        {item.logo ? (
-          <img src={item.logo} alt="" />
-        ) : (
-          <BsExclamationCircleFill className={s.logo} />
-        )}
-        <h3>{item.title}</h3>
-      </div>
-    </Link>
+    <div className={s.cart}>
+      {item.logo ? (
+        <img src={item.logo} alt="" />
+      ) : (
+        <BsExclamationCircleFill className={s.logo} />
+      )}
+      <h3>{item.title}</h3>
+    </div>
   );
 }
