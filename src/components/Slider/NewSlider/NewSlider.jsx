@@ -1,18 +1,32 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import s from "./page.module.scss";
 import "swiper/css";
 import "swiper/css/pagination";
 
 import { Autoplay, Pagination } from "swiper/modules";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBannerData } from "@/app/store/slice/bannerSlice";
+import Image from "next/image";
+
 export default function NewSlider() {
-  // const customPaginationClass = `${s.custom-pagination-class}`
+  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.banner);
+
+  const banner = data?.results;
+
+  useEffect(() => {
+    dispatch(fetchBannerData());
+  }, []);
+
+  console.log(banner);
+
+  const customPaginationClass = "custom_pagination";
 
   const handlePaginationRef = (pagination) => {
-    console.log(pagination);
     if (pagination && pagination.el) {
-      pagination.el.classList.add(`${s.custom_pagination}`);
+      pagination.el.classList.add(customPaginationClass);
     }
   };
   return (
@@ -27,22 +41,23 @@ export default function NewSlider() {
         pagination={{
           clickable: true,
           renderBullet: (index, className) => {
-            return `<span class=${className}></span>;`;
+            return `<span class=${className}>
+            <div class='border'></div>
+            </span>`;
           },
-          bulletClass: `${s.bullet}`,
+          bulletClass: "bullet",
           bulletActiveClass: "swiperactive",
         }}
         modules={[Autoplay, Pagination]}
         className={s.mySwiper}
         onSwiper={(swiper) => {
-          console.log(swiper.pagination);
           handlePaginationRef(swiper.pagination);
         }}
       >
-        {[1, 2, 3].map((e) => {
+        {banner?.map((e) => {
           return (
-            <SwiperSlide key={e} className={s.new_slide}>
-              <img src="/img/весь.svg" alt="" />
+            <SwiperSlide key={e.id} className={s.new_slide}>
+              <Image height={396} width={1280} src={e.banner} alt="" />
             </SwiperSlide>
           );
         })}

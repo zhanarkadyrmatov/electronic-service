@@ -64,8 +64,6 @@ export default function Popular() {
 
   const cartData = data?.results;
 
-  console.log(cartData);
-
   return (
     <div className={s.popular}>
       <div className={`${s.block} between`} style={{ margin: "20px 0" }}>

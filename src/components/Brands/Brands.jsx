@@ -20,28 +20,60 @@ export default function Brands() {
   }, []);
 
   const cartData = data?.results;
-
-  console.log(cartData);
-
   return (
     <div className={s.brands}>
       <div className="container">
         <div className={s.wrapper}>
           <div className={s.title}>
             <h2>Бренды</h2>
-            <Link className={s.button} href={`/pages/Brand/id`}>
+            <Link className={s.button} href={`/pages/Brand/all`}>
               Показать все
             </Link>
           </div>
-          <div className={s.brand}>
+          <Swiper
+            slidesPerView={2}
+            spaceBetween={20}
+            freeMode={true}
+            breakpoints={{
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 6,
+                spaceBetween: 40,
+              },
+              1280: {
+                slidesPerView: 6,
+                spaceBetween: 40,
+              },
+            }}
+            modules={[FreeMode]}
+            className={s.mySwiper}
+          >
+            {cartData?.slice(0, 6).map((item) => {
+              return (
+                <SwiperSlide>
+                  <div key={item.id}>
+                    <Link href={`/pages/Brand/${item.id}`}>
+                      <BrandCard item={item} />
+                    </Link>
+                  </div>
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+          {/* <div className={s.brand}>
             {cartData?.slice(0, 6).map((item) => {
               return (
                 <div key={item.id}>
-                  <BrandCard item={item} />
+                  <Link href={`/pages/Brand/${item.id}`}>
+                    <BrandCard item={item} />
+                  </Link>
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

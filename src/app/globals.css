@@ -133,7 +133,36 @@ li {
   align-items: center;
   background-color: #fff;
 }
+.custom_pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
 
+.bullet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.border {
+  width: 10px;
+  height: 10px;
+  background-color: #ee5922;
+  opacity: 0.5;
+  border-radius: 50%;
+  transition: all 0.5s ease-in;
+}
+
+.swiperactive .border {
+  width: 40px;
+  height: 10px;
+  border-radius: 8px;
+  background-color: (--main, #ee5922);
+  opacity: 1;
+  transition: all 0.5s ease-in;
+}
 @media screen and (max-width: 600px) {
   .next {
     width: 30px;
