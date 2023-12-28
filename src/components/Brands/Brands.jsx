@@ -18,7 +18,7 @@ export default function Brands() {
   useEffect(() => {
     dispatch(fetchBrandsData(1));
   }, []);
-
+  // sdnfkbejr
   const cartData = data?.results;
   return (
     <div className={s.brands}>
