@@ -36,7 +36,6 @@ export default function page({ params: { id } }) {
   }, [id, count]);
 
   const filter = id === "all" ? productAll : filterCard;
-  console.log(status);
   return (
     <div className={s.brand}>
       <div className="container">

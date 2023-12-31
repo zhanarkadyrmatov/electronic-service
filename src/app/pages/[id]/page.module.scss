@@ -75,9 +75,11 @@
         gap: 16px;
 
         h3 {
-          display: flex;
+          display: grid;
+          grid-template-columns: 9fr 3fr;
           justify-content: space-between;
           align-items: center;
+          gap: 15px;
           color: var(--Base-Black, #000);
           font-size: 20px;
           font-style: normal;
@@ -89,6 +91,7 @@
             font-style: normal;
             font-weight: 700;
             line-height: normal;
+            text-align: end;
           }
         }
 
@@ -391,10 +394,10 @@
       }
 
       .img {
-        background-image: url("https://www.lg.com/ru/images/televisions/md07548695/D-3.jpg");
+        // background-image: url("https://www.lg.com/ru/images/televisions/md07548695/D-3.jpg");
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: contain;
         width: 100%;
         height: 350px;
         @media screen and (max-width: 600px) {

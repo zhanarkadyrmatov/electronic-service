@@ -19,7 +19,7 @@ export const fetchCategoryData = createAsyncThunk(
 const categorySlice = createSlice({
   name: "category",
   initialState: {
-    category: null,
+    category: [],
     status: "idle",
     error: null,
   },
@@ -30,7 +30,7 @@ const categorySlice = createSlice({
     });
     builder.addCase(fetchCategoryData.fulfilled, (state, { payload }) => {
       state.status = "succeeded";
-      state.data = payload;
+      state.category = payload.results;
     });
     builder.addCase(fetchCategoryData.rejected, (state, { payload }) => {
       state.status = "failed";

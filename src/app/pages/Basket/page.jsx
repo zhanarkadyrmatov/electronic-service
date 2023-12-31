@@ -1,16 +1,25 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./page.module.scss";
 import Image from "next/image";
 import Images from "../../../../public/img/pop.svg";
 import { MdDeleteSweep } from "react-icons/md";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBasketData } from "@/app/store/slice/basketSlice";
 
 export default function page() {
   const [modal, setModat] = useState(false);
   const [orders, setOrders] = useState(false);
+  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.basket);
 
+  useEffect(() => {
+    dispatch(fetchBasketData());
+  }, []);
+
+  console.log(data);
   return (
     <div className={s.basket}>
       {modal && (
@@ -28,7 +37,6 @@ export default function page() {
           </div>
         </div>
       )}
-
       {orders && (
         <div className={s.basket_modal}>
           <div className={s.blog}>
@@ -197,7 +205,6 @@ export default function page() {
           </div>
         </div>
       )}
-
       <div className="container">
         <div className={s.baskets}>
           <h2>Корзина</h2>

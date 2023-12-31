@@ -28,6 +28,9 @@
     grid-gap: 28px;
     grid-auto-flow: dense;
     margin: 20px 0;
+    @media screen and (max-width: 600px) {
+      padding: 0;
+    }
 
     .card {
       .card_img {

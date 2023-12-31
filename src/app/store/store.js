@@ -5,6 +5,8 @@ import brandFilterSlice from "./slice/brandFilterSlice";
 import bannerSlice from "./slice/bannerSlice";
 import brandAllSlice from "./slice/brandAllSlice";
 import categorySlice from "./slice/categorySlice";
+import productSlice from "./slice/productSlice";
+import basketSlice from "./slice/basketSlice";
 
 const store = configureStore({
   reducer: {
@@ -14,6 +16,8 @@ const store = configureStore({
     banner: bannerSlice,
     all: brandAllSlice,
     category: categorySlice,
+    product: productSlice,
+    basket: basketSlice,
   },
 });
 
