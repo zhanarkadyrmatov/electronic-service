@@ -7,6 +7,7 @@ import Register from "../Form/Register/Register";
 import { useSelector } from "react-redux";
 import NewPassword from "../Form/NewPassword/NewPassword";
 import Resetpassword from "../Form/Resetpassword/Resetpassword";
+import Recover from "../Form/Recover/Recover";
 
 export default function Modal() {
   const { modal, value } = useSelector((state) => state.modal);
