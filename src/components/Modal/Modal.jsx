@@ -2,46 +2,27 @@
 import React, { useState } from "react";
 import s from "./page.module.scss";
 import Image from "next/image";
+import SignIn from "../Form/SignIn/SignIn";
+import Register from "../Form/Register/Register";
+import { useSelector } from "react-redux";
+import NewPassword from "../Form/NewPassword/NewPassword";
+import Resetpassword from "../Form/Resetpassword/Resetpassword";
 
-
-export default function Modal({ handleOpen }) {
-  
-  const [modal, setModal] = useState(1);
-  const handleModal = (id) => {
-    setModal(id);
-
-  };
+export default function Modal() {
+  const { modal, value } = useSelector((state) => state.modal);
 
   return (
-    <div>
-      {modal === 1 && (
-        <div className={`${s.modal} center`}>
-          <div className={s.wrapper}>
-            <h2 id="center">Авторизация</h2>
-            <div style={{ paddingTop: "24px" }}>
-              <label htmlFor="">Телефон</label>
-              <input type="text" placeholder="+996-###-###" />
-              <label htmlFor="">Пароль</label>
-              <input type="password" placeholder="******" />
-              <div className="between" style={{ margin: "21px 0" }}>
-                <span onClick={() => handleModal(3)}>Забыл пароль</span>
-                <div className="flex" style={{ gap: "5px" }}>
-                  <p>Запомнить</p>
-                  <input className={s.chek} type="checkbox" />
-                </div>
-              </div>
-              <div className={`${s.btns} between`} style={{ gap: "16px" }}>
-                <button onClick={() => handleOpen()}>Отмена</button>
-                <button>Войти</button>
-              </div>
-            </div>
-            <button className={s.btn_grey} onClick={() => handleModal(2)}>
-              Зарегистрироваться
-            </button>
-          </div>
+    <>
+      <div className={s.modal}>
+        <div className={s.wrapper}>
+          {value === 1 && <SignIn />}
+          {value === 2 && <Register />}
+          {value === 3 && <Recover />}
+          {value === 4 && <NewPassword />}
+          {value === 5 && <Resetpassword />}
         </div>
-      )}
-      {modal === 2 && (
+
+        {/* {modal === 2 && (
         <div className={`${s.modal} center`}>
           <div className={s.wrapper}>
             <h2 id="center">Регистрация</h2>
@@ -168,7 +149,7 @@ export default function Modal({ handleOpen }) {
       {modal === 6 && (
         <div className={`${s.modal} center`}>
           <div className={s.wrapper}>
-            <Image src={'/img/exit.svg'} alt="" width={32} height={32} />
+            <Image src={"/img/exit.svg"} alt="" width={32} height={32} />
             <h3>Выйти?</h3>
             <h6>Выйти из учётной записи</h6>
             <div className={s.border}></div>
@@ -178,7 +159,8 @@ export default function Modal({ handleOpen }) {
             </div>
           </div>
         </div>
-      )}
-    </div>
+      )} */}
+      </div>
+    </>
   );
 }

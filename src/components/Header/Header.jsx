@@ -15,43 +15,50 @@ import registr from "@/../../public/img/aa4.svg";
 import Modal from "../Modal/Modal";
 import { BurgerMenu } from "../Menu/page";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { handleModal } from "@/app/store/slice/modalSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Header() {
   const page = usePathname();
+  const { modal } = useSelector((state) => state.modal);
+  const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflow = 'hidden'
+    if (modal) {
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ''
+      document.body.style.overflow = "";
     }
-  }, [open])
-
+  }, [modal]);
 
   const [time, setTime] = useState(false);
 
-
   useEffect(() => {
     if (time) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = ''
+      document.body.style.overflow = "";
     }
-
-  }, [time])
+  }, [time]);
 
   return (
     <>
-      {open && <Modal handleOpen={handleOpen} />}
+      {modal && <Modal />}
       {time && <BurgerMenu setTime={setTime} time={time} />}
       <div className={s.header}>
         <div className="container">
           <div className={s.nav}>
             <div className={s.wrapper}>
-              <Image src={'/img/servis.svg'} className={s.logo} alt="" width={120} height={50} />
+              <Image
+                src={"/img/servis.svg"}
+                className={s.logo}
+                alt=""
+                width={120}
+                height={50}
+              />
               <nav className={s.nav_bar}>
                 <Link
                   href={"/"}
@@ -79,7 +86,8 @@ export default function Header() {
                     [s.active]: page === "/pages/Questionnaire",
                   })}
                 >
-                  Анкета</Link>
+                  Анкета
+                </Link>
                 <Link
                   href={"/pages/Contact"}
                   className={cm(s.s, {
@@ -97,7 +105,10 @@ export default function Header() {
               </Link>
               <p>Бесплатный звонок по Кыргызстану</p>
             </div>
-            <RxHamburgerMenu onClick={() => setTime(!time)} className={s.burger} />
+            <RxHamburgerMenu
+              onClick={() => setTime(!time)}
+              className={s.burger}
+            />
           </div>
 
           <div className={`${s.blok} between`}>
@@ -111,7 +122,7 @@ export default function Header() {
               <input type="text" placeholder="Что найти?" />
               <FiSearch className={s.search} size={20} />
             </div>
-            
+
             <div className={`${s.button} flex`}>
               <Link href={"/pages/Filter"} className={s.filter}>
                 <div className={s.image}>
@@ -133,7 +144,10 @@ export default function Header() {
                 </div>
                 <p>Корзина</p>
               </Link>
-              <div className={s.item} onClick={handleOpen}>
+              <div
+                className={s.item}
+                onClick={() => dispatch(handleModal(!modal))}
+              >
                 <div className={s.login}>
                   <Image src={registr} alt="" width={14} height={14} />
                 </div>

@@ -7,6 +7,7 @@ import brandAllSlice from "./slice/brandAllSlice";
 import categorySlice from "./slice/categorySlice";
 import productSlice from "./slice/productSlice";
 import basketSlice from "./slice/basketSlice";
+import modalSlice from "./slice/modalSlice";
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     category: categorySlice,
     product: productSlice,
     basket: basketSlice,
+    modal: modalSlice,
   },
 });
 

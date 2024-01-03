@@ -1,0 +1,107 @@
+.recover {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  .img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h3 {
+    color: var(--151515, #151515);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: -0.408px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      color: var(--Base-Black, #000);
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      width: 470px;
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .password {
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border-radius: 8px;
+    border: 1px solid #cecece;
+    background: #fff;
+    margin-top: 5px;
+    // &:focus-within {
+    //   border: 2px solid #161616;
+    //   background: var(--gray, #fff);
+    // }
+
+    .pass {
+      width: 100%;
+      height: 100%;
+      color: #161616;
+      background-color: transparent;
+      border: none;
+    }
+
+    .eye {
+      cursor: pointer;
+      .logo {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        fill: #ee5922;
+      }
+    }
+  }
+
+  .btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    button {
+      border-radius: 8px;
+      background: var(--main, #ee5922);
+      padding: 16px;
+      flex: 1 0 0;
+      color: #fff;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase;
+      @media screen and (max-width: 600px) {
+        width: 100%;
+      }
+
+      &:first-child {
+        border-radius: 8px;
+        border: 1px solid #ee5922;
+        background: #fff;
+        color: #ee5922;
+      }
+    }
+  }
+}
