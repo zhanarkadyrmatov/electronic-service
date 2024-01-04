@@ -1,9 +1,9 @@
 .register {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
   @media screen and (max-width: 600px) {
-    flex-direction: column;
+    gap: 15px;
   }
   h2 {
     color: var(--151515, #151515);
@@ -13,22 +13,35 @@
     text-align: center;
   }
 
-  label {
-    color: var(--151515, #151515);
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.408px;
-    text-transform: uppercase;
-  }
-  input {
-    height: 50px;
-  }
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
-  .tel {
-    width: 100%;
-    height: 50px;
+    label {
+      color: var(--151515, #151515);
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: -0.408px;
+      text-transform: uppercase;
+      opacity: 0.33;
+    }
+    input {
+      width: 100%;
+      height: 50px;
+      padding: 13px;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid #cecece;
+      background: #fff;
+    }
+
+    .tel {
+      width: 100%;
+      height: 50px;
+    }
   }
 
   .password {
@@ -41,7 +54,6 @@
     border-radius: 8px;
     border: 1px solid #cecece;
     background: #fff;
-    margin-top: 5px;
     // &:focus-within {
     //   border: 2px solid #161616;
     //   background: var(--gray, #fff);
@@ -118,12 +130,21 @@
       }
     }
 
-    .chek {
-      width: 20px;
-      height: 20px;
-      border-radius: 110px;
-      &:focus-within {
-        background: #ee5922;
+    .check {
+      appearance: none;
+      width: 30px;
+      height: 30px;
+      border: 2px solid #ee5922;
+      border-radius: 50%;
+      cursor: pointer;
+      outline: none;
+
+      &:checked {
+        background-image: url("/img/.svg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: none;
       }
     }
   }

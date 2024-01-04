@@ -126,15 +126,16 @@
   }
 
   .button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 20px;
 
-    @media screen and  (max-width:860px){
-      gap: 20px;
+    @media screen and (max-width: 860px) {
+      justify-content: space-around;
+      gap: 12px;
     }
-    // @media screen and (max-width:500px) {
-    //   g
-    // }
-   
+
     .item {
       display: flex;
       flex-direction: column;
@@ -172,6 +173,9 @@
         color: #282b3d;
         font-size: 13px;
         font-weight: 500;
+        @media screen and (max-width: 600px) {
+          font-size: 12px;
+        }
       }
     }
 

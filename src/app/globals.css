@@ -163,6 +163,19 @@ li {
   opacity: 1;
   transition: all 0.5s ease-in;
 }
+
+.error_alert {
+  position: absolute;
+  bottom: 50px;
+  left: 100px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
 @media screen and (max-width: 600px) {
   .next {
     width: 30px;

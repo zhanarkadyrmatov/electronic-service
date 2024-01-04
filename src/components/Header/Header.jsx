@@ -123,7 +123,7 @@ export default function Header() {
               <FiSearch className={s.search} size={20} />
             </div>
 
-            <div className={`${s.button} flex`}>
+            <div className={`${s.button}`}>
               <Link href={"/pages/Filter"} className={s.filter}>
                 <div className={s.image}>
                   <Image src={filtr} alt="" width={14} height={14} />

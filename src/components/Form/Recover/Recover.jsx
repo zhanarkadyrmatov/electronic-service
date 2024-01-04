@@ -25,7 +25,7 @@ export default function Recover() {
         для того чтобы вы могли пройдя по ссылке восстановить свой <br />
         пароль.
       </p>
-      <div>
+      <div className={s.inputs}>
         <label htmlFor="">Номер телефона</label>
         <InputMask
           className={s.tel}

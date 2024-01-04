@@ -10,19 +10,33 @@
     text-align: center;
   }
 
-  label {
-    color: var(--151515, #151515);
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.408px;
-    text-transform: uppercase;
-  }
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    label {
+      color: var(--151515, #151515);
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      letter-spacing: -0.408px;
+      text-transform: uppercase;
+      opacity: 0.33;
+    }
+    input {
+      width: 100%;
+      padding: 13px;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid #cecece;
+      background: #fff;
+    }
 
-  .tel {
-    width: 100%;
-    height: 50px;
+    .tel {
+      width: 100%;
+      height: 50px;
+    }
   }
 
   .password {
@@ -35,7 +49,6 @@
     border-radius: 8px;
     border: 1px solid #cecece;
     background: #fff;
-    margin-top: 5px;
     // &:focus-within {
     //   border: 2px solid #161616;
     //   background: var(--gray, #fff);
@@ -80,7 +93,7 @@
       align-items: center;
       gap: 16px;
 
-      label {
+      .title {
         color: var(--Base-Black, #000);
         font-size: 16px;
         font-style: normal;
@@ -88,10 +101,22 @@
         line-height: normal;
       }
 
-      input {
-        width: 22px;
-        height: 22px;
+      .check {
+        appearance: none;
+        width: 30px;
+        height: 30px;
+        border: 2px solid #ee5922;
         border-radius: 50%;
+        cursor: pointer;
+        outline: none;
+
+        &:checked {
+          background-image: url("/img/.svg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border: none;
+        }
       }
     }
   }
