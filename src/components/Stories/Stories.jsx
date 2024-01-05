@@ -13,7 +13,7 @@ export const Stories = () => {
   const [story, setStory] = useState(false);
   return (
     <>
-      {story && <Story />}
+      {story && <Story setStory={setStory} story={story} />}
       <div className={s.stories}>
         <div className="container">
           <h2>Истории</h2>
