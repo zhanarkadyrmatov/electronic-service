@@ -542,3 +542,9 @@ padding: 16px;
     border-radius: 10px;
     background-color: var(--main, #ee5922);
   }
+  .Cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+    padding-bottom: 30px;
+  }

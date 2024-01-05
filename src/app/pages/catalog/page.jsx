@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCatalogData, fetchCategoryListData } from '@/app/store/slice/catalog-slice';
+import { fetchCatalogData, fetchCatalogData2, fetchCategoryListData } from '@/app/store/slice/catalog-slice';
 import Card from '@/components/Cards/Card/Card';
 import cm from 'classnames'
 import { CiCircleCheck } from "react-icons/ci";
@@ -32,13 +32,13 @@ const page = () => {
     } = useForm();
     useEffect(()=> {
     const data = null 
-    dispatch(fetchCatalogData(data)),
+    dispatch(fetchCatalogData2()),
     dispatch(fetchCategoryListData())
     },[])
     
     const {data,status ,error,categoryData} = useSelector((state) => state.catalog);
  
-    
+    console.log(data,'datasdasddasdasdaa');
     const onSubmit = (res) =>  {
         
       const data = [res,categoryId?.id]
@@ -70,10 +70,9 @@ const page = () => {
             <div className={s.catalogCard} onClick={() => setCategoryId(res)}>
             <h2>{res.title}</h2>
           {categoryId?.id === res.id ? ( <div className={s.FaRegCircleCheck}><IoIosCheckmarkCircle /></div> ):(<div className={s.FaRegCircle}><FaRegCircle  /></div>  )}
-         
             </div>
           ))}
-           </div>
+          </div>
           </div>
         )
     }
@@ -81,14 +80,15 @@ const page = () => {
   
 </div>
     <form className={`${s.block} between`} onSubmit={handleSubmit(onSubmit)}>
-            <input {...register('min_price')} placeholder="Цена от: 1 000" />
-            <input {...register('max_price', { required: true })} placeholder="Цена до: 1 000" />
+            <input {...register('min_price')} type='number' placeholder="Цена от: 1 000" />
+            <input {...register('max_price', { required: true })} type='number' placeholder="Цена до: 1 000" />
             <button>ПОКАЗАТЬ: 10000</button>
         </form>
         <div>
         {status === 'loading' && <div>Загрузка...</div>}
         {status === 'succeeded' && (
-            <div>
+            <div className={s.Cards}>
+            {data.results.length === 0 && <div>Ничего не найдено</div>}
             {data.results?.map((item) => (
                 <Card item={item} />
               ))}
