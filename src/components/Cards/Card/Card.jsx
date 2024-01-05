@@ -83,7 +83,6 @@ export default function Card({ item }) {
           </SwiperSlide>
         </Swiper> */}
       </Link>
-
       <p className={s.Popular}>Популярные</p>
       <span className={s.star}>
         <FaStar className={s.stars} />

@@ -47,9 +47,9 @@ export default function SignIn() {
           <Alert severity="error">{error.data.detail}</Alert>
         </div>
       )}
+      {loading ? <Spiner /> : null}
       <form className={s.signIn} onSubmit={handleSubmit(submitForm)}>
         <h2>Авторизация</h2>
-
         <div className={s.inputs}>
           <label htmlFor="">Телефон</label>
           <div>
@@ -110,22 +110,17 @@ export default function SignIn() {
             />
           </div>
         </div>
-        {loading ? (
-          <Spiner />
-        ) : (
-          <div className={s.btns}>
-            <button onClick={() => dispatch(handleModal(!modal))}>
-              Отмена
-            </button>
-            <button
-              style={{
-                opacity: isValid ? "1" : "0.6",
-              }}
-            >
-              Войти
-            </button>
-          </div>
-        )}
+        <div className={s.btns}>
+          <button onClick={() => dispatch(handleModal(!modal))}>Отмена</button>
+          <button
+            style={{
+              opacity: isValid ? "1" : "0.6",
+            }}
+          >
+            Войти
+          </button>
+        </div>
+
         <button
           className={s.btn_grey}
           onClick={() => dispatch(handleTabClick(2))}

@@ -51,7 +51,7 @@ const registerSlice = createSlice({
       state.phone = action.payload;
       state.isUser = action.payload;
     },
-    autoError: (state, action) => {
+    registerError: (state, action) => {
       state.error = action.payload;
     },
   },
@@ -71,5 +71,5 @@ const registerSlice = createSlice({
     });
   },
 });
-export const { autoRegister, autoError } = registerSlice.actions;
+export const { autoRegister, registerError } = registerSlice.actions;
 export default registerSlice.reducer;

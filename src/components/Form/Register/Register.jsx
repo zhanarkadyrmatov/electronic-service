@@ -6,8 +6,9 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { InputMask } from "@react-input/mask";
 import { useDispatch, useSelector } from "react-redux";
 import { handleTabClick } from "@/app/store/slice/modalSlice";
-import { userRegister } from "@/app/store/slice/registerSlice";
+import { registerError, userRegister } from "@/app/store/slice/registerSlice";
 import Alert from "@mui/material/Alert";
+import Spiner from "@/components/Spiner/Spiner";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -38,13 +39,13 @@ export default function Register() {
     dispatch(userRegister(data));
   };
 
-  // useEffect(() => {
-  //   if (passwordError) {
-  //     setTimeout(() => {
-  //       setPasswordError(false);
-  //     }, 5000);
-  //   }
-  // }, [passwordError]);
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        registerError(null);
+      }, 5000);
+    }
+  }, [error]);
 
   return (
     <>
@@ -53,6 +54,7 @@ export default function Register() {
           <Alert severity="error">Пароли должны совпадать</Alert>
         </div>
       )}
+      {loading ? <Spiner /> : null}
       <form className={s.register} onSubmit={handleSubmit(submitRegister)}>
         <h2>Регистрация</h2>
         <div className={s.inputs}>

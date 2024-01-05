@@ -10,6 +10,7 @@ import basketSlice from "./slice/basketSlice";
 import modalSlice from "./slice/modalSlice";
 import signInSlice from "./slice/signInSlice";
 import registerSlice from "./slice/registerSlice";
+import recoverSlice from "./slice/recoverSlice";
 
 const store = configureStore({
   reducer: {
@@ -24,6 +25,7 @@ const store = configureStore({
     modal: modalSlice,
     signIn: signInSlice,
     register: registerSlice,
+    recover: recoverSlice,
   },
 });
 
