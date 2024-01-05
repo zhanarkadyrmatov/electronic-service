@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { handleModal, handleTabClick } from "./modalSlice";
-const backendURL = "";
+const backendURL = "https://api.cheberel.kg";
 
 export const fetchRecover = createAsyncThunk(
-  "users/send_code_phone",
+  "auth/send_code",
   async ({ phone }, { rejectWithValue, dispatch }) => {
     const number = phone.replace(/\D/g, "");
     try {
@@ -13,18 +13,20 @@ export const fetchRecover = createAsyncThunk(
           "Content-Type": "application/json",
         },
       };
-      const data = await axios.post(
-        `${backendURL}users/send_code_phone/`,
+      const response = await axios.post(
+        `${backendURL}/auth/send_code/`,
         {
           phone: number,
         },
         config
       );
 
-      dispatch(sendCodePhone(phone));
-      dispatch(handleTabClick(7));
-      return data;
+      // dispatch(sendCodePhone(phone));
+      dispatch(handleTabClick(5));
+      console.log(response);
+      return response;
     } catch (error) {
+      console.log(error);
       return rejectWithValue(error);
     }
   }

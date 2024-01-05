@@ -14,19 +14,7 @@ export default function Slider({ item }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   useEffect(() => {
-    Fancybox.bind("[data-fancybox='gallery']", {
-      CloseButton: true,
-      Touch: true,
-      HideScrollbar: true,
-      Fullscreen: true,
-      Thumbs: true,
-      Infobar: true,
-      TransitionDuration: 400,
-      TransitionEffect: "slide",
-      AnimationDuration: 500,
-      AnimationEffect: "fade",
-      Toolbar: true,
-    });
+    Fancybox.bind("[data-fancybox='gallery']", {});
   }, []);
   return (
     <div>

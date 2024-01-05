@@ -1,12 +1,14 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./page.module.scss";
 import Image from "next/image";
 import { InputMask } from "@react-input/mask";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { handleTabClick } from "@/app/store/slice/modalSlice";
-import { fetchRecover } from "@/app/store/slice/recoverSlice";
+import { fetchRecover, recoverError } from "@/app/store/slice/recoverSlice";
+import Spiner from "@/components/Spiner/Spiner";
+import Alert from "@mui/material/Alert";
 
 export default function Recover() {
   const dispatch = useDispatch();
@@ -33,7 +35,14 @@ export default function Recover() {
     <>
       {error && (
         <div className="error_alert">
-          <Alert severity="error">Пароли должны совпадать</Alert>
+          <Alert
+            style={{
+              color: "red",
+            }}
+            severity="error"
+          >
+            Пароли должны совпадать
+          </Alert>
         </div>
       )}
       {loading ? <Spiner /> : null}
@@ -66,12 +75,11 @@ export default function Recover() {
           </div>
         </div>
         <div className={s.btns}>
-          <button onClick={() => dispatch(handleTabClick(2))}>Отмена</button>
+          <button onClick={() => dispatch(handleTabClick(1))}>Отмена</button>
           <button
             style={{
               opacity: isValid ? "1" : "0.6",
             }}
-            onClick={""}
           >
             Сбросить пароль
           </button>
