@@ -1,10 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { handleModal, handleTabClick } from "./modalSlice";
-import { confirmationFetch } from "./confirmationSlice";
-import { userProfile } from "./authSlice";
-import { Api } from "@/components/api";
-const backendURL = Api;
+const backendURL = "";
 
 export const fetchRecover = createAsyncThunk(
   "users/send_code_phone",
