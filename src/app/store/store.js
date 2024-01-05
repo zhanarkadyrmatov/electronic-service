@@ -8,6 +8,7 @@ import categorySlice from "./slice/categorySlice";
 import productSlice from "./slice/productSlice";
 import basketSlice from "./slice/basketSlice";
 import modalSlice from "./slice/modalSlice";
+import catalogslice from './slice/catalog-slice'
 import signInSlice from "./slice/signInSlice";
 import registerSlice from "./slice/registerSlice";
 import recoverSlice from "./slice/recoverSlice";
@@ -24,6 +25,7 @@ const store = configureStore({
     basket: basketSlice,
     modal: modalSlice,
     signIn: signInSlice,
+    catalog: catalogslice,
     register: registerSlice,
     recover: recoverSlice,
   },
