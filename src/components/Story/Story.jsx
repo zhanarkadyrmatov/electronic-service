@@ -54,56 +54,89 @@ export default function Story({ story, setStory }) {
   return (
     <div className={s.story}>
       <div>
-        <Swiper
-          slidesPerView={1}
+        {/* <Swiper
+          slidesPerView={3}
           spaceBetween={30}
-          pagination={{
-            clickable: false,
-          }}
           navigation={true}
           modules={[Pagination, Navigation]}
           className="mySwiper"
         >
           <SwiperSlide>
-            <ReactInstaStories
-              stories={stories}
-              defaultInterval={5000}
-              width={432}
-              height={720}
-              loop={true}
-              loader={true}
-              keyboardNavigation={true}
-            />
+            <div className={s.wrapper}>
+              <ReactInstaStories
+                className={s.stories}
+                stories={stories}
+                defaultInterval={5000}
+                width={432}
+                height={720}
+                loop={true}
+                loader={true}
+                keyboardNavigation={true}
+                storyStyles={storyContent}
+              />
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <ReactInstaStories
-              stories={stories}
-              defaultInterval={5000}
-              width={432}
-              height={720}
-              loop={true}
-              loader={true}
-              keyboardNavigation={true}
-            />
+            <div className={s.wrapper}>
+              <ReactInstaStories
+                className={s.stories}
+                stories={stories}
+                defaultInterval={5000}
+                width={432}
+                height={720}
+                loop={true}
+                loader={true}
+                keyboardNavigation={true}
+                storyStyles={storyContent}
+              />
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <ReactInstaStories
-              stories={stories}
-              defaultInterval={5000}
-              width={432}
-              height={720}
-              loop={true}
-              loader={true}
-              keyboardNavigation={true}
-            />
+            <div className={s.wrapper}>
+              <ReactInstaStories
+                className={s.stories}
+                stories={stories}
+                defaultInterval={5000}
+                width={432}
+                height={720}
+                loop={true}
+                loader={true}
+                keyboardNavigation={true}
+                storyStyles={storyContent}
+              />
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+            <div className={s.wrapper}>
+              <ReactInstaStories
+                className={s.stories}
+                stories={stories}
+                defaultInterval={5000}
+                width={432}
+                height={720}
+                loop={true}
+                loader={true}
+                keyboardNavigation={true}
+                storyStyles={storyContent}
+              />
+            </div>
           </SwiperSlide>
           <SwiperSlide>
-            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+            <div className={s.wrapper}>
+              <ReactInstaStories
+                className={s.stories}
+                stories={stories}
+                defaultInterval={5000}
+                width={432}
+                height={720}
+                loop={true}
+                loader={true}
+                keyboardNavigation={true}
+                storyStyles={storyContent}
+              />
+            </div>
           </SwiperSlide>
-        </Swiper>
+        </Swiper> */}
         <div className={s.wrapper}>
           <ReactInstaStories
             className={s.stories}
@@ -115,6 +148,9 @@ export default function Story({ story, setStory }) {
             loader={true}
             keyboardNavigation={true}
             storyStyles={storyContent}
+            isPaused={(e) => {
+              console.log(e);
+            }}
           />
         </div>
       </div>
