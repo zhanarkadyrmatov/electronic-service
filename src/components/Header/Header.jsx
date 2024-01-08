@@ -124,16 +124,16 @@ export default function Header() {
           </div>
 
           <div className={`${s.blok} flex`}>
-            <div className="flex" style={{ gap: "20px", width:'100%' }}>
+            <div className="flex" style={{ gap: "20px", width:'100%',  }}>
             <button className={`${s.btn_catalog} flex ${s.top}`}>
-              <Image src={'/img/catalog.svg'} alt="" width={12} height={50} />
+              <Image src={'/img/catalog.svg'} alt="" width={15} height={15} />
               Каталог
-              <MdKeyboardArrowDown size={20} />
+              <Image src={'/img/bottom.svg'} alt="" width={13} height={13} />
             </button>
 
             <div className={`${s.input_go} between`}>
               <input type="text" placeholder="Что найти?" />
-              <FiSearch className={s.search} size={20} />
+              <Image src={'/img/search.svg'} alt="" width={24} height={24} />
             </div>
             </div>
 
@@ -147,14 +147,14 @@ export default function Header() {
 
               <div className={s.item}>
                 <div className={s.image}>
-                  <Image src={favorites} alt="" width={14} height={14} />
+                  <Image src={favorites} alt="" width={17} height={17} />
                 </div>
                 <p>Избранные</p>
               </div>
 
               <Link href={"/pages/Basket"} className={s.item}>
                 <div className={s.image}>
-                  <Image src={basket} alt="" width={14} height={14} />
+                  <Image src={basket} alt="" width={16} height={16} />
                 </div>
                 <p>Корзина</p>
               </Link>
@@ -174,8 +174,8 @@ export default function Header() {
                       className={s.avatar}
                       src={user}
                       alt=""
-                      width={28}
-                      height={28}
+                      width={20}
+                      height={20}
                     />
                   )}
                 </Link>
