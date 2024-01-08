@@ -236,15 +236,13 @@
 
     .mobil_search {
       width: 100%;
+      height: 50px;
       padding: 21.5px 20px;
       border-radius: 10px;
       background: #f2f2f3;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      @media screen and (max-width: 770px) {
-        border-radius: 1000px;
-      }
 
       input {
         color: var(--1-e-1-e-1-e, #1e1e1e);
@@ -263,10 +261,10 @@
     }
 
     .logo {
-      width: 56px;
-      height: 56px;
+      width: 50px;
+      height: 50px;
       border-radius: 10px;
-      padding: 16px;
+      padding: 18px;
       background: #f2f2f3;
       display: flex;
       justify-content: center;
