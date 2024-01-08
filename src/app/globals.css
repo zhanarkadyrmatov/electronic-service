@@ -35,7 +35,7 @@
 }
 @font-face {
   font-family: Inter-Bold;
-  src: url('/Fonts/Inter-Bold.ttf');
+  src: url("/Fonts/Inter-Bold.ttf");
 }
 @font-face {
   font-family: Inter-regular;
@@ -173,8 +173,14 @@ li {
 
 .error_alert {
   position: absolute;
-  bottom: 50px;
-  left: 100px;
+  bottom: 30px;
+  left: 30px;
+}
+
+.success_alert {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
 }
 
 .error {

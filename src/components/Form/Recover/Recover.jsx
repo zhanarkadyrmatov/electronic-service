@@ -35,14 +35,7 @@ export default function Recover() {
     <>
       {error && (
         <div className="error_alert">
-          <Alert
-            style={{
-              color: "red",
-            }}
-            severity="error"
-          >
-            Пароли должны совпадать
-          </Alert>
+          <Alert severity="error">Пароли должны совпадать</Alert>
         </div>
       )}
       {loading ? <Spiner /> : null}

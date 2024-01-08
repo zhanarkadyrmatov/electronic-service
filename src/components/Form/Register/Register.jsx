@@ -33,7 +33,7 @@ export default function Register() {
     e.preventDefault();
     setEye2(!eye2);
   };
-
+  console.log(error?.response?.data.phone[0]);
   const submitRegister = (data) => {
     console.log(data);
     dispatch(userRegister(data));
@@ -42,7 +42,7 @@ export default function Register() {
   useEffect(() => {
     if (error) {
       setTimeout(() => {
-        registerError(null);
+        dispatch(registerError(null));
       }, 5000);
     }
   }, [error]);
@@ -51,7 +51,7 @@ export default function Register() {
     <>
       {error && (
         <div className="error_alert">
-          <Alert severity="error">Пароли должны совпадать</Alert>
+          <Alert severity="error">{error?.response?.data?.phone[0]}</Alert>
         </div>
       )}
       {loading ? <Spiner /> : null}

@@ -1,12 +1,16 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useEffect } from "react";
 import axios from "axios";
 import { handleModal, handleTabClick } from "./modalSlice";
-const backendURL = "https://api.cheberel.kg";
+import { userProfile } from "./signInSlice";
 
-export const fetchRecover = createAsyncThunk(
+const backendURL = "https://api.cheberel.kg";
+console.log("test");
+export const userSendCode = createAsyncThunk(
   "auth/send_code",
-  async ({ phone }, { rejectWithValue, dispatch }) => {
+  async (phone, { rejectWithValue, dispatch }) => {
     const number = phone.replace(/\D/g, "");
+    console.log(phone, "test", number);
     try {
       const config = {
         headers: {
@@ -20,9 +24,7 @@ export const fetchRecover = createAsyncThunk(
         },
         config
       );
-      // dispatch(sendCodePhone(phone));
-      dispatch(handleTabClick(6));
-      console.log(response);
+
       return response;
     } catch (error) {
       console.log(error);
@@ -31,36 +33,35 @@ export const fetchRecover = createAsyncThunk(
   }
 );
 
-const recoverSlice = createSlice({
-  name: "recover",
+const sendCodeSlice = createSlice({
+  name: "sendCode",
   initialState: {
     loading: false,
-    phone: null,
+    sendCode: null,
     error: null,
-    success: false,
   },
   reducers: {
-    sendCodePhone: (state, action) => {
-      state.phone = action.payload;
+    autoLogin: (state, action) => {
+      state.userInfo = action.payload;
     },
-
-    recoverError: (state, action) => {
+    autoError: (state, action) => {
       state.error = action.payload;
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchRecover.pending, (state) => {
+    builder.addCase(userSendCode.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(fetchRecover.fulfilled, (state, action) => {
+    builder.addCase(userSendCode.fulfilled, (state, action) => {
       state.loading = false;
-      state.phone = action.payload;
+      state.userToken = action.payload;
     });
-    builder.addCase(fetchRecover.rejected, (state, action) => {
+
+    builder.addCase(userSendCode.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });
   },
 });
-export const { sendCodePhone, recoverError } = recoverSlice.actions;
-export default recoverSlice.reducer;
+export const { autoLogin, autoError } = sendCodeSlice.actions;
+export default sendCodeSlice.reducer;

@@ -27,8 +27,8 @@ export default function SignIn() {
   const { modal } = useSelector((state) => state.modal);
   const { loading, error } = useSelector((state) => state.signIn);
   console.log(error);
+
   const submitForm = (data) => {
-    console.log(data);
     dispatch(userSignIn(data));
   };
 

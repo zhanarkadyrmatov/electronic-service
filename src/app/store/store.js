@@ -8,10 +8,14 @@ import categorySlice from "./slice/categorySlice";
 import productSlice from "./slice/productSlice";
 import basketSlice from "./slice/basketSlice";
 import modalSlice from "./slice/modalSlice";
-import catalogslice from './slice/catalog-slice'
+import catalogslice from "./slice/catalog-slice";
 import signInSlice from "./slice/signInSlice";
 import registerSlice from "./slice/registerSlice";
 import recoverSlice from "./slice/recoverSlice";
+import sendCodeSlice from "./slice/sendCodeSlice";
+import phoneVerifySlice from "./slice/phoneVerifySlice";
+import phoneVerifySlice2 from "./slice/phoneVerifySlice2";
+import newPasswordSlice from "./slice/newPasswordSlice";
 
 const store = configureStore({
   reducer: {
@@ -28,6 +32,10 @@ const store = configureStore({
     catalog: catalogslice,
     register: registerSlice,
     recover: recoverSlice,
+    sendCode: sendCodeSlice,
+    phoneVerify: phoneVerifySlice,
+    phoneVerify2: phoneVerifySlice2,
+    newpassword: newPasswordSlice,
   },
 });
 

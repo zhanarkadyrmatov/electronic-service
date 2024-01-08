@@ -37,19 +37,20 @@ export const userSignIn = createAsyncThunk(
 );
 
 export const userProfile = createAsyncThunk(
-  "users/profile",
-  async function (id, { dispatch }) {
+  "auth/detail_profile",
+  async function (id, { rejectWithValue, dispatch }) {
     try {
-      const response = await axios.get(`${backendURL}users/profile/`, {
+      const response = await axios.get(`${backendURL}/auth/detail_profile/`, {
         headers: {
           accept: "application/json",
           Authorization: `Bearer ${id}`,
         },
       });
       const userData = response;
+      console.log(userData);
       dispatch(autoLogin(userData));
     } catch (error) {
-      return error;
+      return rejectWithValue(error);
     }
   }
 );
@@ -80,9 +81,8 @@ const signInSlice = createSlice({
     });
 
     builder.addCase(userSignIn.rejected, (state, action) => {
-      console.log(action.payload.response);
       state.loading = false;
-      state.error = action.payload.response;
+      state.error = action.payload?.response;
     });
   },
 });

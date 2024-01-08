@@ -12,11 +12,13 @@ import filtr from "@/../../public/img/aa2.svg";
 import favorites from "@/../../public/img/aa3.svg";
 import basket from "@/../../public/img/aa1.svg";
 import registr from "@/../../public/img/aa4.svg";
+import user from "../../../public/img/adam.svg";
 import Modal from "../Modal/Modal";
 import { BurgerMenu } from "../Menu/page";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { handleModal } from "@/app/store/slice/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { userProfile } from "@/app/store/slice/signInSlice";
 
 export default function Header() {
   const page = usePathname();
@@ -25,6 +27,16 @@ export default function Header() {
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(!open);
+  const { userInfo, userToken } = useSelector((state) => state.signIn);
+
+  useEffect(() => {
+    const id = JSON?.parse(localStorage.getItem("userToken"));
+    if (id !== null) {
+      dispatch(userProfile(id));
+    }
+  }, []);
+
+  console.log(userInfo, userToken);
 
   useEffect(() => {
     if (modal) {
@@ -144,15 +156,38 @@ export default function Header() {
                 </div>
                 <p>Корзина</p>
               </Link>
-              <div
-                className={s.item}
-                onClick={() => dispatch(handleModal(!modal))}
-              >
-                <div className={s.login}>
-                  <Image src={registr} alt="" width={14} height={14} />
+
+              {userInfo ? (
+                <Link className={s.user_logo} href={"/pages/Profil"}>
+                  {userInfo.avatar ? (
+                    <img
+                      className={s.logo}
+                      src={
+                        "https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg"
+                      }
+                      alt=""
+                    />
+                  ) : (
+                    <Image
+                      className={s.avatar}
+                      src={user}
+                      alt=""
+                      width={28}
+                      height={28}
+                    />
+                  )}
+                </Link>
+              ) : (
+                <div
+                  className={s.item}
+                  onClick={() => dispatch(handleModal(!modal))}
+                >
+                  <div className={s.login}>
+                    <Image src={registr} alt="" width={14} height={14} />
+                  </div>
+                  <p>Войти</p>
                 </div>
-                <p>Войти</p>
-              </div>
+              )}
             </div>
           </div>
           <div className={s.mobil_input}>

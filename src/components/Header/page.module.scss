@@ -136,6 +136,23 @@
       gap: 12px;
     }
 
+    .user_logo {
+      width: 53px;
+      height: 53px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #ee5922;
+      border-radius: 50%;
+
+      .logo {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
     .item {
       display: flex;
       flex-direction: column;

@@ -13,8 +13,12 @@ import {
 } from "@/app/store/slice/phoneVerifySlice";
 import Spiner from "@/components/Spiner/Spiner";
 import Alert from "@mui/material/Alert";
+import {
+  phoneVerifyError2,
+  userPhoneVerify2,
+} from "@/app/store/slice/phoneVerifySlice2";
 
-export default function Resetpassword() {
+export default function ResetPassword2() {
   const [remainingTime, setRemainingTime] = useState(60);
   const dispatch = useDispatch();
   const {
@@ -23,18 +27,17 @@ export default function Resetpassword() {
     formState: { errors, isValid },
   } = useForm();
 
-  const { phone } = useSelector((state) => state.register);
+  const { phone } = useSelector((state) => state.recover);
   const { sendCode } = useSelector((state) => state.sendCode);
-  const { loading, error } = useSelector((state) => state.phoneVerify);
-  console.log(error);
+  const { loading, error } = useSelector((state) => state.phoneVerify2);
+
   const requestAgain = () => {
     dispatch(userSendCode(phone.data));
     setRemainingTime(60);
   };
 
   const submitReset = (data) => {
-    console.log({ ...data, phone: phone.data });
-    dispatch(userPhoneVerify({ ...data, phone: phone.data }));
+    dispatch(userPhoneVerify2({ ...data, phone: phone.data }));
   };
 
   useEffect(() => {
@@ -48,7 +51,7 @@ export default function Resetpassword() {
   useEffect(() => {
     if (error) {
       setTimeout(() => {
-        dispatch(phoneVerifyError(null));
+        dispatch(phoneVerifyError2(null));
       }, 5000);
     }
   }, [error]);
@@ -57,7 +60,7 @@ export default function Resetpassword() {
       {error && (
         <div className="error_alert">
           <Alert variant="filled" severity="error">
-            {error.data.Сообщение}
+            {error.response?.data.Сообщение}
           </Alert>
         </div>
       )}

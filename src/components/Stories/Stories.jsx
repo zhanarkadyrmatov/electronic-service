@@ -15,17 +15,14 @@ export const Stories = () => {
     <>
       {story && <Story setStory={setStory} story={story} />}
       <div className={s.stories}>
-        <div className="container">
+        <div className="">
           <h2>Истории</h2>
           <div className={s.wraper}>
             <Swiper
               slidesPerView={3}
               spaceBetween={16}
               freeMode={true}
-              navigation={{
-                prevEl: ".prev",
-                nextEl: ".next",
-              }}
+              navigation={false}
               breakpoints={{
                 768: {
                   slidesPerView: 4,
@@ -34,10 +31,18 @@ export const Stories = () => {
                 1024: {
                   slidesPerView: 6,
                   spaceBetween: 16,
+                  navigation: {
+                    prevEl: ".prev",
+                    nextEl: ".next",
+                  },
                 },
                 1280: {
                   slidesPerView: 8,
                   spaceBetween: 16,
+                  navigation: {
+                    prevEl: ".prev",
+                    nextEl: ".next",
+                  },
                 },
               }}
               modules={[Navigation, FreeMode]}
