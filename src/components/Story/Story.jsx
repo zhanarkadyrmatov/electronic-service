@@ -44,13 +44,12 @@ const stories = [
   },
 ];
 
-function SeeMore() {
-  return <div>see more</div>;
-}
-export default function Story({ story, setStory }) {
+export default function Story({ story, setStory, item }) {
   const storyContent = {
     marginTop: "20px",
   };
+
+  console.log(item);
   return (
     <div className={s.story}>
       <div>
@@ -140,7 +139,7 @@ export default function Story({ story, setStory }) {
         <div className={s.wrapper}>
           <ReactInstaStories
             className={s.stories}
-            stories={stories}
+            stories={item}
             defaultInterval={5000}
             width={432}
             height={720}

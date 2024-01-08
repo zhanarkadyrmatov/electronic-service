@@ -16,6 +16,7 @@ import sendCodeSlice from "./slice/sendCodeSlice";
 import phoneVerifySlice from "./slice/phoneVerifySlice";
 import phoneVerifySlice2 from "./slice/phoneVerifySlice2";
 import newPasswordSlice from "./slice/newPasswordSlice";
+import storiesSlice from "./slice/storiesSlice";
 
 const store = configureStore({
   reducer: {
@@ -36,6 +37,7 @@ const store = configureStore({
     phoneVerify: phoneVerifySlice,
     phoneVerify2: phoneVerifySlice2,
     newpassword: newPasswordSlice,
+    stories: storiesSlice,
   },
 });
 

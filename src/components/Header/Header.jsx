@@ -124,11 +124,10 @@ export default function Header() {
           <div className={`${s.blok} flex`}>
             <div className="flex" style={{ gap: "20px", width: "100%" }}>
               <button className={`${s.btn_catalog} flex ${s.top}`}>
-                <Image src={"/img/catalog.svg"} alt="" width={12} height={50} />
+                <Image src={"/img/catalog.svg"} alt="" width={14} height={14} />
                 Каталог
-                <MdKeyboardArrowDown size={20} />
+                <MdKeyboardArrowDown size={24} />
               </button>
-
               <div className={`${s.input_go} between`}>
                 <input type="text" placeholder="Что найти?" />
                 <FiSearch className={s.search} size={20} />
