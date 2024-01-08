@@ -64,19 +64,12 @@ export default function ResetPassword2() {
           </Alert>
         </div>
       )}
-      {/* {error && (
-        <div className="success_alert">
-          <Alert variant="filled" severity="success">
-            {error.data.Сообщение}
-          </Alert>
-        </div>
-      )} */}
       {loading ? <Spiner /> : null}
       <form className={s.recover} onSubmit={handleSubmit(submitReset)}>
         <div className={s.img}>
           <Image src={"/img/password.svg"} alt="" width={221} height={154} />
         </div>
-        <h3>Сброс пароля</h3>
+        <h3>Подтверждение кода</h3>
         <div className={s.title}>
           <p>
             Мы вышлем вам на номер телефона код подтверждения и ссылку для того
@@ -123,7 +116,7 @@ export default function ResetPassword2() {
               opacity: isValid ? "1" : "0.6",
             }}
           >
-            Сбросить пароль
+            Изменить пароль
           </button>
         </div>
       </form>

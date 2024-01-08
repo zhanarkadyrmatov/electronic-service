@@ -144,13 +144,7 @@ export default function NewPassword() {
         </div>
         <div className={s.btns}>
           <button onClick={() => dispatch(handleTabClick(1))}>Отмена</button>
-          <button
-          // style={{
-          //   opacity: isValid ? "1" : "0.6",
-          // }}
-          >
-            Сбросить пароль
-          </button>
+          <button>Сохранить</button>
         </div>
       </form>
     </>

@@ -36,18 +36,13 @@
   }
 
   .request_btn {
-    border-radius: 8px;
-    background: var(--main, #ee5922);
-    padding: 16px;
-    color: #fff;
+    color: #ee5922;
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
-    @media screen and (max-width: 600px) {
-      width: 100%;
-    }
+    background-color: transparent;
   }
 
   h3 {

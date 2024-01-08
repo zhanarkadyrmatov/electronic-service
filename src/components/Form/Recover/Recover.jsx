@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./page.module.scss";
 import Image from "next/image";
 import { InputMask } from "@react-input/mask";
@@ -11,6 +11,9 @@ import Spiner from "@/components/Spiner/Spiner";
 import Alert from "@mui/material/Alert";
 
 export default function Recover() {
+  const [recover, setRecover] = useState(
+    JSON?.parse(localStorage.getItem("recover")) || ""
+  );
   const dispatch = useDispatch();
   const {
     register,
@@ -20,7 +23,8 @@ export default function Recover() {
   const { loading, error } = useSelector((state) => state.recover);
 
   const submitRegister = (data) => {
-    console.log(data);
+    localStorage.setItem("recover", JSON.stringify(data));
+    setRecover(data);
     dispatch(fetchRecover(data));
   };
 
@@ -35,7 +39,9 @@ export default function Recover() {
     <>
       {error && (
         <div className="error_alert">
-          <Alert severity="error">Пароли должны совпадать</Alert>
+          <Alert variant="filled" severity="error">
+            Пароли должны совпадать
+          </Alert>
         </div>
       )}
       {loading ? <Spiner /> : null}
@@ -57,6 +63,7 @@ export default function Recover() {
               {...register("phone", {
                 required: "Поле обязателно к заполнина",
               })}
+              defaultValue={recover?.phone}
               mask="+996 (___) ___-___"
               placeholder="+996-###-###"
               replacement={{ _: /\d/ }}
