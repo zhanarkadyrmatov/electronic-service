@@ -145,14 +145,14 @@ export default function Header() {
 
               <div className={s.item}>
                 <div className={s.image}>
-                  <Image src={favorites} alt="" width={14} height={14} />
+                  <Image src={favorites} alt="" width={17} height={17} />
                 </div>
                 <p>Избранные</p>
               </div>
 
               <Link href={"/pages/Basket"} className={s.item}>
                 <div className={s.image}>
-                  <Image src={basket} alt="" width={14} height={14} />
+                  <Image src={basket} alt="" width={16} height={16} />
                 </div>
                 <p>Корзина</p>
               </Link>
@@ -172,8 +172,8 @@ export default function Header() {
                       className={s.avatar}
                       src={user}
                       alt=""
-                      width={28}
-                      height={28}
+                      width={20}
+                      height={20}
                     />
                   )}
                 </Link>

@@ -20,15 +20,10 @@ export default function Footer() {
                 2023 OracleDigital All rights Recerved.
               </p>
             </div>
-            <div className={s.none}>
-              <Link className={s.link} href="tel:+996 777 438 992">
-                +996 777 438 992
-              </Link>
-              <p>Бесплатный звонок по Кыргызстану</p>
-            </div>
-            <div className={`${s.block} ${s.oracl}`}>
+          
+            <div className={` ${s.oracl}`}>
               <p>Разработано в компанией:</p>
-              <Image src={'/img/oracl.svg'} alt="logo" width={99} height={33} />
+              <Image src={'/img/oracl.svg'} alt="logo" width={126} height={42} />
             </div>
           </div>
 
@@ -108,6 +103,10 @@ export default function Footer() {
                 <Image className={s.none} src={play} alt="" />
                 <Image className={s.block} src={'/img/play_white.svg'} width="164" height="44"  alt="" />
               </Link>
+            </div>
+            <div className={` ${s.oracl}`}>
+              <p>Разработано в компанией:</p>
+              <Image src={'/img/oracl.svg'} alt="logo" width={99} height={33} />
             </div>
           </div>
         </div>

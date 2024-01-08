@@ -1,5 +1,5 @@
 .footer {
-  padding: 64px 0 40px;
+  padding: 64px 0 60px;
   background: #1C1C1C;
 
   @media screen and (max-width: 600px) {
@@ -7,7 +7,6 @@
   }
 
   .footer_container {
-    max-width: 1640px;
     padding: 0 20px;
     margin: 0 auto;
 
@@ -31,14 +30,18 @@
         gap: 24px;
 
         .oracl{
-          display: grid;
+          display: none;
+          @media screen and (max-width:1210px) {
+            display: grid;
           grid-gap: 6px;
+          }
 
           p{
             color: var(--white, #FFF);
             font-size: 14px;
             font-weight: 400;
             padding-bottom: 6px;
+            opacity: 1;
           }
           img{
             max-width: 99px;
@@ -189,6 +192,26 @@
             img {
               width: 100%;
             }
+          }
+        }
+        .oracl{
+          display: grid;
+          grid-gap: 6px;
+          margin-top: 40px;
+          @media screen and (max-width:1210px) {
+            display: none;
+          }
+
+          p{
+            color: var(--white, #FFF);
+            font-size: 19px;
+            font-weight: 400;
+            padding-bottom: 6px;
+          }
+          img{
+            max-width: 99px;
+            height: 33px;
+            width: 100%;
           }
         }
       }

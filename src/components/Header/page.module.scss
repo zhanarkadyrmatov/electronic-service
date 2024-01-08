@@ -28,7 +28,7 @@
         align-items: center;
         gap: 32px;
 
-        @media screen and (max-width: 1138px) {
+        @media screen and (max-width: 1300px) {
           display: none;
         }
 
@@ -72,7 +72,7 @@
       height: 35px;
       display: none;
 
-      @media screen and (max-width: 1138px) {
+      @media screen and (max-width: 1300px) {
         display: block;
       }
     }
@@ -93,7 +93,7 @@
     .btn_catalog {
       border-radius: 10px;
       background: var(--main, #ee5922);
-      padding: 16px 10px;
+      padding: 15px 10px;
       gap: 8px;
       color: #FFF;
       font-size: 14px;
@@ -140,7 +140,7 @@
 
     @media screen and (max-width: 860px) {
       justify-content: space-around;
-      gap: 12px;
+      gap: 15px;
     }
 
     .user_logo {
@@ -151,6 +151,8 @@
       align-items: center;
       border: 1px solid #ee5922;
       border-radius: 50%;
+
+     
 
       .logo {
         width: 100%;
@@ -170,22 +172,25 @@
         color: #282b3d;
         font-size: 13px;
         font-weight: 500;
+        opacity: 0.8;
       }
 
       .image {
-        max-width: 46px;
+        max-width: 50px;
         width: 100%;
-        height: 46px;
+        height: 50px;
         border-radius: 10px;
         background: #f2f2f3;
         display: flex;
         justify-content: center;
         align-items: center;
+
+       
       }
 
       .login {
-        width: 46px;
-        height: 46px;
+        width: 50px;
+        height: 50px;
         border-radius: 10px;
         background: #ee5922;
         display: flex;
@@ -214,19 +219,21 @@
       }
 
       .image {
-        width: 46px;
-        height: 46px;
+        width: 50px;
+        height: 50px;
         border-radius: 10px;
         background: #f2f2f3;
         display: flex;
         justify-content: center;
         align-items: center;
+       
       }
 
       p {
         color: #282b3d;
         font-size: 13px;
         font-weight: 500;
+        opacity: 0.8;
       }
     }
   }
