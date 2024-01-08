@@ -20,8 +20,6 @@ export const fetchCatalogData = createAsyncThunk(
                 return rejectWithValue(error)
             }    
         }else {
-            
-     
             if (categoryId === undefined || categoryId === null) {
                 try {
                     const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}`)
@@ -51,12 +49,12 @@ export const fetchCatalogData = createAsyncThunk(
 )
 export const fetchCatalogData2 = createAsyncThunk(
     'catalog/fetchCatalogData2',
-    async (_, {rejectWithValue}) => {
-        
+    async (page, {rejectWithValue}) => {
         try {
-            const response = await fetch(`${backendURL}/products/product_list/`)
+            const response = await fetch(`${backendURL}/products/product_list/?page=${page}`)
             const data = await response.json()
             console.log(data,'response');
+            
             return data
         } catch (error) {
             return rejectWithValue(error)
@@ -87,7 +85,13 @@ export const catalogSlice = createSlice({
     },
     status: null,
     error: null,
-    reducers: {},
+    reducers: {
+        filterData : (state, action) => {
+            state.data = [action.payload]
+            console.log(state.data, 'test1');
+        }
+
+    },
     extraReducers:(builder)=> {
         builder.addCase(fetchCatalogData.pending, (state) => {
             state.status = 'loading'
@@ -127,6 +131,6 @@ export const catalogSlice = createSlice({
     },
 })
 
-export const {_} = catalogSlice.actions;
+export const {filterData} = catalogSlice.actions;
 export default catalogSlice.reducer;
 

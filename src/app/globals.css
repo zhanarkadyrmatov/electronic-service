@@ -41,6 +41,18 @@
   font-family: Inter-regular;
   src: url("/Fonts/Inter-Regular.ttf");
 }
+@font-face {
+  font-family: Source Sans Pro400  ;
+  src: url("/Fonts/Source-Sans-Pro/SourceSansPro-Regular.ttf");
+}
+@font-face {
+  font-family: Source Sans Pro900;
+  src: url("/Fonts/Source-Sans-Pro/SourceSansPro-Black.ttf");
+}
+@font-face {
+  font-family: Source Sans Pro700;
+  src: url("/Fonts/Source-Sans-Pro/SourceSansPro-Bold.ttf");
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -196,4 +208,75 @@ li {
     bottom: 25px;
     right: -30px;
   }
+}
+
+.formControl {
+  font-family: system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.1;    align-items: center;
+  
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 8px;
+input[type="checkbox"] {
+  /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  /* For iOS < 15 */
+  background-color: var(--form-background);
+  /* Not removed via appearance */
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 22px !important;
+  height: 22px !important;
+  border: 2px solid currentColor;
+  border-radius:6px;
+
+  display: grid;
+  place-content: center;
+}
+p{
+  color: #161616;
+font-family: Source Sans Pro400;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+@media screen and (max-width:450px) {
+  font-size: 14px;
+}
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--form-control-color);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+/* input[type="checkbox"]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+} */
+
+input[type="checkbox"]:disabled {
+  --form-control-color: var(--form-control-disabled);
+
+  color: var(--form-control-disabled);
+  cursor: not-allowed;
+}
 }
