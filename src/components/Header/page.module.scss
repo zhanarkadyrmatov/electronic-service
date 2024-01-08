@@ -152,11 +152,7 @@
       border: 1px solid #ee5922;
       border-radius: 50%;
 
-      @media screen and (max-width: 400px) {
-        width: 40px;
-        height: 40px;
-        
-      }
+     
 
       .logo {
         width: 100%;
@@ -189,10 +185,7 @@
         justify-content: center;
         align-items: center;
 
-        @media screen and (max-width: 400px) {
-          width: 40px;
-          height: 40px;
-        }
+       
       }
 
       .login {
@@ -233,11 +226,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        @media screen and (max-width: 400px) {
-          width: 40px;
-          height: 40px;
-          
-        }
+       
       }
 
       p {

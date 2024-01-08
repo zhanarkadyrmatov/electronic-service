@@ -73,7 +73,7 @@ export default function Resetpassword() {
         <div className={s.img}>
           <Image src={"/img/password.svg"} alt="" width={221} height={154} />
         </div>
-        <h3>Сброс пароля</h3>
+        <h3>Код подтверждения</h3>
         <div className={s.title}>
           <p>
             Мы вышлем вам на номер телефона код подтверждения и ссылку для того
