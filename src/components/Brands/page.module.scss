@@ -6,12 +6,17 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       h2 {
         color: var(--Base-Black, #000);
         font-size: 32px;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
+        @media screen and (max-width: 600px) {
+          font-size: 18px;
+          
+        }
       }
 
       .button {
@@ -36,4 +41,11 @@
       }
     }
   }
+}
+
+.swiper-pagination  {
+  display: flex!important;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }

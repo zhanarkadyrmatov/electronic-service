@@ -111,9 +111,10 @@ export default function Header() {
             />
           </div>
 
-          <div className={`${s.blok} between`}>
+          <div className={`${s.blok} flex`}>
+            <div className="flex" style={{ gap: "20px", width:'100%' }}>
             <button className={`${s.btn_catalog} flex ${s.top}`}>
-              <TfiMenuAlt size={18} />
+              <Image src={'/img/catalog.svg'} alt="" width={12} height={50} />
               Каталог
               <MdKeyboardArrowDown size={20} />
             </button>
@@ -121,6 +122,7 @@ export default function Header() {
             <div className={`${s.input_go} between`}>
               <input type="text" placeholder="Что найти?" />
               <FiSearch className={s.search} size={20} />
+            </div>
             </div>
 
             <div className={`${s.button}`}>

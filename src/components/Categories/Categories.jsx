@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import s from "./page.module.scss";
 import Image from "next/image";
-import ios from "../../../public/img/весь.svg";
 import { fetchCategoryData } from "@/app/store/slice/categorySlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -63,6 +62,19 @@ const cards = [
   },
 ];
 
+const btns = [
+  {
+    id:1,
+    title:"Телефоны и смарт-часы",
+  },
+  {
+    id:2,
+    title:"Игровые консоли и игры",
+  }
+]
+
+
+
 export default function Categories() {
   const dispatch = useDispatch();
   const { category } = useSelector((state) => state.category);
@@ -94,6 +106,13 @@ export default function Categories() {
               <h5>{el.title}</h5>
             </div>
           ))}
+        </div>
+        <div className={s.grids}>
+            {
+              btns.map((el) => (
+                <button className={s.btn}>{el.title}</button>
+              ))
+            }
         </div>
       </div>
     </>

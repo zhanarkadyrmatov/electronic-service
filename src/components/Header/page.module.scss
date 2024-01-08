@@ -9,7 +9,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 32px;
+      gap: 70px;
       padding: 10px 0;
 
       @media screen and (max-width: 600px) {
@@ -17,6 +17,7 @@
       }
 
       .logo {
+        width: 151px;
         @media screen and (max-width: 600px) {
           width: 120px;
         }
@@ -91,18 +92,24 @@
 
     .btn_catalog {
       border-radius: 10px;
-      color: #fff;
       background: var(--main, #ee5922);
-      padding: 16px;
+      padding: 16px 10px;
       gap: 8px;
+      color: #FFF;
+      font-size: 14px;
+      font-weight: 500;
     }
 
     .input_go {
-      // max-width: 600px;
+      max-width: 712px;
       width: 100%;
+      // width: 712px;
       padding: 21.5px 20px;
       border-radius: 10px;
       background: #f2f2f3;
+      // @media screen and (max-width: 1370px) {
+      //   width: 100%;
+      // }
 
       @media screen and (max-width: 770px) {
         display: none;
@@ -129,7 +136,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 50px;
 
     @media screen and (max-width: 860px) {
       justify-content: space-around;
