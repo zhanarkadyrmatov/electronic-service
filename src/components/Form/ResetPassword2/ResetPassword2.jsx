@@ -5,7 +5,7 @@ import Image from "next/image";
 import { InputMask } from "@react-input/mask";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import { handleTabClick } from "@/app/store/slice/modalSlice";
+import { handleModal, handleTabClick } from "@/app/store/slice/modalSlice";
 import { userSendCode } from "@/app/store/slice/sendCodeSlice";
 import {
   phoneVerifyError,
@@ -13,6 +13,8 @@ import {
 } from "@/app/store/slice/phoneVerifySlice";
 import Spiner from "@/components/Spiner/Spiner";
 import Alert from "@mui/material/Alert";
+import { MdClose } from "react-icons/md";
+
 import {
   phoneVerifyError2,
   userPhoneVerify2,
@@ -26,7 +28,7 @@ export default function ResetPassword2() {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm();
-
+  const { modal } = useSelector((state) => state.modal);
   const { phone } = useSelector((state) => state.recover);
   const { sendCode } = useSelector((state) => state.sendCode);
   const { loading, error } = useSelector((state) => state.phoneVerify2);
@@ -66,6 +68,12 @@ export default function ResetPassword2() {
       )}
       {loading ? <Spiner /> : null}
       <form className={s.recover} onSubmit={handleSubmit(submitReset)}>
+        <button
+          onClick={() => dispatch(handleModal(!modal))}
+          className={s.close}
+        >
+          <MdClose className={s.logo} />
+        </button>
         <div className={s.img}>
           <Image src={"/img/password.svg"} alt="" width={221} height={154} />
         </div>
@@ -110,7 +118,7 @@ export default function ResetPassword2() {
         )}
 
         <div className={s.btns}>
-          <button onClick={() => dispatch(handleTabClick(2))}>Отмена</button>
+          <button onClick={() => dispatch(handleTabClick(3))}>Отмена</button>
           <button
             style={{
               opacity: isValid ? "1" : "0.6",

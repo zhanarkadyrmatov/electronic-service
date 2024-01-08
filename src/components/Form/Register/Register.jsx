@@ -157,7 +157,7 @@ export default function Register() {
                   <input
                     {...field}
                     className={s.pass}
-                    {...register("password", {
+                    {...register("confirmPassword", {
                       required: "Поле обязателно к заполнина",
                     })}
                     type={eye2 ? "text" : "password"}

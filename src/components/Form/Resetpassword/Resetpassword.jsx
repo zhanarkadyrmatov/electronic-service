@@ -5,8 +5,9 @@ import Image from "next/image";
 import { InputMask } from "@react-input/mask";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import { handleTabClick } from "@/app/store/slice/modalSlice";
+import { handleModal, handleTabClick } from "@/app/store/slice/modalSlice";
 import { userSendCode } from "@/app/store/slice/sendCodeSlice";
+import { MdClose } from "react-icons/md";
 import {
   phoneVerifyError,
   userPhoneVerify,
@@ -17,6 +18,8 @@ import Alert from "@mui/material/Alert";
 export default function Resetpassword() {
   const [remainingTime, setRemainingTime] = useState(60);
   const dispatch = useDispatch();
+  const { modal } = useSelector((state) => state.modal);
+
   const {
     register,
     handleSubmit,
@@ -64,6 +67,12 @@ export default function Resetpassword() {
 
       {loading ? <Spiner /> : null}
       <form className={s.recover} onSubmit={handleSubmit(submitReset)}>
+        <button
+          onClick={() => dispatch(handleModal(!modal))}
+          className={s.close}
+        >
+          <MdClose className={s.logo} />
+        </button>
         <div className={s.img}>
           <Image src={"/img/password.svg"} alt="" width={221} height={154} />
         </div>

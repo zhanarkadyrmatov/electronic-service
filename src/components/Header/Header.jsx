@@ -36,8 +36,6 @@ export default function Header() {
     }
   }, []);
 
-  console.log(userInfo, userToken);
-
   useEffect(() => {
     if (modal) {
       document.body.style.overflow = "hidden";
@@ -124,17 +122,17 @@ export default function Header() {
           </div>
 
           <div className={`${s.blok} flex`}>
-            <div className="flex" style={{ gap: "20px", width:'100%' }}>
-            <button className={`${s.btn_catalog} flex ${s.top}`}>
-              <Image src={'/img/catalog.svg'} alt="" width={12} height={50} />
-              Каталог
-              <MdKeyboardArrowDown size={20} />
-            </button>
+            <div className="flex" style={{ gap: "20px", width: "100%" }}>
+              <button className={`${s.btn_catalog} flex ${s.top}`}>
+                <Image src={"/img/catalog.svg"} alt="" width={12} height={50} />
+                Каталог
+                <MdKeyboardArrowDown size={20} />
+              </button>
 
-            <div className={`${s.input_go} between`}>
-              <input type="text" placeholder="Что найти?" />
-              <FiSearch className={s.search} size={20} />
-            </div>
+              <div className={`${s.input_go} between`}>
+                <input type="text" placeholder="Что найти?" />
+                <FiSearch className={s.search} size={20} />
+              </div>
             </div>
 
             <div className={`${s.button}`}>

@@ -118,7 +118,7 @@ export default function Card({ item }) {
           <div className={s.prices}>
             <h5>
               {item.product_variation?.product_price}
-              {item.product_variation?.currency_unit.currency}
+              {item.product_variation?.currency_unit?.currency}
             </h5>
             {/* <h6>500.35 С</h6> */}
           </div>

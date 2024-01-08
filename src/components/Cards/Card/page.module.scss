@@ -118,6 +118,10 @@
       color: #1e1e1e;
       font-size: 14px;
       font-weight: 600;
+
+      @media screen and (max-width: 600px) {
+        font-size: 12px;
+      }
     }
 
     p {
@@ -155,17 +159,20 @@
           font-style: normal;
           font-weight: 700;
           line-height: normal;
+          @media screen and (max-width: 600px) {
+            font-size: 10px;
+          }
         }
 
-        h6 {
-          color: var(--1-e-1-e-1-e, #1e1e1e);
-          font-size: 12px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: normal;
-          text-decoration: line-through;
-          opacity: 0.6;
-        }
+        // h6 {
+        //   color: var(--1-e-1-e-1-e, #1e1e1e);
+        //   font-size: 12px;
+        //   font-style: normal;
+        //   font-weight: 400;
+        //   line-height: normal;
+        //   text-decoration: line-through;
+        //   opacity: 0.6;
+        // }
       }
 
       .btn {
@@ -181,10 +188,10 @@
         padding: 12px;
         justify-content: center;
         align-items: center;
-
         @media screen and (max-width: 600px) {
           font-size: 12px;
           background: #ee5922;
+          padding: 10px;
         }
       }
     }
