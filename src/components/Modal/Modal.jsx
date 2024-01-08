@@ -20,7 +20,11 @@ export default function Modal() {
       <div className={s.modal}>
         <div
           className={s.gray}
-          onClick={() => dispatch(handleModal(!modal))}
+          onClick={() =>
+            value === 1 || value === 2 || value === 3
+              ? dispatch(handleModal(!modal))
+              : null
+          }
         ></div>
         <div className={s.wrapper}>
           {value === 1 && <SignIn />}

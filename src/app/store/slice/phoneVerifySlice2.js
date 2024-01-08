@@ -25,10 +25,10 @@ export const userPhoneVerify2 = createAsyncThunk(
         config
       );
       dispatch(phoneVerify(code));
-      localStorage.setItem(
-        "userToken",
-        JSON.stringify(response.data.tokens.access)
-      );
+      // localStorage.setItem(
+      //   "userToken",
+      //   JSON.stringify(response.data.tokens.access)
+      // );
       dispatch(handleTabClick(4));
       return response;
     } catch (error) {

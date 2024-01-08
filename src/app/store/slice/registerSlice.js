@@ -25,7 +25,6 @@ export const userRegister = createAsyncThunk(
         },
         config
       );
-      console.log(response.data, "test");
       dispatch(userSendCode(response.data));
       dispatch(handleTabClick(5));
       return response;

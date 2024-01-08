@@ -47,7 +47,6 @@ export const userProfile = createAsyncThunk(
         },
       });
       const userData = response;
-      console.log(userData);
       dispatch(autoLogin(userData));
     } catch (error) {
       return rejectWithValue(error);

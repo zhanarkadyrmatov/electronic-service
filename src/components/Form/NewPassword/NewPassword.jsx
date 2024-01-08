@@ -1,20 +1,23 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./page.module.scss";
 import Image from "next/image";
 import { InputMask } from "@react-input/mask";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm, Controller } from "react-hook-form";
-import { handleTabClick } from "@/app/store/slice/modalSlice";
+import { handleModal, handleTabClick } from "@/app/store/slice/modalSlice";
 import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { fetchNewPassword } from "@/app/store/slice/newPasswordSlice";
 import Spiner from "@/components/Spiner/Spiner";
 import Alert from "@mui/material/Alert";
+import { MdClose } from "react-icons/md";
+import { phoneVerifyError2 } from "@/app/store/slice/phoneVerifySlice2";
 
 export default function NewPassword() {
   const [eye, setEye] = useState(false);
   const [eye2, setEye2] = useState(false);
   const dispatch = useDispatch();
+  const { modal } = useSelector((state) => state.modal);
   const {
     register,
     handleSubmit,
@@ -36,23 +39,49 @@ export default function NewPassword() {
 
   const { phone, code } = useSelector((state) => state.phoneVerify2);
   const { loading, error } = useSelector((state) => state.newpassword);
-
+  console.log(phone);
   const submitNewPasword = (data) => {
-    console.log({ ...data, phone: phone.data.phone, code });
-    dispatch(fetchNewPassword({ ...data, phone: phone.data.phone, code }));
+    console.log({
+      ...data,
+      token: phone.data.tokens?.access,
+      phone: phone.data.phone,
+      code,
+    });
+    dispatch(
+      fetchNewPassword({
+        ...data,
+        token: phone.data.tokens?.access,
+        phone: phone.data.phone,
+        code,
+      })
+    );
   };
 
   console.log(error);
-
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        dispatch(phoneVerifyError2(null));
+      }, 4000);
+    }
+  }, [error]);
   return (
     <>
       {error && (
         <div className="error_alert">
-          <Alert severity="error">{error.response.data}</Alert>
+          <Alert severity="error">
+            {error.response?.data?.non_field_errors[0]}
+          </Alert>
         </div>
       )}
       {loading ? <Spiner /> : null}
       <form className={s.recover} onSubmit={handleSubmit(submitNewPasword)}>
+        <button
+          onClick={() => dispatch(handleModal(!modal))}
+          className={s.close}
+        >
+          <MdClose className={s.logo} />
+        </button>
         <div className={s.img}>
           <Image src={"/img/password.svg"} alt="" width={221} height={154} />
         </div>
@@ -144,13 +173,7 @@ export default function NewPassword() {
         </div>
         <div className={s.btns}>
           <button onClick={() => dispatch(handleTabClick(1))}>Отмена</button>
-          <button
-          // style={{
-          //   opacity: isValid ? "1" : "0.6",
-          // }}
-          >
-            Сбросить пароль
-          </button>
+          <button>Сохранить</button>
         </div>
       </form>
     </>

@@ -12,8 +12,12 @@ import Spiner from "@/components/Spiner/Spiner";
 import Alert from "@mui/material/Alert";
 
 export default function SignIn() {
+  const [login, setLogin] = useState(
+    JSON?.parse(localStorage.getItem("login")) || ""
+  );
   const [eye, setEye] = useState(false);
   const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -29,6 +33,8 @@ export default function SignIn() {
   console.log(error);
 
   const submitForm = (data) => {
+    localStorage.setItem("login", JSON.stringify(data));
+    setLogin(data);
     dispatch(userSignIn(data));
   };
 
@@ -36,7 +42,7 @@ export default function SignIn() {
     if (error) {
       setTimeout(() => {
         dispatch(autoError(null));
-      }, 5000);
+      }, 4000);
     }
   }, [error]);
 
@@ -44,7 +50,9 @@ export default function SignIn() {
     <>
       {error && (
         <div className="error_alert">
-          <Alert severity="error">{error.data.detail}</Alert>
+          <Alert variant="filled" severity="error">
+            {error.data.detail}
+          </Alert>
         </div>
       )}
       {loading ? <Spiner /> : null}
@@ -58,6 +66,7 @@ export default function SignIn() {
               {...register("login", {
                 required: "Поле обязателно к заполнина",
               })}
+              defaultValue={login?.login}
               mask="+996 (___) ___-___"
               placeholder="+996"
               replacement={{ _: /\d/ }}
@@ -80,6 +89,7 @@ export default function SignIn() {
                     message: "Минимум 7 символов",
                   },
                 })}
+                defaultValue={login?.password}
                 className={s.pass}
                 placeholder="Введите ваш пароль"
                 type={eye ? "text" : "password"}

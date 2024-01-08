@@ -28,8 +28,8 @@ export const fetchNewPassword = createAsyncThunk(
         config
       );
       console.log(response);
-      const token = JSON.parse(localStorage.getItem("userToken"));
-      dispatch(userProfile(token));
+      localStorage.setItem("userToken", JSON.stringify(data.token));
+      dispatch(userProfile(data.token));
       dispatch(handleModal(false));
       return response;
     } catch (error) {
