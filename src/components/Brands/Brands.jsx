@@ -29,7 +29,7 @@ export default function Brands() {
   };
   return (
     <div className={s.brands}>
-      <div className="container">
+      <div className="">
         <div className={s.wrapper}>
           <div className={s.title}>
             <h2>Бренды</h2>
@@ -39,7 +39,7 @@ export default function Brands() {
           </div>
           <Swiper
             slidesPerView={3}
-            spaceBetween={120}
+            spaceBetween={16}
             freeMode={true}
             pagination={{
               clickable: true,
@@ -51,11 +51,9 @@ export default function Brands() {
               bulletClass: "bullet",
               bulletActiveClass: "swiperactive",
             }}
-            modules={[Autoplay, Pagination]}
-        className={s.mySwiper}
-        onSwiper={(swiper) => {
-          handlePaginationRef(swiper.pagination);
-        }}
+            onSwiper={(swiper) => {
+              handlePaginationRef(swiper.pagination);
+            }}
             breakpoints={{
               768: {
                 slidesPerView: 4,
@@ -70,13 +68,13 @@ export default function Brands() {
                 spaceBetween: 40,
               },
             }}
-            // modules={[FreeMode, Pagination]}
-            // className={s.mySwiper}
+            modules={[FreeMode, Pagination]}
+            className={s.mySwiper}
           >
             {cartData?.slice(0, 6).map((item) => {
               return (
                 <SwiperSlide>
-                  <div key={item.id}>
+                  <div key={item.id} className={s.card}>
                     <Link href={`/pages/Brand/${item.id}`}>
                       <BrandCard item={item} />
                     </Link>
