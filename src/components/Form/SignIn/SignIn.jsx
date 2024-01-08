@@ -103,9 +103,7 @@ export default function SignIn() {
             <p className={s.title}>Запомнить</p>
             <input
               className={s.check}
-              {...register("remember", {
-                required: true,
-              })}
+              {...register("remember")}
               type="checkbox"
             />
           </div>

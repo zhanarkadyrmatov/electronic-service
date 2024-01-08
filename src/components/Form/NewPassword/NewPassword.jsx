@@ -38,6 +38,7 @@ export default function NewPassword() {
   const { loading, error } = useSelector((state) => state.newpassword);
 
   const submitNewPasword = (data) => {
+    console.log({ ...data, phone: phone.data.phone, code });
     dispatch(fetchNewPassword({ ...data, phone: phone.data.phone, code }));
   };
 
@@ -105,13 +106,13 @@ export default function NewPassword() {
               render={({ field }) => (
                 <div className={s.password}>
                   <input
-                    {...register("confirmPassword", {
-                      required: true,
-                    })}
                     {...field}
                     className={s.pass}
                     type={eye2 ? "text" : "password"}
                     placeholder="Подтвердите пароль"
+                    {...register("confirmPassword", {
+                      required: "Поле обязателно к заполнина",
+                    })}
                     onChange={(e) => {
                       const confirmPassword = e.target.value;
                       const originalPassword = password;
@@ -144,9 +145,9 @@ export default function NewPassword() {
         <div className={s.btns}>
           <button onClick={() => dispatch(handleTabClick(1))}>Отмена</button>
           <button
-            style={{
-              opacity: isValid ? "1" : "0.6",
-            }}
+          // style={{
+          //   opacity: isValid ? "1" : "0.6",
+          // }}
           >
             Сбросить пароль
           </button>

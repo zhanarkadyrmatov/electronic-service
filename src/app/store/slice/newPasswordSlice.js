@@ -23,14 +23,14 @@ export const fetchNewPassword = createAsyncThunk(
           phone: data.phone,
           code: data.code,
           password: data.password,
-          password2: data.password,
+          password2: data.confirmPassword,
         },
         config
       );
       console.log(response);
       const token = JSON.parse(localStorage.getItem("userToken"));
       dispatch(userProfile(token));
-      // dispatch(handleTabClick());
+      dispatch(handleModal(false));
       return response;
     } catch (error) {
       console.log(error);
@@ -60,6 +60,7 @@ const newPasswordSlice = createSlice({
     builder.addCase(fetchNewPassword.fulfilled, (state, action) => {
       state.loading = false;
       state.token = action.payload;
+      console.log(action.payload);
     });
     builder.addCase(fetchNewPassword.rejected, (state, action) => {
       state.loading = false;
