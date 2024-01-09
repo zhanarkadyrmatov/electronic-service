@@ -140,7 +140,7 @@ function page() {
               <Image className={s.img} src={img} alt="" />
             </div>
           </div>
-          <div className={`${s.fleX} ${s.arod} ${s.arod2}`} style={{ gap: "40px" }}>
+          <div className={`${s.fleX}  ${s.arod2}`} style={{ gap: "40px" }}>
                 <div>
                   <h2>2 000</h2>
                   <h6>Ut enim ad minima </h6>
@@ -189,8 +189,9 @@ function page() {
                 <p>
                 elitaa dwet
                 </p>
-              </h2>
               <div className={s.border}></div>
+
+              </h2>
             </div>
             <div className={s.grid}>
               {check.map((el) => (
