@@ -17,6 +17,7 @@ const page = () => {
     const [isAccordion, setIsAccordion] = useState(false);
     const [categoryId, setCategoryId] = useState(null)
     const [datas, setDatas] = useState([])
+    console.log(datas,'useEffect');
     const [page , setPage] = useState(1)
     const [loading, setLoading] = useState(false)
     const [min_price, setMin_price] = useState(null)
@@ -24,7 +25,8 @@ const page = () => {
     const handleChange = (panel) => (event, isExpanded) => {
       setExpanded(isExpanded ? panel : false);
     };
-  
+    const [firstRun, setFirstRun] = useState(true);
+
     const dispatch = useDispatch()
     const {
       register,
@@ -39,9 +41,6 @@ const page = () => {
     setLoading(false)
     },[])
     const {data,status ,error,categoryData} = useSelector((state) => state.catalog);
-    
-    
-
     useState(()=> {
       setDatas(data?.results)
     },[dispatch])
@@ -55,11 +54,9 @@ const page = () => {
   const handleScroll = () => {
     if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
       setPage(page + 1);
-      if (Array.isArray(datas)) {   
-      //    const newData = Array.isArray(data?.results) ? { ...data?.results } : data?.results;
-      //  setDatas([...datas, newData]);
+      if (datas?.length >= 0 ) {   
       if (max_price !== null ) {
-        const res ={
+        const res = {
           min_price,
           max_price
         }
@@ -92,28 +89,38 @@ const page = () => {
           const newResults = data?.results.filter(item => !prev.some(prevItem => prevItem.id === item.id));
           return [...prev, ...newResults];
         });
-        
       }
       setLoading(true)
-    dispatch(filterData(datas))
+      dispatch(filterData(datas))
   } else {
         setDatas(data?.results);
-        setLoading(true)
-        
       }
       console.log(data, 'test');
     }
   }
   
-  useEffect(()=> {
-    const resuit = data?.count / 15
+  useEffect(() => {
+    const resuit = data?.count / 15;
     if (page <= resuit) {
-    window.addEventListener('scroll', handleScroll)
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
+      if (firstRun) {
+        handleScroll();
+        handleScroll();
+        handleScroll();
+        setFirstRun(false);
+      }
+      const scrollListener = () => {
+        handleScroll();
+      };
+      
+      window.addEventListener('scroll', handleScroll);
+      window.addEventListener('scroll', scrollListener);
+    
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('scroll', scrollListener);
+      };
     }
-     }
-  })
+  }, [data?.count, page, firstRun]);
     return (
     <div className={`${s.filter} container`}>
     <div className={s.accordion} onClick={()=>setIsAccordion(!isAccordion)}>

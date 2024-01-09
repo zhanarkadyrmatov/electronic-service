@@ -375,7 +375,6 @@
             background: #F3F3F3;
             margin-bottom: 30px;
 
-            @media screen and (max-width:500px) {}
         }
 
         .btn {
@@ -389,7 +388,6 @@
             font-weight: 300;
             margin-bottom: 40px;
 
-            @media screen and (max-width:500px) {}
         }
 
         .btn_orange {
@@ -547,6 +545,18 @@ padding: 16px;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 16px;
     padding-bottom: 30px;
+    @media screen and (max-width:960px) {
+        grid-template-columns: 1fr 1fr 1fr ;
+        @media screen and (max-width:717px) {
+            grid-template-columns: 1fr 1fr ;
+            @media screen  and (max-width:514px) {
+                grid-template-columns: 1fr;
+            .Card{
+                width: 100% !important;
+            }
+            }
+        }
+    }
     
   }
   .Loaders{
