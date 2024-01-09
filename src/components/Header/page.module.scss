@@ -108,9 +108,7 @@
       width: 100%;
       padding: 21.5px 20px;
       border-radius: 10px;
-      background: #f2f2f3;
-      
-
+      background: #f2f2f3; 
       @media screen and (max-width: 770px) {
         display: none;
       }
@@ -152,8 +150,6 @@
       border: 1px solid #ee5922;
       border-radius: 50%;
 
-     
-
       .logo {
         width: 100%;
         height: 100%;
@@ -184,8 +180,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
-       
       }
 
       .login {
@@ -226,7 +220,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-       
       }
 
       p {

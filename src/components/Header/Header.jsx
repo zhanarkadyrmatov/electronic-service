@@ -130,7 +130,6 @@ export default function Header() {
                 Каталог
                 <Image src={"/img/bottom.svg"} alt="" width={13} height={20} />
               </button>
-
               <div className={`${s.input_go} between`}>
                 <input type="text" placeholder="Что найти?" />
                 <FiSearch className={s.search} size={20} />

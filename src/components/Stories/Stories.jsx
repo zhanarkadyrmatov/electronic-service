@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./page.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -9,11 +9,27 @@ import { GrNext, GrPrevious } from "react-icons/gr";
 
 import { FreeMode, Navigation } from "swiper/modules";
 import Story from "../Story/Story";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchStoriesData } from "@/app/store/slice/storiesSlice";
 export const Stories = () => {
   const [story, setStory] = useState(false);
+  const [item, setItem] = useState("");
+  const dispatch = useDispatch();
+  const { stories } = useSelector((state) => state.stories);
+
+  useEffect(() => {
+    dispatch(fetchStoriesData());
+  }, []);
+
+  const handleClick = (data) => {
+    setItem(data);
+    setStory(!story);
+  };
+
+  console.log(stories);
   return (
     <>
-      {story && <Story setStory={setStory} story={story} />}
+      {story && <Story setStory={setStory} item={item} story={story} />}
       <div className={s.stories}>
         <div className="">
           <h2>Истории</h2>
@@ -43,18 +59,20 @@ export const Stories = () => {
               modules={[Navigation, FreeMode]}
               className="mySwiper"
             >
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((e) => {
+              {stories?.map((e) => {
                 return (
-                  <SwiperSlide>
-                    <div onClick={() => setStory(!story)} className={s.story}>
-                      <div className={s.border}>
-                        <img
-                          src="https://images.unsplash.com/photo-1580974928064-f0aeef70895a?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW9iaWxlJTIwc3RvcmV8ZW58MHx8MHx8fDA%3D"
-                          alt=""
-                        />
+                  <>
+                    <SwiperSlide>
+                      <div
+                        onClick={() => handleClick(e.stories)}
+                        className={s.story}
+                      >
+                        <div className={s.border}>
+                          <img src={e.shop_logo} alt="" />
+                        </div>
                       </div>
-                    </div>
-                  </SwiperSlide>
+                    </SwiperSlide>
+                  </>
                 );
               })}
             </Swiper>

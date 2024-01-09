@@ -20,8 +20,6 @@ export default function NewSlider() {
     dispatch(fetchBannerData());
   }, []);
 
-  console.log(banner);
-
   const customPaginationClass = "custom_pagination";
 
   const handlePaginationRef = (pagination) => {
