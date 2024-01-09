@@ -29,7 +29,7 @@ export const Stories = () => {
   console.log(stories);
   return (
     <>
-      {story && <Story setStory={setStory} item={item} story={story} />}
+      {story && <Story setStory={setStory} story={story} />}
       <div className={s.stories}>
         <div className="">
           <h2>Истории</h2>

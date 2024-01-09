@@ -1,145 +1,106 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import s from "./page.module.scss";
 import ReactInstaStories from "react-insta-stories";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { MdClose } from "react-icons/md";
-
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
 import { EffectCoverflow, Pagination, Navigation } from "swiper/modules";
+import { useSelector } from "react-redux";
+import ReactPlayer from "react-player";
 
 const stories = [
   {
     url: "https://world-schools.com/ru/wp-content/uploads/sites/15/2023/05/IMG-Academy-cover-WS.webp",
-    header: {
-      heading: "Mohit Karekar",
-      subheading: "Posted 5h ago",
-      profileImage: "https://picsum.photos/1000/1000",
-    },
-  },
-  {
-    url: "https://media.idownloadblog.com/wp-content/uploads/2016/04/iPhone-wallpaper-abstract-portrait-stars-macinmac.jpg",
-    header: {
-      heading: "mohitk05/react-insta-stories",
-      subheading: "Posted 32m ago",
-      profileImage:
-        "https://avatars0.githubusercontent.com/u/24852829?s=400&v=4",
-    },
-  },
-  {
-    url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
-    type: "video",
-    header: {
-      heading: "Жанарбекк",
-      subheading: "Кадырматов",
-      profileImage:
-        "https://avatars0.githubusercontent.com/u/24852829?s=400&v=4",
-    },
-  },
-  {
-    url: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-    type: "video",
   },
 ];
 
-export default function Story({ story, setStory, item }) {
-  const storyContent = {
-    marginTop: "20px",
-  };
+export default function Story({ story, setStory }) {
+  const [data, setData] = useState();
+  const [swiper, setSwiper] = useState(null);
+  const { stories } = useSelector((state) => state.stories);
 
-  console.log(item);
   return (
     <div className={s.story}>
-      <div>
-        {/* <Swiper
-          slidesPerView={3}
-          spaceBetween={30}
-          navigation={true}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <div className={s.wrapper}>
-              <ReactInstaStories
-                className={s.stories}
-                stories={stories}
-                defaultInterval={5000}
-                width={432}
-                height={720}
-                loop={true}
-                loader={true}
-                keyboardNavigation={true}
-                storyStyles={storyContent}
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className={s.wrapper}>
-              <ReactInstaStories
-                className={s.stories}
-                stories={stories}
-                defaultInterval={5000}
-                width={432}
-                height={720}
-                loop={true}
-                loader={true}
-                keyboardNavigation={true}
-                storyStyles={storyContent}
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className={s.wrapper}>
-              <ReactInstaStories
-                className={s.stories}
-                stories={stories}
-                defaultInterval={5000}
-                width={432}
-                height={720}
-                loop={true}
-                loader={true}
-                keyboardNavigation={true}
-                storyStyles={storyContent}
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className={s.wrapper}>
-              <ReactInstaStories
-                className={s.stories}
-                stories={stories}
-                defaultInterval={5000}
-                width={432}
-                height={720}
-                loop={true}
-                loader={true}
-                keyboardNavigation={true}
-                storyStyles={storyContent}
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className={s.wrapper}>
-              <ReactInstaStories
-                className={s.stories}
-                stories={stories}
-                defaultInterval={5000}
-                width={432}
-                height={720}
-                loop={true}
-                loader={true}
-                keyboardNavigation={true}
-                storyStyles={storyContent}
-              />
-            </div>
-          </SwiperSlide>
-        </Swiper> */}
+      <Swiper
+        centeredSlides={true}
+        slidesPerView={3}
+        spaceBetween={100}
+        modules={[]}
+        onSwiper={(s) => {
+          setSwiper(s);
+        }}
+        className={s.mySwiper}
+      >
+        {stories.map((el, index) => {
+          console.log(el);
+          return (
+            <SwiperSlide key={index}>
+              {({ isActive }) => (
+                <>
+                  {isActive ? (
+                    <div className={s.wrapper}>
+                      <ReactInstaStories
+                        className={s.stories}
+                        stories={el.stories.map((img, idx) => ({
+                          content: ({ action, isPaused }) => (
+                            <>
+                              {img.media_type === "image" ? (
+                                <img
+                                  key={idx}
+                                  className={s.img}
+                                  src={img.media}
+                                  alt=""
+                                />
+                              ) : (
+                                <>
+                                  <ReactPlayer
+                                    width={"100%"}
+                                    height={"auto"}
+                                    playing={true}
+                                    className={s.video}
+                                    onProgress={(progress) => {
+                                      console.log(progress);
+                                    }}
+                                    url={img.media}
+                                  />
+                                </>
+                              )}
+                            </>
+                          ),
+                        }))}
+                        defaultInterval={5000}
+                        width={432}
+                        height={720}
+                        loop={true}
+                        loader={true}
+                        keyboardNavigation={true}
+                        // storyStyles={storyContent}
+                        onStoryEnd={(s, st) => swiper.slideNext()}
+                        // onAllStoriesEnd={(s, st) => setStory(!story)}
+                      />
+                    </div>
+                  ) : (
+                    <div className={s.card}>
+                      <img src={el.shop_logo} alt="" />
+                    </div>
+                  )}
+                </>
+              )}
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+      {/* <div>
         <div className={s.wrapper}>
           <ReactInstaStories
             className={s.stories}
-            stories={item}
+            stories={stories2}
             defaultInterval={5000}
             width={432}
             height={720}
@@ -147,12 +108,11 @@ export default function Story({ story, setStory, item }) {
             loader={true}
             keyboardNavigation={true}
             storyStyles={storyContent}
-            isPaused={(e) => {
-              console.log(e);
-            }}
+            onStoryEnd={(s, st) => setStory(!story)}
+            onAllStoriesEnd={(s, st) => console.log("all stories ended", s, st)}
           />
         </div>
-      </div>
+      </div> */}
       <button onClick={() => setStory(!story)} className={s.close}>
         <MdClose className={s.logo} />
       </button>
