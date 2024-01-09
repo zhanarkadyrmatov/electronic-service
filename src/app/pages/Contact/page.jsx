@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { YandexMap } from "@/components/maps/yandexMap";
 import s from "../pages.module.scss";
+import { YandexMob } from "@/components/maps/yandexMob";
 
 const data = [
   {
@@ -53,22 +54,26 @@ function page() {
   return (
     <>
       <div className="container">
-        <div className="between">
+        <div className={s.contacts}>
           <div className={s.contact}>
             <h3>Контакты</h3>
-            <div className="flex" style={{ gap: "20px" }}>
+            <div className={s.mapes}>
+            <YandexMob className={s.mapes} />
+            </div>
+            <div className={`flex ${s.kontact}`}>
               {data.map((el) => (
                 <div className={`${s.kontact_img} flex`}>
                   <Image src={el.img} alt="" width={30} height={30} />
                 </div>
               ))}
             </div>
-            {data_Base.map((el) => (
+           <div>
+           {data_Base.map((el) => (
               <div className={s.ofice}>
                 <h4>{el.title}</h4>
                 <div className="between">
-                  <div className="flex" style={{ padding: "10px 0" }}>
-                    <Image src={el.mest} alt="" width={20} height={20} />
+                  <div className="flex" style={{ padding: "8px 0", gap:'8px' }}>
+                    <Image src={el.mest} alt="" width={15} height={15} />
                     <h6>{el.address}</h6>
                   </div>
                   <a href="tel:0777 438 992">{el.number}</a>
@@ -79,8 +84,11 @@ function page() {
                 </div>
               </div>
             ))}
+           </div>
           </div>
+          <div className={s.kart}>
           <YandexMap className={s.kart_bottom} />
+          </div>
         </div>
       </div>
     </>
