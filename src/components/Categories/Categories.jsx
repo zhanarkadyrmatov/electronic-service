@@ -5,62 +5,7 @@ import Image from "next/image";
 import { fetchCategoryData } from "@/app/store/slice/categorySlice";
 import { useDispatch, useSelector } from "react-redux";
 
-const cards = [
-  {
-    id: 1,
-    img: "/img/plita1.svg",
-    title: "Газовые плиты",
-  },
-  {
-    id: 2,
-    img: "/img/plita2.svg",
-  },
-  {
-    id: 3,
-    img: "/img/plita3.svg",
-    title: "Духовки",
-  },
-  {
-    id: 4,
-    img: "/img/plita4.svg",
-  },
-  {
-    id: 5,
-    img: "/img/plita5.svg",
-    title: "Кондиционеры",
-  },
-  {
-    id: 6,
-    img: "/img/plita6.svg",
-  },
-  {
-    id: 7,
-    img: "/img/plita1.svg",
-    title: "Газовые плиты",
-  },
-  {
-    id: 8,
-    img: "/img/plita2.svg",
-  },
-  {
-    id: 9,
-    img: "/img/plita3.svg",
-    title: "Духовки",
-  },
-  {
-    id: 10,
-    img: "/img/plita4.svg",
-  },
-  {
-    id: 11,
-    img: "/img/plita5.svg",
-    title: "Кондиционеры",
-  },
-  {
-    id: 12,
-    img: "/img/plita6.svg",
-  },
-];
+
 
 const btns = [
   {
@@ -91,28 +36,128 @@ export default function Categories() {
           <h3>Категории</h3>
           <button className={s.btn_white}>Показать все</button>
         </div>
-        <div className={s.grid}>
-          {cards.map((el) => (
-            <div className={s.card}>
-              <div className={s.card_img}>
-                <Image
-                  src={el.img}
-                  alt=""
-                  objectFit="cover"
-                  width={150}
-                  height={200}
-                />
-              </div>
-              <h5>{el.title}</h5>
-            </div>
-          ))}
-        </div>
+        
         <div className={s.grids}>
-            {
-              btns.map((el) => (
-                <button className={s.btn}>{el.title}</button>
-              ))
-            }
+                <button className={`${s.btn} flex`}>
+                  <Image
+                    src="/img/a1.svg"
+                    width={40}
+                    height={40}
+                    alt="phone"
+                  />
+                  <div>
+                  <h5>Телефоны и смарт-часы</h5>
+                  <p>120 000 видов</p>
+                  </div>
+                </button>
+                <button className={`${s.btn} flex`}>
+                  <Image
+                    src="/img/a2.svg"
+                    width={40}
+                    height={40}
+                    alt="phone"
+                  />
+                  <div>
+                  <h5>Игровые консоли и игры</h5>
+                  <p>120 000 видов</p>
+                  </div>
+                </button>
+                <button className={`${s.btn} flex`}>
+                  <Image
+                    src="/img/a3.svg"
+                    width={40}
+                    height={40}
+                    alt="phone"
+                  />
+                  <div>
+                  <h5>Ноутбуки и компьютеры</h5>
+                  <p>120 000 видов</p>
+                  </div>
+                </button>
+                <button className={`${s.btn} flex`}>
+                  <Image
+                    src="/img/a4.svg"
+                    width={40}
+                    height={40}
+                    alt="phone"
+                  />
+                  <div>
+                  <h5>Телевизоры и видеотехника</h5>
+                  <p>120 000 видов</p>
+                  </div>
+                </button>
+                <button className={`${s.btn} flex`}>
+                  <Image
+                    src="/img/a5.svg"
+                    width={40}
+                    height={40}
+                    alt="phone"
+                  />
+                  <div>
+                  <h5>Охранные системы</h5>
+                  <p>120 000 видов</p>
+                  </div>
+                </button>
+                <button className={`${s.btn} flex`}>
+                  <Image
+                    src="/img/a6.svg"
+                    width={40}
+                    height={40}
+                    alt="phone"
+                  />
+                  <div>
+                  <h5>Аудиотехника</h5>
+                  <p>120 000 видов</p>
+                  </div>
+                </button>
+                <button className={`${s.btn} flex`}>
+                  <Image
+                    src="/img/a7.svg"
+                    width={40}
+                    height={40}
+                    alt="phone"
+                  />
+                  <div>
+                  <h5>Морозильники</h5>
+                  <p>120 000 видов</p>
+                  </div>
+                </button>
+                <button className={`${s.btn} flex`}>
+                  <Image
+                    src="/img/a8.svg"
+                    width={40}
+                    height={40}
+                    alt="phone"
+                  />
+                  <div>
+                  <h5>Газовые и электрические плиты</h5>
+                  <p>120 000 видов</p>
+                  </div>
+                </button>
+                <button className={`${s.btn} flex`}>
+                  <Image
+                    src="/img/a9.svg"
+                    width={40}
+                    height={40}
+                    alt="phone"
+                  />
+                  <div>
+                  <h5>Микроволновки</h5>
+                  <p>120 000 видов</p>
+                  </div>
+                </button>
+                <button className={`${s.btn} flex`}>
+                  <Image
+                    src="/img/a10.svg"
+                    width={40}
+                    height={40}
+                    alt="phone"
+                  />
+                  <div>
+                  <h5>Стиральные машины</h5>
+                  <p>120 000 видов</p>
+                  </div>
+                </button>
         </div>
       </div>
     </>
