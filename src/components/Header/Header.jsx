@@ -62,13 +62,15 @@ export default function Header() {
         <div className="container">
           <div className={s.nav}>
             <div className={s.wrapper}>
-              <Image
+            <Link href={"/"}>
+            <Image
                 src={"/img/servis.svg"}
                 className={s.logo}
                 alt=""
                 width={120}
                 height={50}
               />
+            </Link>
               <nav className={s.nav_bar}>
                 <Link
                   href={"/"}
@@ -124,9 +126,9 @@ export default function Header() {
           <div className={`${s.blok} flex`}>
             <div className="flex" style={{ gap: "20px", width: "100%" }}>
               <button className={`${s.btn_catalog} flex ${s.top}`}>
-                <Image src={"/img/catalog.svg"} alt="" width={14} height={14} />
+                <Image src={"/img/catalog.svg"} alt="" width={15} height={20} />
                 Каталог
-                <MdKeyboardArrowDown size={24} />
+                <Image src={"/img/bottom.svg"} alt="" width={13} height={20} />
               </button>
               <div className={`${s.input_go} between`}>
                 <input type="text" placeholder="Что найти?" />
@@ -192,7 +194,7 @@ export default function Header() {
           <div className={s.mobil_input}>
             <div className={`${s.mobil_search}`}>
               <input type="text" placeholder="Что найти?" />
-              <FiSearch className={s.search} size={20} />
+              <FiSearch className={s.search} size={20} style={{ cursor: "pointer" }} />
             </div>
             <div className={s.logo}>
               <Image src={filtr} alt="" width={14} height={14} />
