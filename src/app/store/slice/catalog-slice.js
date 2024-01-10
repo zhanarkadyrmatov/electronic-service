@@ -8,11 +8,12 @@ export const fetchCatalogData = createAsyncThunk(
          const min_price = data[0].min_price
          const max_price = data[0].max_price
          const categoryId = data[1]
+         const page = data[2]
          console.log(data,'data');
          console.log(categoryId,'test');
         if (data === null) {
             try {
-                const response = await fetch(`${backendURL}/products/product_list/`)
+                const response = await fetch(`${backendURL}/products/product_list/&page=${page}`)
                 const data = await response.json()
                 console.log(data,'response');
                 return data
@@ -22,18 +23,17 @@ export const fetchCatalogData = createAsyncThunk(
         }else {
             if (categoryId === undefined || categoryId === null) {
                 try {
-                    const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}`)
+                    const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&page=${page}`)
                     const data = await response.json()
                     console.log(data,'response1');
                     return data
                 } catch (error) {
                     return rejectWithValue(error)
                 }
-
                 
             } else {
                 try {
-                    const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&category_id=${categoryId}`)
+                    const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&category_id=${categoryId}&page=${page}`)
                     const data = await response.json()
                     console.log(data,'response2');
                 
@@ -77,6 +77,7 @@ export const catalogSlice = createSlice({
     name: 'catalog',
     initialState: {
         data: null,
+        dataFilter:null,
         categoryData:{
             data: null,
             status: null,
@@ -87,7 +88,7 @@ export const catalogSlice = createSlice({
     error: null,
     reducers: {
         filterData : (state, action) => {
-            state.data = [action.payload]
+            state.dataFilter = [action.payload]
             console.log(state.data, 'test1');
         }
 

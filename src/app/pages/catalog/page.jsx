@@ -40,7 +40,7 @@ const page = () => {
     dispatch(fetchCategoryListData())
     setLoading(false)
     },[])
-    const {data,status ,error,categoryData} = useSelector((state) => state.catalog);
+    const {data,status ,error,categoryData,dataFilter} = useSelector((state) => state.catalog);
     useState(()=> {
       setDatas(data?.results)
     },[dispatch])
@@ -121,6 +121,7 @@ const page = () => {
       };
     }
   }, [data?.count, page, firstRun]);
+  console.log(dataFilter,'dataFilter');
     return (
     <div className={`${s.filter} container`}>
     <div className={s.accordion} onClick={()=>setIsAccordion(!isAccordion)}>
@@ -171,10 +172,8 @@ const page = () => {
         )) :  data?.results.map((item) => (
           <Card item={item} />
         )) } 
-    
       </div>
       {data?.results?.length === 0 &&  <NothingFound/>}
-      
                </div>
   </div>
   )
@@ -192,4 +191,4 @@ export default page
 // {status == null && (
 //   <NothingFound/>
 
-// )}
+// )} 
