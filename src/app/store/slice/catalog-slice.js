@@ -88,10 +88,9 @@ export const catalogSlice = createSlice({
     error: null,
     reducers: {
         filterData : (state, action) => {
-            state.dataFilter = [action.payload]
+            state.dataFilter = [ action.payload]
             console.log(state.data, 'test1');
         }
-
     },
     extraReducers:(builder)=> {
         builder.addCase(fetchCatalogData.pending, (state) => {

@@ -98,30 +98,23 @@ const page = () => {
       console.log(data, 'test');
     }
   }
-  
+  const  getData = async () => {
+    const {data,status ,error,categoryData,dataFilter} = await useSelector((state) => state.catalog);
+     await setDatas(data.results)
+  }
   useEffect(() => {
     const resuit = data?.count / 15;
     if (page <= resuit) {
-      if (firstRun) {
-        handleScroll();
-        handleScroll();
-        handleScroll();
-        setFirstRun(false);
-      }
-      const scrollListener = () => {
-        handleScroll();
-      };
-      
       window.addEventListener('scroll', handleScroll);
-      window.addEventListener('scroll', scrollListener);
-    
       return () => {
         window.removeEventListener('scroll', handleScroll);
-        window.removeEventListener('scroll', scrollListener);
       };
     }
   }, [data?.count, page, firstRun]);
-  console.log(dataFilter,'dataFilter');
+  useEffect(()=> {
+    dispatch(filterData(data?.results))
+  },[])
+
     return (
     <div className={`${s.filter} container`}>
     <div className={s.accordion} onClick={()=>setIsAccordion(!isAccordion)}>
@@ -139,10 +132,9 @@ const page = () => {
         isAccordion && (
           <div className={s.catalogModal}>
           <span>
-           <p> Выберите категорию товаров</p>
-           <BiChevronUp />
+          <p> Выберите категорию товаров</p>
+          <BiChevronUp />
           </span>
-       
           <div className={s.catalogBlock}>
           {categoryData.data?.results?.map((res) => (
             <div className={s.catalogCard} onClick={() => setCategoryId(res)}>
@@ -158,15 +150,13 @@ const page = () => {
     <form className={`${s.block} between`} onSubmit={handleSubmit(onSubmit)}>
             <input {...register('min_price')} type='number' placeholder="Цена от: 1 000" />
             <input {...register('max_price', { required: true })} type='number' placeholder="Цена до: 1 000" />
-            <button>ПОКАЗАТЬ: 10000</button>
+            <button>ПОКАЗАТЬ</button>
         </form>
         <div>
-      
         {status === null && (
           <NothingFound/>
         )} 
-        <div className={s.Cards}>
-      
+        <div className={s.Cards}> 
         {datas !==  undefined ?  datas?.map((item) => (
           <Card item={item} />
         )) :  data?.results.map((item) => (
