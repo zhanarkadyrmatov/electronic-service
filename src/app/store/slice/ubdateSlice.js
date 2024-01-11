@@ -1,16 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-const backendURL = "";
+import { userProfile } from "./signInSlice";
+const backendURL = "https://api.cheberel.kg";
 
-export const updateDate = createAsyncThunk(
-  "users/update_user",
+export const updateAvatarDate = createAsyncThunk(
+  "auth/update_avatar",
   async function (selectedFile, { rejectWithValue, dispatch }) {
+    console.log(selectedFile);
     try {
       const token = localStorage.getItem("userToken")?.replaceAll('"', "");
       const formData = new FormData();
-      formData.append("image_profile", selectedFile);
+      formData.append("avatar", selectedFile);
+
       const response = await axios.patch(
-        `${backendURL}users/update_user/`,
+        `${backendURL}/auth/update_profile/`,
         formData,
         {
           headers: {
@@ -18,9 +21,37 @@ export const updateDate = createAsyncThunk(
           },
         }
       );
+      console.log(formData);
       dispatch(userProfile(token));
+      console.log(response);
       return response;
     } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const updateFullNameDate = createAsyncThunk(
+  "auth/update_full_name",
+  async function (data, { rejectWithValue, dispatch }) {
+    const name = data.first_name + " " + data.last_name + "" + data.surname;
+    try {
+      const token = localStorage.getItem("userToken")?.replaceAll('"', "");
+      const response = await axios.patch(
+        `${backendURL}/auth/update_profile/`,
+        { full_name: name },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      dispatch(userProfile(token));
+      console.log(response);
+      return response;
+    } catch (error) {
+      console.log(error);
       return rejectWithValue(error);
     }
   }
@@ -29,21 +60,33 @@ export const updateDate = createAsyncThunk(
 const ubdateSlice = createSlice({
   name: "ubdate",
   initialState: {
+    fullName: null,
     photo: null,
-    status: "idle",
+    loading: false,
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(updateDate.pending, (state) => {
-      state.status = "loading";
+    builder.addCase(updateAvatarDate.pending, (state) => {
+      state.loading = true;
     });
-    builder.addCase(updateDate.fulfilled, (state, action) => {
-      state.status = "succeeded";
+    builder.addCase(updateAvatarDate.fulfilled, (state, action) => {
       state.photo = action.payload;
+      state.loading = false;
     });
-    builder.addCase(updateDate.rejected, (state, action) => {
-      state.status = "failed";
+    builder.addCase(updateAvatarDate.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(updateFullNameDate.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(updateFullNameDate.fulfilled, (state, action) => {
+      state.fullName = action.payload;
+      state.loading = false;
+    });
+    builder.addCase(updateFullNameDate.rejected, (state, action) => {
+      state.loading = false;
       state.error = action.payload;
     });
   },

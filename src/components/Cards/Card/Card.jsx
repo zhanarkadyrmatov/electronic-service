@@ -24,6 +24,8 @@ export default function Card({ item }) {
       fetchBasketPostData({ page: el.product_variation.id, count: count })
     );
   };
+
+  console.log(item);
   return (
     <div className={s.Card}>
       <Link href={`/pages/${item.id}`}>
@@ -84,8 +86,18 @@ export default function Card({ item }) {
         </Swiper> */}
       </Link>
       <p className={s.Popular}>Популярные</p>
-      <span className={s.star}>
-        <FaHeart className={s.stars} />
+      <span
+        style={{
+          backgroundColor: item.is_favorite ? "#f7e200" : "#fff",
+        }}
+        className={s.star}
+      >
+        <FaHeart
+          style={{
+            fill: item.is_favorite ? "#fff" : "#f7e200",
+          }}
+          className={s.stars}
+        />
       </span>
       <div className={s.title}>
         <h2>{item.title?.slice(0, 30)}...</h2>

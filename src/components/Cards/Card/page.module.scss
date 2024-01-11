@@ -85,12 +85,13 @@
     right: 16px;
     z-index: 1;
     border-radius: 50%;
-    background: #fff;
+    // background: #fff;
     width: 38.49px;
     height: 39px;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
     @media screen and (max-width: 600px) {
       top: 22px;
@@ -98,10 +99,10 @@
       width: 24px;
       height: 24px;
     }
+  }
 
-    .stars {
-      fill: #f7e200;
-    }
+  .star:hover {
+    transform: scale(1);
   }
 
   .title {
@@ -191,7 +192,7 @@
         @media screen and (max-width: 600px) {
           font-size: 12px;
           background: #ee5922;
-          padding: 10px
+          padding: 10px;
         }
       }
     }

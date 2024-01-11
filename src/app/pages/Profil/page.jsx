@@ -9,17 +9,30 @@ import Card from "@/components/Cards/Card/Card";
 import { FaHeart } from "react-icons/fa6";
 import ApplicationCard from "@/components/Cards/ApplicationCard/ApplicationCard";
 import { fetchFavoritesData } from "@/app/store/slice/favoritesSlice";
-import { updateDate } from "@/app/store/slice/ubdateSlice";
+import {
+  updateAvatarDate,
+  updateFullNameDate,
+} from "@/app/store/slice/ubdateSlice";
 import { userProfile } from "@/app/store/slice/signInSlice";
+import Spiner from "@/components/Spiner/Spiner";
 
 function Profil() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm();
   const dispatch = useDispatch();
-  const { userInfo, loading } = useSelector((state) => state.signIn);
+  const { userInfo } = useSelector((state) => state.signIn);
   const { favorites } = useSelector((state) => state.favorites);
+  const { fullName, photo, loading } = useSelector((state) => state.ubdate);
   const [delet, setDelet] = useState(false);
   const [pen, setPen] = useState(false);
-  const [password, setPass] = useState(false);
+  // const [password, setPass] = useState(false);
   const [tap, setTap] = useState(1);
+  const [regis, setRegis] = useState(
+    JSON?.parse(localStorage.getItem("regis")) || ""
+  );
 
   useEffect(() => {
     dispatch(fetchFavoritesData());
@@ -27,18 +40,10 @@ function Profil() {
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
+    console.log(file);
     if (file) {
-      updateDate(file);
+      dispatch(updateAvatarDate(file));
     }
-  };
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const handleSubmitDara = (data) => {
-    console.log(data);
   };
 
   const handleClick = () => {
@@ -46,16 +51,22 @@ function Profil() {
     dispatch(userProfile(null));
   };
 
+  const submitFullName = (data) => {
+    dispatch(updateFullNameDate(data));
+    setPen(!pen);
+  };
+
   useEffect(() => {
-    if (pen || password || delet) {
+    if (pen || delet) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
-  }, [pen, password, delet]);
+  }, [pen, delet]);
 
   return (
     <div className={s.profil}>
+      {loading ? <Spiner /> : null}
       {delet && (
         <div className={s.basket_modal}>
           <div className={s.blog}>
@@ -82,31 +93,61 @@ function Profil() {
       {pen && (
         <div id="prof" className={`${s.modal} flex center`}>
           <div className={s.wrappers}>
-            <form
-              className={s.block}
-              onSubmit={handleSubmit((data) => handleSubmitDara(data))}
-            >
+            <form className={s.block} onSubmit={handleSubmit(submitFullName)}>
               <div className="between">
                 <h3>Настройки профиля</h3>
                 <h1 onClick={() => setPen(!pen)}>x</h1>
               </div>
               <label htmlFor="">Фамилия</label>
-              <input {...register("firstName")} placeholder="Конкин" />
+              <div className={s.input}>
+                <input
+                  defaultValue={regis?.last_name}
+                  {...register("last_name", {
+                    required: "Поле обязателно к заполнина",
+                  })}
+                  type="text"
+                  placeholder="Напишите свою фамилию"
+                />
+                {errors && (
+                  <p className={"error"}>{errors?.last_name?.message}</p>
+                )}
+              </div>
               <label htmlFor="">Имя</label>
-              <input
-                {...register("lastName", { required: true })}
-                placeholder="Артём"
-              />
+              <div className={s.input}>
+                <input
+                  defaultValue={regis?.first_name}
+                  {...register("first_name", {
+                    required: "Поле обязателно к заполнина",
+                  })}
+                  type="text"
+                  placeholder="Напишите свою Имю"
+                />
+                {errors && (
+                  <p className={"error"}>{errors?.first_name?.message}</p>
+                )}
+              </div>
               <label htmlFor="">Отчество</label>
-              <input type="text" placeholder="Анатольевич" />
-              <label htmlFor="">Номер телефона</label>
-              <input {...register("age")} placeholder="+996-###-###" />
-              <button className={s.btn_orange}>Сохранить</button>
+              <div className={s.input}>
+                <input
+                  defaultValue={regis?.surname}
+                  {...register("surname")}
+                  type="text"
+                  placeholder="Напишите свою отчество"
+                />
+              </div>
+              <button
+                style={{
+                  opacity: isValid ? "1" : "0.6",
+                }}
+                className={s.btn_orange}
+              >
+                Сохранить
+              </button>
             </form>
           </div>
         </div>
       )}
-      {password && (
+      {/* {password && (
         <div id={s.password} className={`${s.modal} `}>
           <div className={`${s.wrappers}`}>
             <form
@@ -139,8 +180,7 @@ function Profil() {
             </form>
           </div>
         </div>
-      )}
-
+      )} */}
       <div className="container">
         <h2 className={s.profil_title}>Личный кабинет</h2>
         <div className={s.blog}>
@@ -216,7 +256,7 @@ function Profil() {
                 </label>
               </form>
             </div>
-
+            {/* 
             <div
               id={s.password}
               className={`${s.ret} flex`}
@@ -238,10 +278,10 @@ function Profil() {
                 />
               </div>
               <p>Сменить пароль</p>
-            </div>
+            </div> */}
             <div className={s.zakazy}>
               <h3 className={s.setting}>Заказы и товары</h3>
-              <Link href={"/pages/ApplicationHistory"}>
+              <Link href={"/pages/Application"}>
                 <div
                   className={`${s.none} flex`}
                   style={{
