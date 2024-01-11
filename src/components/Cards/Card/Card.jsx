@@ -27,7 +27,8 @@ export default function Card({ item }) {
   };
 
   const handleFavorites = (id) => {
-    dispatch(fetchFavoritesPatchData(id));
+    console.log(id);
+    dispatch();
   };
 
   console.log(item);
