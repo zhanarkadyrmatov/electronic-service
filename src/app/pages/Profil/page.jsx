@@ -15,7 +15,6 @@ import {
 } from "@/app/store/slice/ubdateSlice";
 import { userProfile } from "@/app/store/slice/signInSlice";
 import Spiner from "@/components/Spiner/Spiner";
-import { Loader } from "@/components/Loader/Loader";
 
 function Profil() {
   const {
@@ -184,6 +183,8 @@ function Profil() {
         </div>
       )} */}
       <div className="container">
+        <Navigation />
+
         <h2 className={s.profil_title}>Личный кабинет</h2>
         <div className={s.blog}>
           <div className={`${s.flexes} flex`} style={{ gap: "24px" }}>

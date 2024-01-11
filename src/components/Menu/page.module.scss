@@ -27,7 +27,9 @@
         }
 
         .nav_bar {
-            display: block;
+            display: grid;
+            grid-gap: 18px;
+            text-align: right;
 
             .active {
                 color: var(--main, #ee5922);
@@ -35,7 +37,6 @@
 
             a {
                 display: block;
-                padding-bottom: 18px;
             }
         }
     }

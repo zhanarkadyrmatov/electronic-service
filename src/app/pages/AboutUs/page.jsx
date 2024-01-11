@@ -4,6 +4,7 @@ import React from "react";
 import s from "../pages.module.scss";
 import Image from "next/image";
 import img from "../../../../public/img/o.svg";
+import Navigation from "@/components/Navigation/Navigation";
 
 const data = [
   {
@@ -89,6 +90,7 @@ function page() {
   return (
     <>
       <div className="container">
+    <Navigation />
         <div className={s.abouts}>
           <div className={`${s.arod} `}>
             <div className={s.about_one}>
