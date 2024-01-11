@@ -2,54 +2,127 @@
 
 import React, { useEffect, useState } from 'react'
 import s from "./page.module.scss";
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import Typography from '@mui/material/Typography';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCatalogData, fetchCatalogData2, fetchCategoryListData } from '@/app/store/slice/catalog-slice';
+import { fetchCatalogData, fetchCatalogData2, fetchCategoryListData, filterData } from '@/app/store/slice/catalog-slice';
 import Card from '@/components/Cards/Card/Card';
 import cm from 'classnames'
-import { CiCircleCheck } from "react-icons/ci";
 import { BiChevronUp } from "react-icons/bi";
-import { FaRegCircle, FaRegCircleCheck } from "react-icons/fa6";
+import { FaRegCircle,  } from "react-icons/fa6";
 import {IoIosCheckmarkCircle } from 'react-icons/io'
+import NothingFound from '@/components/NothingFound/NothingFound';
+import { Loader } from '@/components/Loader/Loader';
 const page = () => {
     const [expanded, setExpanded] = useState(false);
     const [isAccordion, setIsAccordion] = useState(false);
     const [categoryId, setCategoryId] = useState(null)
-    const handleChange = (panel) => (event, isExpanded) => {
-      setExpanded(isExpanded ? panel : false);
-    };
-  
+    const [datas, setDatas] = useState()
+    const [page , setPage] = useState(1)
+    const [min_price, setMin_price] = useState(null)
+    const [max_price, setMax_price] = useState(null)    
+    const [firstRun, setFirstRun] = useState(true);
     const dispatch = useDispatch()
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm();
+    console.log(datas, 'data');
     useEffect(()=> {
-    const data = null 
-    dispatch(fetchCatalogData2()),
-    dispatch(fetchCategoryListData())
+      dispatch(fetchCatalogData2(page)),
+      dispatch(fetchCategoryListData())
+
     },[])
+    const {data,status ,error,categoryData,dataFilter} = useSelector((state) => state.catalog);
     
-    const {data,status ,error,categoryData} = useSelector((state) => state.catalog);
- 
-    console.log(data,'datasdasddasdasdaa');
-    const onSubmit = (res) =>  {
-        
-      const data = [res,categoryId?.id]
-      dispatch(fetchCatalogData(data))
+    const onSubmit = (event) =>  {
+    event.preventDefault();
+     const pages  =1
+    console.log(min_price,max_price, categoryId?.id);
+    const dats = [min_price,max_price, categoryId?.id , pages]
+
+    if (min_price !== null || max_price !== null || categoryId !== null) {
+      dispatch(fetchCatalogData(dats))
+    }
+    setDatas(null )
   }
+    const handleScroll = () => {
+      
+    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const isBottomReached = scrollTop + clientHeight >= scrollHeight - 30;
+    
+      setPage(page + 1);
+      if (min_price !==  null) {
+        dispatch(fetchCatalogData([min_price,max_price, categoryId?.id , page]))
+        setDatas((data1) => {
+          setPage(page + 3);
+          if (Array.isArray(data1)) {
+            
+            const newData = data?.results?.filter((item) =>  !data1.some(prevItem => prevItem.id === item.id));
+            return [...data1, ...newData];
+          } else {
+            return [...data?.results];
+          }
+        }
+        );
+        console.log('data1');
+      }
+      if (categoryId !== null) {
+        dispatch(fetchCatalogData([categoryId?.id , page]))
+        console.log('data2');
+        setPage(page + 3);
+        setDatas((data1) => {
+          if (Array.isArray(data1)) {
+            const newData = data.results?.filter((item) =>  !data1.some(prevItem => prevItem.id === item.id));
+            
+            return [...data1, ...newData];
+          } else {
+            return [...data?.results];
+          }
+        }
+        );
+      }
+      if (max_price !== null) {
+        dispatch(fetchCatalogData([min_price,max_price, categoryId?.id , page]))
+        console.log('data3');
+        setPage(page + 3);
+        setDatas((data1) => {
+          if (Array.isArray(data1)) {
+            const newData = data?.results?.filter((item) =>  !data1.some(prevItem => prevItem.id === item.id));
+            return [...data1, ...newData];
+          } else {
+            return [...data?.results];
+          }
+        }
+        );
+      }
+      if (min_price === null && max_price === null && categoryId === null) {
+        dispatch(fetchCatalogData2(page))
+        setDatas((data1) => {
+          if (Array.isArray(data1)) {
+            const newData = data?.results?.filter((item) =>  !data1.some(prevItem => prevItem.id === item.id));
+            return [...data1, ...newData];
+          } else {
+            return [...data?.results];
+          }
+        }
+        );
+      }
+      setFirstRun(false);   
+    }
+  }
+useEffect(() => {
+  const resuit = data?.count / 15;
+  console.log(data?.count  , 'resuit');
+  if (page <= resuit) {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }
+}, [data?.count, page, firstRun]);
     return (
     <div className={`${s.filter} container`}>
     <div className={s.accordion} onClick={()=>setIsAccordion(!isAccordion)}>
     <h2>
 
-    {categoryId ===null &&('    Выберите категорию товаров')}
+    {categoryId ===null &&('Выберите категорию товаров')}
     {categoryId?.title}
     </h2>
     <div className={cm(s.accordionIcon, {
@@ -61,10 +134,9 @@ const page = () => {
         isAccordion && (
           <div className={s.catalogModal}>
           <span>
-           <p> Выберите категорию товаров</p>
-           <BiChevronUp />
+          <p> Выберите категорию товаров</p>
+          <BiChevronUp />
           </span>
-       
           <div className={s.catalogBlock}>
           {categoryData.data?.results?.map((res) => (
             <div className={s.catalogCard} onClick={() => setCategoryId(res)}>
@@ -76,29 +148,49 @@ const page = () => {
           </div>
         )
     }
-  
-  
 </div>
-    <form className={`${s.block} between`} onSubmit={handleSubmit(onSubmit)}>
-            <input {...register('min_price')} type='number' placeholder="Цена от: 1 000" />
-            <input {...register('max_price', { required: true })} type='number' placeholder="Цена до: 1 000" />
-            <button>ПОКАЗАТЬ: 10000</button>
+    <form className={`${s.block} between`} >
+            <input  type='number' value={min_price} onChange={(e)=>setMin_price(e.target.value)} placeholder="Цена от: 1 000" />
+            <input value={max_price} onChange={(e)=>setMax_price(e.target.value)} type='number' placeholder="Цена до: 1 000" />
+            <button onClick={onSubmit}>ПОКАЗАТЬ</button>
         </form>
         <div>
-        {status === 'loading' && <div>Загрузка...</div>}
-        {status === 'succeeded' && (
-            <div className={s.Cards}>
-            {data.results.length === 0 && <div>Ничего не найдено</div>}
-            {data.results?.map((item) => (
-                <Card item={item} />
-              ))}
-            </div>
-            )}
-        {status === 'failed' && <div>{error}</div>}
+       
+        <div className={s.Cards}>
         
+        {datas?.map((res)=> (
+          <Card item={res} />
+        ))}
+       {status === 'succeeded' && datas?.length >= 30 ? null : data?.results?.map((res)=> (
+        <Card item={res} />
+      )) }  
+        
+       
         </div>
+        
+        {status === 'loading' && (
+          <div className={s.NothingFound}><Loader/></div>
+          
+        )}
+        {data?.results?.length === 0 && <div className={s.NothingFound}> <NothingFound/></div>}
+        </div>
+          {status === null && (
+            <NothingFound/>
+          )} 
   </div>
   )
 }
 
 export default page
+
+// {status === 'succeeded' && (
+          
+//   )}
+
+// {data.results.length === 0 && <NothingFound/>}
+
+// {status === 'failed' && <div>{error}</div>}
+// {status == null && (
+//   <NothingFound/>
+
+// )} 

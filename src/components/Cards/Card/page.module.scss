@@ -6,6 +6,7 @@
   background: #fff;
   box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.17);
   position: relative;
+
   @media screen and (max-width: 600px) {
     height: 300px;
   }
@@ -14,6 +15,7 @@
     width: 100%;
     height: 70%;
     object-fit: cover;
+
     @media screen and (max-width: 600px) {
       height: 60%;
     }
@@ -25,37 +27,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     @media screen and (max-width: 600px) {
       height: 60%;
     }
+
     .logo {
       width: 80px;
       height: 80px;
       fill: #ee5922;
     }
   }
-
-  // .box {
-  //   width: 100%;
-  //   height: 340px;
-
-  //   @media screen and (max-width: 600px) {
-  //     height: 225px;
-  //   }
-  // }
-
-  // .img {
-  //   background-position: center;
-  //   background-size: cover;
-  //   background-repeat: no-repeat;
-  //   width: 100%;
-  //   height: 302px;
-  //   border-radius: 8px 8px 0px 0px;
-
-  //   @media screen and (max-width: 600px) {
-  //     height: 190px;
-  //   }
-  // }
 
   .Popular {
     position: absolute;
@@ -85,7 +67,6 @@
     right: 16px;
     z-index: 1;
     border-radius: 50%;
-    // background: #fff;
     width: 38.49px;
     height: 39px;
     display: flex;
@@ -160,6 +141,7 @@
           font-style: normal;
           font-weight: 700;
           line-height: normal;
+
           @media screen and (max-width: 600px) {
             font-size: 10px;
           }
@@ -189,6 +171,7 @@
         padding: 12px;
         justify-content: center;
         align-items: center;
+
         @media screen and (max-width: 600px) {
           font-size: 12px;
           background: #ee5922;

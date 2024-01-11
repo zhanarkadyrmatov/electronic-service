@@ -15,7 +15,6 @@ import {
 } from "@/app/store/slice/ubdateSlice";
 import { userProfile } from "@/app/store/slice/signInSlice";
 import Spiner from "@/components/Spiner/Spiner";
-import Navigation from "@/components/Navigation/Navigation";
 
 function Profil() {
   const {
@@ -25,11 +24,10 @@ function Profil() {
   } = useForm();
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.signIn);
-  const { favorites } = useSelector((state) => state.favorites);
+  const { favorites, status } = useSelector((state) => state.favorites);
   const { fullName, photo, loading } = useSelector((state) => state.ubdate);
   const [delet, setDelet] = useState(false);
   const [pen, setPen] = useState(false);
-  // const [password, setPass] = useState(false);
   const [tap, setTap] = useState(1);
   const [regis, setRegis] = useState(
     JSON?.parse(localStorage.getItem("regis")) || ""
@@ -37,7 +35,9 @@ function Profil() {
 
   useEffect(() => {
     dispatch(fetchFavoritesData());
-  }, []);
+  }, [status]);
+
+  console.log(status);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -183,7 +183,7 @@ function Profil() {
         </div>
       )} */}
       <div className="container">
-      <Navigation />
+        <Navigation />
 
         <h2 className={s.profil_title}>Личный кабинет</h2>
         <div className={s.blog}>
@@ -382,17 +382,31 @@ function Profil() {
                 })}
               </div>
             )}
-            {tap === 2 && (
-              <div className={s.favorites}>
-                {favorites?.map((item) => {
-                  return (
-                    <div className="">
-                      <Card item={item} />
-                    </div>
-                  );
-                })}
-              </div>
-            )}
+            <>
+              {tap === 2 && (
+                <div>
+                  {false ? (
+                    <Loader />
+                  ) : (
+                    <>
+                      {favorites?.length > 0 ? (
+                        <div className={s.favorites}>
+                          {favorites?.map((item) => {
+                            return (
+                              <div className="">
+                                <Card item={item} />
+                              </div>
+                            );
+                          })}
+                        </div>
+                      ) : (
+                        <>no fon</>
+                      )}
+                    </>
+                  )}
+                </div>
+              )}
+            </>
           </div>
         </div>
       </div>
