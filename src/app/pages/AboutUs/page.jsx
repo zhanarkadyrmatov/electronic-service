@@ -66,23 +66,23 @@ const check = [
 const imgs = [
   {
     id: 1,
-    img: "/img/сайт.svg",
+    img: "/img/aq1.svg",
     title: "Разработка сайтов",
   },
   {
     id: 2,
     img: "/img/сайт.svg",
-    title: "Разработка сайтов",
+    title: "Продвижение в соц сетях",
   },
   {
     id: 3,
-    img: "/img/сайт.svg",
-    title: "Разработка сайтов",
+    img: "/img/aq2.svg",
+    title: "Маркетинговый план",
   },
   {
     id: 4,
-    img: "/img/сайт.svg",
-    title: "Разработка сайтов",
+    img: "/img/aq3.svg",
+    title: "Дизайн",
   },
 ];
 
