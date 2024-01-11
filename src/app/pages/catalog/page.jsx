@@ -16,105 +16,107 @@ const page = () => {
     const [expanded, setExpanded] = useState(false);
     const [isAccordion, setIsAccordion] = useState(false);
     const [categoryId, setCategoryId] = useState(null)
-    const [datas, setDatas] = useState([])
-    console.log(datas,'useEffect');
+    const [datas, setDatas] = useState()
     const [page , setPage] = useState(1)
-    const [loading, setLoading] = useState(false)
     const [min_price, setMin_price] = useState(null)
-    const [max_price, setMax_price] = useState(null)
-    const handleChange = (panel) => (event, isExpanded) => {
-      setExpanded(isExpanded ? panel : false);
-    };
+    const [max_price, setMax_price] = useState(null)    
     const [firstRun, setFirstRun] = useState(true);
-
     const dispatch = useDispatch()
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-    } = useForm();
+    console.log(datas, 'data');
     useEffect(()=> {
-  
       dispatch(fetchCatalogData2(page)),
-  
-    dispatch(fetchCategoryListData())
-    setLoading(false)
+      dispatch(fetchCategoryListData())
+
     },[])
     const {data,status ,error,categoryData,dataFilter} = useSelector((state) => state.catalog);
-    useState(()=> {
-      setDatas(data?.results)
-    },[dispatch])
-    const onSubmit = (res) =>  {
-      const data = [res,categoryId?.id]
-      dispatch(fetchCatalogData(data))
-      setDatas(undefined)
-      setMin_price(res.min_price,)
-      setMax_price(res.max_price)
-  }
-  const handleScroll = () => {
-    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
-      setPage(page + 1);
-      if (datas?.length >= 0 ) {   
-      if (max_price !== null ) {
-        const res = {
-          min_price,
-          max_price
-        }
-        const datas = [res,categoryId?.id]
-        dispatch(fetchCatalogData(datas));
-        setDatas((prev) => {
-          const newResults = data?.results.filter(item => !prev.some(prevItem => prevItem.id === item.id));
-          return [...prev, ...newResults];
-        });
-      }
-      if (min_price !== null ) {
-        const res ={
-          min_price,
-          max_price
-        }
-        const datas = [res,categoryId?.id]
-        dispatch(fetchCatalogData(datas))
-        setDatas((prev) => {
-          const newResults = data?.results.filter(item => !prev.some(prevItem => prevItem.id === item.id));
-          return [...prev, ...newResults];
-        });
-      }
-      setDatas((prev) => {
-        const newResults = data?.results.filter(item => !prev.some(prevItem => prevItem.id === item.id));
-        return [...prev, ...newResults];
-      });
-      if ( max_price === null && min_price === null) {
-      dispatch(fetchCatalogData2(page)),
-        setDatas((prev) => {
-          const newResults = data?.results.filter(item => !prev.some(prevItem => prevItem.id === item.id));
-          return [...prev, ...newResults];
-        });
-      }
-      setLoading(true)
-      dispatch(filterData(datas))
-  } else {
-        setDatas(data?.results);
-      }
-      console.log(data, 'test');
-    }
-  }
-  const  getData = async () => {
-    const {data,status ,error,categoryData,dataFilter} = await useSelector((state) => state.catalog);
-     await setDatas(data.results)
-  }
-  useEffect(() => {
-    const resuit = data?.count / 15;
-    if (page <= resuit) {
-      window.addEventListener('scroll', handleScroll);
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }
-  }, [data?.count, page, firstRun]);
-  useEffect(()=> {
-    dispatch(filterData(data?.results))
-  },[])
+    
+    const onSubmit = (event) =>  {
+    event.preventDefault();
+     const pages  =1
+    console.log(min_price,max_price, categoryId?.id);
+    const dats = [min_price,max_price, categoryId?.id , pages]
 
+    if (min_price !== null || max_price !== null || categoryId !== null) {
+      dispatch(fetchCatalogData(dats))
+    }
+    setDatas(null )
+  }
+    const handleScroll = () => {
+      
+    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const isBottomReached = scrollTop + clientHeight >= scrollHeight - 30;
+    
+      setPage(page + 1);
+      if (min_price !==  null) {
+        dispatch(fetchCatalogData([min_price,max_price, categoryId?.id , page]))
+        setDatas((data1) => {
+          setPage(page + 3);
+          if (Array.isArray(data1)) {
+            
+            const newData = data?.results?.filter((item) =>  !data1.some(prevItem => prevItem.id === item.id));
+            return [...data1, ...newData];
+          } else {
+            return [...data?.results];
+          }
+        }
+        );
+        console.log('data1');
+      }
+      if (categoryId !== null) {
+        dispatch(fetchCatalogData([categoryId?.id , page]))
+        console.log('data2');
+        setPage(page + 3);
+        setDatas((data1) => {
+          if (Array.isArray(data1)) {
+            const newData = data.results?.filter((item) =>  !data1.some(prevItem => prevItem.id === item.id));
+            
+            return [...data1, ...newData];
+          } else {
+            return [...data?.results];
+          }
+        }
+        );
+      }
+      if (max_price !== null) {
+        dispatch(fetchCatalogData([min_price,max_price, categoryId?.id , page]))
+        console.log('data3');
+        setPage(page + 3);
+        setDatas((data1) => {
+          if (Array.isArray(data1)) {
+            const newData = data?.results?.filter((item) =>  !data1.some(prevItem => prevItem.id === item.id));
+            return [...data1, ...newData];
+          } else {
+            return [...data?.results];
+          }
+        }
+        );
+      }
+      if (min_price === null && max_price === null && categoryId === null) {
+        dispatch(fetchCatalogData2(page))
+        setDatas((data1) => {
+          if (Array.isArray(data1)) {
+            const newData = data?.results?.filter((item) =>  !data1.some(prevItem => prevItem.id === item.id));
+            return [...data1, ...newData];
+          } else {
+            return [...data?.results];
+          }
+        }
+        );
+      }
+      setFirstRun(false);   
+    }
+  }
+useEffect(() => {
+  const resuit = data?.count / 15;
+  console.log(data?.count  , 'resuit');
+  if (page <= resuit) {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }
+}, [data?.count, page, firstRun]);
     return (
     <div className={`${s.filter} container`}>
     <div className={s.accordion} onClick={()=>setIsAccordion(!isAccordion)}>
@@ -147,24 +149,34 @@ const page = () => {
         )
     }
 </div>
-    <form className={`${s.block} between`} onSubmit={handleSubmit(onSubmit)}>
-            <input {...register('min_price')} type='number' placeholder="Цена от: 1 000" />
-            <input {...register('max_price', { required: true })} type='number' placeholder="Цена до: 1 000" />
-            <button>ПОКАЗАТЬ</button>
+    <form className={`${s.block} between`} >
+            <input  type='number' value={min_price} onChange={(e)=>setMin_price(e.target.value)} placeholder="Цена от: 1 000" />
+            <input value={max_price} onChange={(e)=>setMax_price(e.target.value)} type='number' placeholder="Цена до: 1 000" />
+            <button onClick={onSubmit}>ПОКАЗАТЬ</button>
         </form>
         <div>
-        {status === null && (
-          <NothingFound/>
-        )} 
-        <div className={s.Cards}> 
-        {datas !==  undefined ?  datas?.map((item) => (
-          <Card item={item} />
-        )) :  data?.results.map((item) => (
-          <Card item={item} />
-        )) } 
-      </div>
-      {data?.results?.length === 0 &&  <NothingFound/>}
-               </div>
+       
+        <div className={s.Cards}>
+        
+        {datas?.map((res)=> (
+          <Card item={res} />
+        ))}
+       {status === 'succeeded' && datas?.length >= 30 ? null : data?.results?.map((res)=> (
+        <Card item={res} />
+      )) }  
+        
+       
+        </div>
+        
+        {status === 'loading' && (
+          <div className={s.NothingFound}><Loader/></div>
+          
+        )}
+        {data?.results?.length === 0 && <div className={s.NothingFound}> <NothingFound/></div>}
+        </div>
+          {status === null && (
+            <NothingFound/>
+          )} 
   </div>
   )
 }

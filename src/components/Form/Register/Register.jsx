@@ -6,10 +6,14 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { InputMask } from "@react-input/mask";
 import { useDispatch, useSelector } from "react-redux";
 import { handleTabClick } from "@/app/store/slice/modalSlice";
-import { userRegister } from "@/app/store/slice/registerSlice";
+import { registerError, userRegister } from "@/app/store/slice/registerSlice";
 import Alert from "@mui/material/Alert";
+import Spiner from "@/components/Spiner/Spiner";
 
 export default function Register() {
+  const [regis, setRegis] = useState(
+    JSON?.parse(localStorage.getItem("regis")) || ""
+  );
   const dispatch = useDispatch();
   const [eye, setEye] = useState(false);
   const [eye2, setEye2] = useState(false);
@@ -32,33 +36,37 @@ export default function Register() {
     e.preventDefault();
     setEye2(!eye2);
   };
-
   const submitRegister = (data) => {
-    console.log(data);
+    localStorage.setItem("regis", JSON.stringify(data));
+    setRegis(data);
     dispatch(userRegister(data));
   };
 
-  // useEffect(() => {
-  //   if (passwordError) {
-  //     setTimeout(() => {
-  //       setPasswordError(false);
-  //     }, 5000);
-  //   }
-  // }, [passwordError]);
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        dispatch(registerError(null));
+      }, 5000);
+    }
+  }, [error]);
 
   return (
     <>
       {error && (
         <div className="error_alert">
-          <Alert severity="error">Пароли должны совпадать</Alert>
+          <Alert variant="filled" severity="error">
+            {error?.response?.data?.phone[0]}
+          </Alert>
         </div>
       )}
+      {loading ? <Spiner /> : null}
       <form className={s.register} onSubmit={handleSubmit(submitRegister)}>
         <h2>Регистрация</h2>
         <div className={s.inputs}>
           <label htmlFor="">Фамилия</label>
           <div>
             <input
+              defaultValue={regis?.last_name}
               {...register("last_name", {
                 required: "Поле обязателно к заполнина",
               })}
@@ -74,6 +82,7 @@ export default function Register() {
           <label htmlFor="">Имя</label>
           <div>
             <input
+              defaultValue={regis?.first_name}
               {...register("first_name", {
                 required: "Поле обязателно к заполнина",
               })}
@@ -91,6 +100,7 @@ export default function Register() {
               {...register("phone", {
                 required: "Поле обязателно к заполнина",
               })}
+              defaultValue={regis?.phone}
               mask="+996 (___) ___-___"
               placeholder="+996-###-###"
               replacement={{ _: /\d/ }}
@@ -118,6 +128,7 @@ export default function Register() {
                         message: "Минимум 7 символов",
                       },
                     })}
+                    defaultValue={regis?.password}
                     className={s.pass}
                     placeholder="Введите ваш пароль"
                     type={eye ? "text" : "password"}
@@ -146,8 +157,12 @@ export default function Register() {
                   <input
                     {...field}
                     className={s.pass}
+                    {...register("confirmPassword", {
+                      required: "Поле обязателно к заполнина",
+                    })}
                     type={eye2 ? "text" : "password"}
                     placeholder="Подтвердите пароль"
+                    defaultValue={regis?.confirmPassword}
                     onChange={(e) => {
                       const confirmPassword = e.target.value;
                       const originalPassword = password;

@@ -149,7 +149,7 @@ export default function page({ params: { id } }) {
                 </div>
               </div>
             </div>
-            <div className={s.category}>
+            {/* <div className={s.category}>
               <h3>Подборка товаров по категории</h3>
               <div className={s.wrapper}>
                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((e) => {
@@ -160,8 +160,8 @@ export default function page({ params: { id } }) {
                   );
                 })}
               </div>
-            </div>
-            <div className={s.similar}>
+            </div> */}
+            {/* <div className={s.similar}>
               <h3>Похожие товары</h3>
               <div className={s.wrapper}>
                 {[1, 2, 3, 4, 5, 6, 7, 8].map((e) => {
@@ -178,7 +178,7 @@ export default function page({ params: { id } }) {
                   );
                 })}
               </div>
-            </div>
+            </div> */}
             <div className={s.description}>
               <h3>Описание товара</h3>
               <button>Общая информация</button>
@@ -250,12 +250,6 @@ export default function page({ params: { id } }) {
                         className={s.img}
                       ></div>
                     )}
-                    {/* <div
-                    style={{
-                      backgroundImage: `url(${el.images[0]?.image})`,
-                    }}
-                    className={s.img}
-                  ></div> */}
                   </>
                 );
               })}
@@ -265,16 +259,11 @@ export default function page({ params: { id } }) {
               </div>
             </div>
             <div className={s.image}>
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((e) => {
+              {product?.product_variation[0].images?.map((e) => {
+                console.log(e);
                 return (
                   <div key={e}>
-                    <img
-                      className={s.img}
-                      src={
-                        "https://png.pngtree.com/background/20230411/original/pngtree-natural-landscape-snow-mountain-background-picture-image_2390197.jpg"
-                      }
-                      alt=""
-                    />
+                    <img className={s.img} src={e.image} alt="" />
                   </div>
                 );
               })}

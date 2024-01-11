@@ -8,7 +8,7 @@ import { Pagination } from "swiper/modules";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import Box from "@mui/material/Box";
-import { FaStar } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa6";
 import Link from "next/link";
 import { BsExclamationCircleFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
@@ -24,11 +24,13 @@ export default function Card({ item }) {
       fetchBasketPostData({ page: el.product_variation.id, count: count })
     );
   };
+
+  console.log(item);
   return (
     <div className={s.Card}>
       <Link href={`/pages/${item.id}`}>
         {item?.product_variation?.images ? (
-          <img src={item.product_variation.images} alt="" />
+          <img src={item.product_variation.images} className={s.img} alt="" />
         ) : (
           <div className={s.card_logo}>
             <BsExclamationCircleFill className={s.logo} />
@@ -83,14 +85,23 @@ export default function Card({ item }) {
           </SwiperSlide>
         </Swiper> */}
       </Link>
-
       <p className={s.Popular}>Популярные</p>
-      <span className={s.star}>
-        <FaStar className={s.stars} />
+      <span
+        style={{
+          backgroundColor: item.is_favorite ? "#f7e200" : "#fff",
+        }}
+        className={s.star}
+      >
+        <FaHeart
+          style={{
+            fill: item.is_favorite ? "#fff" : "#f7e200",
+          }}
+          className={s.stars}
+        />
       </span>
       <div className={s.title}>
-        <h2>{item.title?.slice(0, 20)}...</h2>
-        <p>
+        <h2>{item.title?.slice(0, 30)}...</h2>
+        {/* <p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="8"
@@ -101,8 +112,8 @@ export default function Card({ item }) {
             <circle cx="4" cy="4.5" r="4" fill="#51BD47" />
           </svg>
           <span>нет в наличии</span>
-        </p>
-        <div className={s.rating}>
+        </p> */}
+        {/* <div className={s.rating}>
           <Rating
             name="text-feedback"
             size="small"
@@ -114,14 +125,14 @@ export default function Card({ item }) {
             }
           />
           <Box sx={{ ml: 2 }}>3.5</Box>
-        </div>
+        </div> */}
         <div className={s.price}>
           <div className={s.prices}>
             <h5>
               {item.product_variation?.product_price}
-              {item.product_variation?.currency_unit.currency}
+              {item.product_variation?.currency_unit?.currency}
             </h5>
-            <h6>500.35 С</h6>
+            {/* <h6>500.35 С</h6> */}
           </div>
           <button onClick={() => handleClick(item)} className={s.btn}>
             В корзину

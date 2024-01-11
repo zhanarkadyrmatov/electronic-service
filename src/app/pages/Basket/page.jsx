@@ -13,7 +13,7 @@ export default function page() {
   const [modal, setModat] = useState(false);
   const [orders, setOrders] = useState(false);
   const dispatch = useDispatch();
-  const { data } = useSelector((state) => state.basket);
+  const { data, loading } = useSelector((state) => state.basket);
 
   useEffect(() => {
     dispatch(fetchBasketData());
@@ -205,57 +205,67 @@ export default function page() {
           </div>
         </div>
       )}
-      <div className="container">
-        <div className={s.baskets}>
-          <h2>Корзина</h2>
-          <div className={s.wrapper}>
-            {[1, 1, 3].map((e) => {
-              return (
-                <div key={e} className={s.card}>
-                  <div className={s.img} />
-                  <div className={s.info}>
-                    <div className={s.title}>
-                      <h4>
-                        Hot Sale Vintage T9 Electric Cordless Hair Cutting
-                      </h4>
-                      <div>
-                        <MdDeleteSweep
-                          onClick={() => setModat(!modal)}
-                          className={s.delete}
-                        />
+      {loading ? (
+        <>Loading...</>
+      ) : (
+        <div className="container">
+          <div className={s.baskets}>
+            <h2>Корзина</h2>
+            <div className={s.wrapper}>
+              {data?.map((e) => {
+                console.log(e.product_variations.images[0]);
+                return (
+                  <div key={e.id} className={s.card}>
+                    <img
+                      className={s.img}
+                      src={e.product_variations.images[0].image}
+                      alt=""
+                    />
+                    {/* <div className={s.img} /> */}
+                    <div className={s.info}>
+                      <div className={s.title}>
+                        <h4>{e.product?.title} </h4>
+                        <div>
+                          <MdDeleteSweep
+                            onClick={() => setModat(!modal)}
+                            className={s.delete}
+                          />
+                        </div>
                       </div>
+                      <div className={s.btn}>
+                        <FaMinus className={s.button} />
+                        <p>{e.product_count}</p>
+                        <FaPlus className={s.button} />
+                      </div>
+                      <p className={s.price}>
+                        Цена: {e.product_variations?.product_price}{" "}
+                        {e.product_variations?.currency_unit?.currency}
+                      </p>
+                      <h5 className={s.prices}>
+                        <span>Итого цена:</span> <span>10 000 c</span>
+                      </h5>
                     </div>
-                    <div className={s.btn}>
-                      <FaMinus className={s.button} />
-                      <p>10</p>
-                      <FaPlus className={s.button} />
-                    </div>
-                    <p className={s.price}>Цена: 1000 c</p>
-                    <h5 className={s.prices}>
-                      <span>Итого цена:</span> <span>10 000 c</span>
-                    </h5>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+            <div className={s.footer_title}>
+              <h3>ВЫБРАННЫЕ ТОВАРЫ</h3>
+              <p>
+                <span>Товаров:</span> <span>1</span>
+              </p>
+              <p>
+                <span>Скидка:</span> <span>10%</span>
+              </p>
+              <h4>
+                <span>Итого цена:</span> <span>10 000 c</span>
+              </h4>
+            </div>
+            <button onClick={() => setOrders(!modal)} className={s.Send}>
+              Отправить заявку
+            </button>
           </div>
-          <div className={s.footer_title}>
-            <h3>ВЫБРАННЫЕ ТОВАРЫ</h3>
-            <p>
-              <span>Товаров:</span> <span>1</span>
-            </p>
-            <p>
-              <span>Скидка:</span> <span>10%</span>
-            </p>
-            <h4>
-              <span>Итого цена:</span> <span>10 000 c</span>
-            </h4>
-          </div>
-          <button onClick={() => setOrders(!modal)} className={s.Send}>
-            Отправить заявку
-          </button>
-        </div>
-        {/* <div className={s.no_basket}>
+          {/* <div className={s.no_basket}>
           <Image
             src={"/img/basket.svg"}
             objectFit="cover"
@@ -270,7 +280,8 @@ export default function page() {
           </p>
           <button className={s.no_btn}>Найти товары в каталоге</button>
         </div> */}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

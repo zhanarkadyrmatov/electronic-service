@@ -90,7 +90,7 @@ function page() {
     <>
       <div className="container">
         <div className={s.abouts}>
-          <div className={`${s.arod} around`}>
+          <div className={`${s.arod} `}>
             <div className={s.about_one}>
               <h1>О компании</h1>
               <h3>
@@ -111,13 +111,36 @@ function page() {
                   tempora incidunt ut labore et dolore magnam
                 </p>
               </div>
-              
+              <div className={`${s.fleX}  ${s.arod1}`} style={{ gap: "40px" }}>
+                <div>
+                  <h2>2 000</h2>
+                  <h6>Ut enim ad minima </h6>
+                </div>
+                <div>
+                  <h2>547</h2>
+                  <h6>
+                    Smodi tempora <br /> incidunt{" "}
+                  </h6>
+                </div>
+                <div>
+                  <h2>1 474</h2>
+                  <h6>
+                    Qia non numquam <br /> eius{" "}
+                  </h6>
+                </div>
+                <div>
+                  <h2>1</h2>
+                  <h6>
+                    Abore et dolore <br /> agnam
+                  </h6>
+                </div>
+              </div>
             </div>
             <div>
               <Image className={s.img} src={img} alt="" />
             </div>
           </div>
-          <div className={`${s.fleX} ${s.arod}`} style={{ gap: "40px" }}>
+          <div className={`${s.fleX}  ${s.arod2}`} style={{ gap: "40px" }}>
                 <div>
                   <h2>2 000</h2>
                   <h6>Ut enim ad minima </h6>
@@ -154,22 +177,27 @@ function page() {
           </div>
         </div>
         <div className={s.lorem}>
-          <div className={`${s.arod} between`}>
+          <div className={`${s.arod} `} style={{ gap: "20px" }}>
             <div className="column">
               <h2>
-                Lorem ipsum <br />
-                <span>
+                <p>
+                Lorem ipsum
+                </p> <br />
+                <span className={s.dolor}>
                   dolor sit <br /> adipiscing <br />
                 </span>
+                <p>
                 elitaa dwet
-              </h2>
+                </p>
               <div className={s.border}></div>
+
+              </h2>
             </div>
             <div className={s.grid}>
               {check.map((el) => (
                 <div>
-                  <Image src={el.icon} width={30} height={30} />
-                  <p>{el.title}</p>
+                  <Image src={el.icon} width={40} height={40} />
+                  <p style={{paddingTop:'10px'}}>{el.title}</p>
                 </div>
               ))}
             </div>

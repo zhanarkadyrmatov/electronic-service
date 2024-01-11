@@ -5,15 +5,19 @@ import Categories from "@/components/Categories/Categories";
 import Popular from "@/components/Popular/Popular";
 import Brands from "@/components/Brands/Brands";
 import NewSlider from "@/components/Slider/NewSlider/NewSlider";
+import Navigation from "@/components/Navigation/Navigation";
 
 export default function Home() {
   return (
-    <div className="container">
-      <Stories />
-      <NewSlider />
-      <Brands />
-      <Categories />
-      <Popular />
-    </div>
+    <>
+      <div className="container">
+        <Navigation />
+        <Stories />
+        <NewSlider />
+        <Brands />
+        <Categories />
+        <Popular />
+      </div>
+    </>
   );
 }

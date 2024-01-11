@@ -9,7 +9,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 32px;
+      gap: 70px;
       padding: 10px 0;
 
       @media screen and (max-width: 600px) {
@@ -17,6 +17,7 @@
       }
 
       .logo {
+        width: 151px;
         @media screen and (max-width: 600px) {
           width: 120px;
         }
@@ -27,7 +28,7 @@
         align-items: center;
         gap: 32px;
 
-        @media screen and (max-width: 1138px) {
+        @media screen and (max-width: 1300px) {
           display: none;
         }
 
@@ -71,189 +72,9 @@
       height: 35px;
       display: none;
 
-      @media screen and (max-width: 1138px) {
+      @media screen and (max-width: 1300px) {
         display: block;
       }
-    }
-  }
-
-  .blok {
-    gap: 20px;
-    padding: 26px 0;
-    border-top: 1px solid rgba($color: #000000, $alpha: 0.1);
-    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
-    margin-bottom: 26px;
-
-    @media screen and (max-width: 600px) {
-      border: none;
-      padding: 0;
-    }
-
-    .btn_catalog {
-      border-radius: 10px;
-      color: #fff;
-      background: var(--main, #ee5922);
-      padding: 16px;
-      gap: 8px;
-    }
-
-    .input_go {
-      // max-width: 600px;
-      width: 100%;
-      padding: 21.5px 20px;
-      border-radius: 10px;
-      background: #f2f2f3;
-
-      @media screen and (max-width: 770px) {
-        display: none;
-      }
-
-      input {
-        color: var(--1-e-1-e-1-e, #1e1e1e);
-        font-size: 14px;
-        font-weight: 400;
-        background: #f2f2f3;
-        width: 100%;
-
-        &::placeholder {
-          color: var(--1-e-1-e-1-e, #1e1e1e);
-          font-size: 14px;
-          font-weight: 400;
-          opacity: 0.4;
-        }
-      }
-    }
-  }
-
-  .button {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-
-    @media screen and (max-width: 860px) {
-      justify-content: space-around;
-      gap: 12px;
-    }
-
-    .item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      cursor: pointer;
-
-      p {
-        color: #282b3d;
-        font-size: 13px;
-        font-weight: 500;
-      }
-
-      .image {
-        max-width: 46px;
-        width: 100%;
-        height: 46px;
-        border-radius: 10px;
-        background: #f2f2f3;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .login {
-        width: 46px;
-        height: 46px;
-        border-radius: 10px;
-        background: #ee5922;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      p {
-        color: #282b3d;
-        font-size: 13px;
-        font-weight: 500;
-        @media screen and (max-width: 600px) {
-          font-size: 12px;
-        }
-      }
-    }
-
-    .filter {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2px;
-
-      @media screen and (max-width: 770px) {
-        display: none;
-      }
-
-      .image {
-        width: 46px;
-        height: 46px;
-        border-radius: 10px;
-        background: #f2f2f3;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      p {
-        color: #282b3d;
-        font-size: 13px;
-        font-weight: 500;
-      }
-    }
-  }
-
-  .mobil_input {
-    display: none;
-
-    @media screen and (max-width: 770px) {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .mobil_search {
-      width: 100%;
-      padding: 21.5px 20px;
-      border-radius: 10px;
-      background: #f2f2f3;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      @media screen and (max-width: 770px) {
-        border-radius: 1000px;
-      }
-
-      input {
-        color: var(--1-e-1-e-1-e, #1e1e1e);
-        font-size: 14px;
-        font-weight: 400;
-        background: #f2f2f3;
-        width: 100%;
-
-        &::placeholder {
-          color: var(--1-e-1-e-1-e, #1e1e1e);
-          font-size: 14px;
-          font-weight: 400;
-          opacity: 0.4;
-        }
-      }
-    }
-
-    .logo {
-      width: 56px;
-      height: 56px;
-      border-radius: 10px;
-      padding: 16px;
-      background: #f2f2f3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
     }
   }
 }

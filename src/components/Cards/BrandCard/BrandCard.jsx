@@ -7,7 +7,7 @@ export default function BrandCard({ item }) {
   return (
     <div className={s.cart}>
       {item.logo ? (
-        <img src={item.logo} alt="" />
+        <img src={item.logo} className={s.img} alt="" />
       ) : (
         <BsExclamationCircleFill className={s.logo} />
       )}

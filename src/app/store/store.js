@@ -8,10 +8,10 @@ import categorySlice from "./slice/categorySlice";
 import productSlice from "./slice/productSlice";
 import basketSlice from "./slice/basketSlice";
 import modalSlice from "./slice/modalSlice";
-import catalogslice from './slice/catalog-slice'
+import catalogslice from "./slice/catalog-slice";
 import signInSlice from "./slice/signInSlice";
 import registerSlice from "./slice/registerSlice";
-import questionnaireSlice from './slice/questionnaire-slice'
+
 const store = configureStore({
   reducer: {
     popular: popularSlice,
@@ -26,7 +26,6 @@ const store = configureStore({
     signIn: signInSlice,
     catalog: catalogslice,
     register: registerSlice,
-    questionnaire:questionnaireSlice,
   },
 });
 

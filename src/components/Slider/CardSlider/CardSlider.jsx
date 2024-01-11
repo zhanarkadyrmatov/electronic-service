@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -7,11 +7,15 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 import s from "./page.module.scss";
 import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { Fancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 export default function Slider({ item }) {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  console.log(item);
+  useEffect(() => {
+    Fancybox.bind("[data-fancybox='gallery']", {});
+  }, []);
   return (
     <div>
       <Swiper
@@ -24,16 +28,18 @@ export default function Slider({ item }) {
         {item.images.map((el) => {
           return (
             <SwiperSlide>
-              <div
-                style={{
-                  backgroundImage: `url(${el.image})`,
-                  backgroundPosition: "center",
-                  backgroundSize: "contain",
-                  backgroundRepeat: "no-repeat",
-                  width: "100%",
-                  height: "100%",
-                }}
-              />
+              <a href={el.image} data-fancybox="gallery">
+                <div
+                  style={{
+                    backgroundImage: `url(${el.image})`,
+                    backgroundPosition: "center",
+                    backgroundSize: "contain",
+                    backgroundRepeat: "no-repeat",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                />
+              </a>
             </SwiperSlide>
           );
         })}

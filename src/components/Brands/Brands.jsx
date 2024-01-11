@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBrandsData } from "@/app/store/slice/brandsSlice";
 import BrandCard from "../Cards/BrandCard/BrandCard";
@@ -19,9 +19,17 @@ export default function Brands() {
     dispatch(fetchBrandsData(1));
   }, []);
   const cartData = data?.results;
+
+  const customPaginationClass = "custom_pagination";
+
+  const handlePaginationRef = (pagination) => {
+    if (pagination && pagination.el) {
+      pagination.el.classList.add(customPaginationClass);
+    }
+  };
   return (
     <div className={s.brands}>
-      <div className="container">
+      <div className="">
         <div className={s.wrapper}>
           <div className={s.title}>
             <h2>Бренды</h2>
@@ -30,9 +38,22 @@ export default function Brands() {
             </Link>
           </div>
           <Swiper
-            slidesPerView={2}
-            spaceBetween={20}
+            slidesPerView={3}
+            spaceBetween={16}
             freeMode={true}
+            pagination={{
+              clickable: true,
+              renderBullet: (index, className) => {
+                return `<span class=${className}>
+                <div class='border'></div>
+                </span>`;
+              },
+              bulletClass: "bullet",
+              bulletActiveClass: "swiperactive",
+            }}
+            onSwiper={(swiper) => {
+              handlePaginationRef(swiper.pagination);
+            }}
             breakpoints={{
               768: {
                 slidesPerView: 4,
@@ -47,13 +68,13 @@ export default function Brands() {
                 spaceBetween: 40,
               },
             }}
-            modules={[FreeMode]}
+            modules={[FreeMode, Pagination]}
             className={s.mySwiper}
           >
             {cartData?.slice(0, 6).map((item) => {
               return (
                 <SwiperSlide>
-                  <div key={item.id}>
+                  <div key={item.id} className={s.card}>
                     <Link href={`/pages/Brand/${item.id}`}>
                       <BrandCard item={item} />
                     </Link>

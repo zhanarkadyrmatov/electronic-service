@@ -12,30 +12,25 @@ import filtr from "@/../../public/img/aa2.svg";
 import favorites from "@/../../public/img/aa3.svg";
 import basket from "@/../../public/img/aa1.svg";
 import registr from "@/../../public/img/aa4.svg";
+import user from "../../../public/img/adam.svg";
 import Modal from "../Modal/Modal";
 import { BurgerMenu } from "../Menu/page";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { handleModal } from "@/app/store/slice/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { userProfile } from "@/app/store/slice/signInSlice";
 
 export default function Header() {
   const page = usePathname();
-  const { modal } = useSelector((state) => state.modal);
   const dispatch = useDispatch();
-
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(!open);
-
   useEffect(() => {
-    if (modal) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
+    const id = JSON?.parse(localStorage.getItem("userToken"));
+    if (id !== null) {
+      dispatch(userProfile(id));
     }
-  }, [modal]);
+  }, []);
 
   const [time, setTime] = useState(false);
-
   useEffect(() => {
     if (time) {
       document.body.style.overflow = "hidden";
@@ -46,19 +41,20 @@ export default function Header() {
 
   return (
     <>
-      {modal && <Modal />}
       {time && <BurgerMenu setTime={setTime} time={time} />}
       <div className={s.header}>
         <div className="container">
           <div className={s.nav}>
             <div className={s.wrapper}>
-              <Image
-                src={"/img/servis.svg"}
-                className={s.logo}
-                alt=""
-                width={120}
-                height={50}
-              />
+              <Link href={"/"}>
+                <Image
+                  src={"/img/servis.svg"}
+                  className={s.logo}
+                  alt=""
+                  width={120}
+                  height={50}
+                />
+              </Link>
               <nav className={s.nav_bar}>
                 <Link
                   href={"/"}
@@ -124,7 +120,7 @@ export default function Header() {
             </div>
 
             <div className={`${s.button}`}>
-              <Link href={"/pages/catalog"} className={s.filter}>
+              <Link href={"/pages/Filter"} className={s.filter}>
                 <div className={s.image}>
                   <Image src={filtr} alt="" width={14} height={14} />
                 </div>

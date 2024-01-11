@@ -4,26 +4,17 @@ const backendURL = "https://api.cheberel.kg";
 export const fetchCatalogData = createAsyncThunk(
     'catalog/fetchCatalogData',
     async (data, {rejectWithValue}) => {
-      
-         const min_price = data[0].min_price
-         const max_price = data[0].max_price
-         const categoryId = data[1]
-         const page = data[2]
-         console.log(data,'data');
-         console.log(categoryId,'test');
-        if (data === null) {
-            try {
-                const response = await fetch(`${backendURL}/products/product_list/&page=${page}`)
-                const data = await response.json()
-                console.log(data,'response');
-                return data
-            } catch (error) {
-                return rejectWithValue(error)
-            }    
-        }else {
-            if (categoryId === undefined || categoryId === null) {
+        const min_price = data[0]
+        const max_price = data[1]
+        const categoryId = data[2]
+        const page = data[3]
+        console.log(data,'data');
+        console.log(categoryId,'test');
+        if (categoryId !== undefined) {
+            console.log('categoryIdIs', min_price   ,categoryId);
+            if (min_price !== null || max_price !== null) {
                 try {
-                    const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&page=${page}`)
+                    const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&category_id=${categoryId}&page=${page}`)
                     const data = await response.json()
                     console.log(data,'response1');
                     return data
@@ -32,19 +23,80 @@ export const fetchCatalogData = createAsyncThunk(
                 }
                 
             } else {
+                console.log('categoryIdIs', min_price   ,categoryId);
                 try {
-                    const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&category_id=${categoryId}&page=${page}`)
+                    const response = await fetch(`${backendURL}/products/product_list/?category_id=${categoryId}&page=${page}`)
                     const data = await response.json()
-                    console.log(data,'response2');
-                
+                    console.log(data,'response');
                     return data
                 } catch (error) {
                     return rejectWithValue(error)
                 }
-            }   
+            }
         }
-
+        if (min_price !== null || max_price !== null) {
+            try {
+                console.log('min_priceIs', min_price   ,max_price ,categoryId); 
+                const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&page=${page}`)
+                const data = await response.json()
+                return data
+            } catch (error) {
+                return rejectWithValue(error)
+            }
+        }
         
+        // if (data === null) {
+        //     try {
+        //         const response = await fetch(`${backendURL}/products/product_list/&page=${page}`)
+        //         const data = await response.json()
+        //         console.log(data,'response');
+        //         return data
+        //     } catch (error) {
+        //         return rejectWithValue(error)
+        //     }    
+        // }else {
+          
+        //     if (categoryId === undefined || categoryId === null) {
+
+        //         try {
+        //             const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&page=${page}`)
+        //             const data = await response.json()
+        //             console.log(data,'response1');
+        //             return data
+        //         } catch (error) {
+        //             return rejectWithValue(error)
+        //         }
+                
+        //     } else {
+        //           if (categoryId !== null || categoryId !== undefined) {
+        //         try {
+        //             const response = await fetch(`${backendURL}/products/product_list/?category_id=${categoryId}&page=${page}`)
+        //             const data = await response.json()
+        //             console.log(data,'response');
+        //             return data
+        //         } catch (error) {
+        //             return rejectWithValue(error)
+        //         }
+        //     }  else if ( max_price !== null || min_price !== null) {
+        //         try {
+        //             const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&page=${page}`)
+        //             const data = await response.json()
+        //             console.log(data,'response');
+        //             return data
+        //         } catch (error) {
+        //             return rejectWithValue(error)
+        //         }
+        //     }
+        //         try {
+        //             const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&category_id=${categoryId}&page=${page}`)
+        //             const data = await response.json()
+        //             console.log(data,'response2');
+        //             return data
+        //         } catch (error) {
+        //             return rejectWithValue(error)
+        //         }
+        //     }   
+        // }
     }
 )
 export const fetchCatalogData2 = createAsyncThunk(
@@ -78,6 +130,7 @@ export const catalogSlice = createSlice({
     initialState: {
         data: null,
         dataFilter:null,
+        count:null,
         categoryData:{
             data: null,
             status: null,
@@ -88,7 +141,7 @@ export const catalogSlice = createSlice({
     error: null,
     reducers: {
         filterData : (state, action) => {
-            state.dataFilter = [ action.payload]
+            state.data = [action.payload]
             console.log(state.data, 'test1');
         }
     },
@@ -99,6 +152,7 @@ export const catalogSlice = createSlice({
         builder.addCase(fetchCatalogData.fulfilled, (state, {payload}) => {
             state.status = 'succeeded'
             state.data = payload
+            state.count = payload.count
         })
         builder.addCase(fetchCatalogData.rejected, (state, {payload}) => {
             state.status = 'failed'
@@ -119,9 +173,10 @@ export const catalogSlice = createSlice({
         builder.addCase(fetchCatalogData2.pending, (state) => {
             state.status = 'loading'
         })
-        builder.addCase(fetchCatalogData2.fulfilled, (state, {payload}) => {
+        builder.addCase(fetchCatalogData2.fulfilled, (state, {payload}) => {    
             state.status = 'succeeded'
             state.data = payload
+            state.count = payload.count
         })
         builder.addCase(fetchCatalogData2.rejected, (state, {payload}) => {
             state.status = 'failed'

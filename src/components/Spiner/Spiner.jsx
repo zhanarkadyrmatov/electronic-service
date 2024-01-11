@@ -1,17 +1,22 @@
 import React from "react";
 import Stack from "@mui/material/Stack";
 import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import LinearProgress from "@mui/material/LinearProgress";
 
 export default function Spiner() {
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignContent: "center",
+        position: "fixed",
+        top: "0",
+        left: "0",
+        width: "100%",
       }}
     >
-      <CircularProgress style={{ color: "#EE5922" }} />
+      <Stack sx={{ width: "100%", color: "#EE5922" }} spacing={2}>
+        <LinearProgress color="inherit" />
+      </Stack>
     </div>
   );
 }

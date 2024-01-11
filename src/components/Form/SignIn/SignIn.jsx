@@ -12,8 +12,12 @@ import Spiner from "@/components/Spiner/Spiner";
 import Alert from "@mui/material/Alert";
 
 export default function SignIn() {
+  const [login, setLogin] = useState(
+    JSON?.parse(localStorage.getItem("login")) || ""
+  );
   const [eye, setEye] = useState(false);
   const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -27,8 +31,10 @@ export default function SignIn() {
   const { modal } = useSelector((state) => state.modal);
   const { loading, error } = useSelector((state) => state.signIn);
   console.log(error);
+
   const submitForm = (data) => {
-    console.log(data);
+    localStorage.setItem("login", JSON.stringify(data));
+    setLogin(data);
     dispatch(userSignIn(data));
   };
 
@@ -36,7 +42,7 @@ export default function SignIn() {
     if (error) {
       setTimeout(() => {
         dispatch(autoError(null));
-      }, 5000);
+      }, 4000);
     }
   }, [error]);
 
@@ -44,12 +50,14 @@ export default function SignIn() {
     <>
       {error && (
         <div className="error_alert">
-          <Alert severity="error">{error.data.detail}</Alert>
+          <Alert variant="filled" severity="error">
+            {error.data.detail}
+          </Alert>
         </div>
       )}
+      {loading ? <Spiner /> : null}
       <form className={s.signIn} onSubmit={handleSubmit(submitForm)}>
         <h2>Авторизация</h2>
-
         <div className={s.inputs}>
           <label htmlFor="">Телефон</label>
           <div>
@@ -58,6 +66,7 @@ export default function SignIn() {
               {...register("login", {
                 required: "Поле обязателно к заполнина",
               })}
+              defaultValue={login?.login}
               mask="+996 (___) ___-___"
               placeholder="+996"
               replacement={{ _: /\d/ }}
@@ -80,6 +89,7 @@ export default function SignIn() {
                     message: "Минимум 7 символов",
                   },
                 })}
+                defaultValue={login?.password}
                 className={s.pass}
                 placeholder="Введите ваш пароль"
                 type={eye ? "text" : "password"}
@@ -103,29 +113,22 @@ export default function SignIn() {
             <p className={s.title}>Запомнить</p>
             <input
               className={s.check}
-              {...register("remember", {
-                required: true,
-              })}
+              {...register("remember")}
               type="checkbox"
             />
           </div>
         </div>
-        {loading ? (
-          <Spiner />
-        ) : (
-          <div className={s.btns}>
-            <button onClick={() => dispatch(handleModal(!modal))}>
-              Отмена
-            </button>
-            <button
-              style={{
-                opacity: isValid ? "1" : "0.6",
-              }}
-            >
-              Войти
-            </button>
-          </div>
-        )}
+        <div className={s.btns}>
+          <button onClick={() => dispatch(handleModal(!modal))}>Отмена</button>
+          <button
+            style={{
+              opacity: isValid ? "1" : "0.6",
+            }}
+          >
+            Войти
+          </button>
+        </div>
+
         <button
           className={s.btn_grey}
           onClick={() => dispatch(handleTabClick(2))}

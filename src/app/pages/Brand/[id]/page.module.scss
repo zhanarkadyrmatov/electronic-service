@@ -7,19 +7,36 @@
     font-weight: 700;
     line-height: normal;
     margin-bottom: 26px;
+    @media screen and (max-width: 600px) {
+      font-size: 18px;
+      margin: 24px 0 20px;
+    }
   }
   .wrapper {
     display: grid;
-    grid-template-columns: 3fr 8fr;
+    grid-template-columns: 21% 79%;
+    @media screen and (max-width: 600px) {
+      display: flex;
+      flex-direction: column;
+    }
     .letf {
       display: flex;
       flex-direction: column;
       gap: 16px;
       border-right: 1px solid rgba($color: #000000, $alpha: 0.2);
       padding-right: 40px;
+      @media screen and (max-width: 600px) {
+        border-right: none;
+        padding-right: none;
+        padding-right: 0px;
+      }
 
       .btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
+        height: 100px;
         padding: 14px 8px;
         border-radius: 12px;
         background: #fff;
@@ -30,27 +47,73 @@
         font-style: normal;
         font-weight: 600;
         line-height: 16px;
+        @media screen and (max-width: 600px) {
+          display: none;
+        }
       }
 
       .active {
         border-right: 3px solid var(--main, #ee5922);
+        @media screen and (max-width: 600px) {
+          border-right: none;
+        }
+      }
+
+      .mySwiper {
+        display: none;
+        @media screen and (max-width: 600px) {
+          width: 100%;
+          display: block;
+        }
+
+        .card {
+          height: 100px;
+        }
       }
 
       .left_wrapper {
         display: flex;
         flex-direction: column;
         gap: 16px;
+        @media screen and (max-width: 600px) {
+          display: none;
+        }
 
         .cart {
           border-radius: 12px;
         }
       }
     }
-    .rigth {
+
+    .rigth_wrapper {
       padding-left: 40px;
+      @media screen and (max-width: 600px) {
+        padding-left: 0px;
+      }
+    }
+
+    .category {
+      width: 100%;
+      display: flex;
+      gap: 20px;
+      margin-bottom: 16px;
+      overflow-y: scroll;
+      white-space: nowrap;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      @media screen and (max-width: 600px) {
+        grid-gap: 16px;
+      }
+    }
+    .rigth {
       display: grid;
       grid-template-columns: 4fr 4fr 4fr;
       gap: 24px;
+      @media screen and (max-width: 600px) {
+        grid-template-columns: 6fr 6fr;
+        gap: 16px;
+      }
     }
     .btn_all {
       width: 100%;

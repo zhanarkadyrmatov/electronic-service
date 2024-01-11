@@ -12,7 +12,7 @@ export const YandexMap = () => {
       return (
         <YMaps>
           <Map 
-           style={{width:'100%', height:300}}
+           style={{ width:'100%', height:'340px' }}
            
           defaultState={defaultState}>
             <Placemark geometry={[55.684758, 37.738521]} />
