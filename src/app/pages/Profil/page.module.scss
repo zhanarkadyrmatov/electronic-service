@@ -491,11 +491,11 @@
 
 .favorites {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 3fr));
+  grid-template-columns: 3fr 3fr 3fr 3fr;
   grid-gap: 24px;
   grid-auto-flow: dense;
   @media screen and (max-width: 600px) {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 6fr));
+    grid-template-columns: 6fr 6fr;
     grid-gap: 16px;
   }
 }

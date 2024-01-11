@@ -25,6 +25,7 @@ export const fetchFavoritesData = createAsyncThunk(
 export const fetchFavoritesPatchData = createAsyncThunk(
   "auth/favorites_add_delete",
   async (id, { rejectWithValue }) => {
+    console.log(id);
     try {
       const token = localStorage.getItem("userToken")?.replaceAll('"', "");
       const response = await axios.patch(
