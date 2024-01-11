@@ -25,6 +25,11 @@ export default function Card({ item }) {
     );
   };
 
+  const handleFavorites = (id) => {
+    console.log(id);
+    dispatch();
+  };
+
   console.log(item);
   return (
     <div className={s.Card}>
