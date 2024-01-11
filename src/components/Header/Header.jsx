@@ -106,60 +106,6 @@ export default function Header() {
               className={s.burger}
             />
           </div>
-
-          <div className={`${s.blok} between`}>
-            <button className={`${s.btn_catalog} flex ${s.top}`}>
-              <TfiMenuAlt size={18} />
-              Каталог
-              <MdKeyboardArrowDown size={20} />
-            </button>
-
-            <div className={`${s.input_go} between`}>
-              <input type="text" placeholder="Что найти?" />
-              <FiSearch className={s.search} size={20} />
-            </div>
-
-            <div className={`${s.button}`}>
-              <Link href={"/pages/Filter"} className={s.filter}>
-                <div className={s.image}>
-                  <Image src={filtr} alt="" width={14} height={14} />
-                </div>
-                <p>Фильтр</p>
-              </Link>
-
-              <div className={s.item}>
-                <div className={s.image}>
-                  <Image src={favorites} alt="" width={14} height={14} />
-                </div>
-                <p>Избранные</p>
-              </div>
-
-              <Link href={"/pages/Basket"} className={s.item}>
-                <div className={s.image}>
-                  <Image src={basket} alt="" width={14} height={14} />
-                </div>
-                <p>Корзина</p>
-              </Link>
-              <div
-                className={s.item}
-                onClick={() => dispatch(handleModal(!modal))}
-              >
-                <div className={s.login}>
-                  <Image src={registr} alt="" width={14} height={14} />
-                </div>
-                <p>Войти</p>
-              </div>
-            </div>
-          </div>
-          <div className={s.mobil_input}>
-            <div className={`${s.mobil_search}`}>
-              <input type="text" placeholder="Что найти?" />
-              <FiSearch className={s.search} size={20} />
-            </div>
-            <div className={s.logo}>
-              <Image src={filtr} alt="" width={14} height={14} />
-            </div>
-          </div>
         </div>
       </div>
     </>
