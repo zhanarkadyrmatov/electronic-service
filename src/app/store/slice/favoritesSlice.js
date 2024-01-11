@@ -53,7 +53,11 @@ const favoritesSlice = createSlice({
     status: "idle",
     error: null,
   },
-  reducers: {},
+  reducers: {
+    FilterData: (state, action) => {
+      state.favorites = [action.payload];
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchFavoritesData.pending, (state) => {
       state.status = "loading";
@@ -69,5 +73,5 @@ const favoritesSlice = createSlice({
   },
 });
 
-export const {} = favoritesSlice.actions;
+export const { FilterData } = favoritesSlice.actions;
 export default favoritesSlice.reducer;

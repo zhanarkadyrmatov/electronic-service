@@ -15,6 +15,9 @@ import {
 import { userProfile } from "@/app/store/slice/signInSlice";
 import Spiner from "@/components/Spiner/Spiner";
 import Image from "next/image";
+import NothingFound from "@/components/NothingFound/NothingFound";
+import { Loader } from "@/components/Loader/Loader";
+import { handleTabProfil } from "@/app/store/slice/modalSlice";
 
 function Profil() {
   const {
@@ -26,18 +29,18 @@ function Profil() {
   const { userInfo } = useSelector((state) => state.signIn);
   const { favorites, status } = useSelector((state) => state.favorites);
   const { fullName, photo, loading } = useSelector((state) => state.ubdate);
+  const { tap } = useSelector((state) => state.modal);
+  const { application } = useSelector((state) => state.application);
   const [delet, setDelet] = useState(false);
   const [pen, setPen] = useState(false);
-  const [tap, setTap] = useState(1);
   const [regis, setRegis] = useState(
     JSON?.parse(localStorage.getItem("regis")) || ""
   );
 
-  useEffect(() => {
-    dispatch(fetchFavoritesData());
-  }, [status]);
-
-  console.log(status);
+  console.log(favorites);
+  // useEffect(() => {
+  //   dispatch(fetchFavoritesData());
+  // });
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
@@ -225,7 +228,7 @@ function Profil() {
                   height={24}
                 />
               </div>
-              <p>Редактировать личные данны</p>
+              <p>Редактировать личные данныe</p>
             </div>
             <div
               className={`${s.ret} flex`}
@@ -339,7 +342,7 @@ function Profil() {
           <div className={s.btn_wrapper}>
             <div className={s.btns}>
               <button
-                onClick={() => setTap(1)}
+                onClick={() => dispatch(handleTabProfil(1))}
                 style={{
                   backgroundColor: tap === 1 ? "#ee5922" : "",
                   color: tap === 1 ? "#fff" : "#ee5922",
@@ -349,7 +352,7 @@ function Profil() {
                 История заявок
               </button>
               <button
-                onClick={() => setTap(2)}
+                onClick={() => dispatch(handleTabProfil(2))}
                 style={{
                   backgroundColor: tap === 2 ? "#ee5922" : "",
                   color: tap === 2 ? "#fff" : "#ee5922",
@@ -383,25 +386,23 @@ function Profil() {
             <>
               {tap === 2 && (
                 <div>
-                  {false ? (
-                    <Loader />
-                  ) : (
-                    <>
-                      {favorites?.length > 0 ? (
-                        <div className={s.favorites}>
-                          {favorites?.map((item) => {
-                            return (
-                              <div className="">
-                                <Card item={item} />
-                              </div>
-                            );
-                          })}
-                        </div>
-                      ) : (
-                        <>no fon</>
-                      )}
-                    </>
-                  )}
+                  <div>
+                    {favorites?.length > 0 ? (
+                      <div className={s.favorites}>
+                        {favorites?.map((item) => {
+                          return (
+                            <div className="">
+                              <Card item={item} />
+                            </div>
+                          );
+                        })}
+                      </div>
+                    ) : (
+                      <>
+                        <NothingFound />
+                      </>
+                    )}
+                  </div>
                 </div>
               )}
             </>

@@ -19,6 +19,7 @@ import phoneVerifySlice from "./slice/phoneVerifySlice";
 import phoneVerifySlice2 from "./slice/phoneVerifySlice2";
 import recoverSlice from "./slice/recoverSlice";
 import sendCodeSlice from "./slice/sendCodeSlice";
+import applicationSlice from "./slice/applicationSlice";
 
 const store = configureStore({
   reducer: {
@@ -35,13 +36,14 @@ const store = configureStore({
     catalog: catalogslice,
     register: registerSlice,
     recover: recoverSlice,
-    stories: storiesSlice,
-    ubdate: ubdateSlice,
-    favorites: favoritesSlice,
-    newpassword: newPasswordSlice,
+    sendCode: sendCodeSlice,
     phoneVerify: phoneVerifySlice,
     phoneVerify2: phoneVerifySlice2,
-    sendCode: sendCodeSlice,
+    newpassword: newPasswordSlice,
+    stories: storiesSlice,
+    favorites: favoritesSlice,
+    ubdate: ubdateSlice,
+    application: applicationSlice,
   },
 });
 

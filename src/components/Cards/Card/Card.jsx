@@ -13,12 +13,14 @@ import Link from "next/link";
 import { BsExclamationCircleFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { fetchBasketPostData } from "@/app/store/slice/basketSlice";
-import { fetchFavoritesPatchData } from "@/app/store/slice/favoritesSlice";
+import {
+  fetchFavoritesData,
+  fetchFavoritesPatchData,
+} from "@/app/store/slice/favoritesSlice";
 
 export default function Card({ item }) {
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
-
   const handleClick = (el) => {
     console.log(el.product_variation.id);
     dispatch(
@@ -27,11 +29,9 @@ export default function Card({ item }) {
   };
 
   const handleFavorites = (id) => {
-    console.log(id);
-    dispatch();
+    dispatch(fetchFavoritesPatchData(id));
+    dispatch(fetchFavoritesData());
   };
-
-  console.log(item);
   return (
     <div className={s.Card}>
       <Link href={`/pages/${item.id}`}>
