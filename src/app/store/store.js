@@ -11,14 +11,6 @@ import modalSlice from "./slice/modalSlice";
 import catalogslice from "./slice/catalog-slice";
 import signInSlice from "./slice/signInSlice";
 import registerSlice from "./slice/registerSlice";
-import recoverSlice from "./slice/recoverSlice";
-import sendCodeSlice from "./slice/sendCodeSlice";
-import phoneVerifySlice from "./slice/phoneVerifySlice";
-import phoneVerifySlice2 from "./slice/phoneVerifySlice2";
-import newPasswordSlice from "./slice/newPasswordSlice";
-import storiesSlice from "./slice/storiesSlice";
-import favoritesSlice from "./slice/favoritesSlice";
-import ubdateSlice from "./slice/ubdateSlice";
 
 const store = configureStore({
   reducer: {
@@ -34,14 +26,6 @@ const store = configureStore({
     signIn: signInSlice,
     catalog: catalogslice,
     register: registerSlice,
-    recover: recoverSlice,
-    sendCode: sendCodeSlice,
-    phoneVerify: phoneVerifySlice,
-    phoneVerify2: phoneVerifySlice2,
-    newpassword: newPasswordSlice,
-    stories: storiesSlice,
-    favorites: favoritesSlice,
-    ubdate: ubdateSlice,
   },
 });
 

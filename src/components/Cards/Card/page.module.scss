@@ -6,6 +6,7 @@
   background: #fff;
   box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.17);
   position: relative;
+
   @media screen and (max-width: 600px) {
     height: 300px;
   }
@@ -14,6 +15,7 @@
     width: 100%;
     height: 70%;
     object-fit: cover;
+
     @media screen and (max-width: 600px) {
       height: 60%;
     }
@@ -25,9 +27,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
     @media screen and (max-width: 600px) {
       height: 60%;
     }
+
     .logo {
       width: 80px;
       height: 80px;
@@ -35,11 +39,6 @@
     }
   }
 
-  // .box {
-  //   width: 100%;
-  //   height: 340px;
-
-  //   @media screen and (max-width: 600px) {
   //     height: 225px;
   //   }
   // }
@@ -160,6 +159,7 @@
           font-style: normal;
           font-weight: 700;
           line-height: normal;
+
           @media screen and (max-width: 600px) {
             font-size: 10px;
           }
@@ -189,6 +189,7 @@
         padding: 12px;
         justify-content: center;
         align-items: center;
+
         @media screen and (max-width: 600px) {
           font-size: 12px;
           background: #ee5922;
