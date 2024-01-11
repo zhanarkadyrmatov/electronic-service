@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import s from "./page.module.scss";
-import Image from "next/image";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +14,7 @@ import {
 } from "@/app/store/slice/ubdateSlice";
 import { userProfile } from "@/app/store/slice/signInSlice";
 import Spiner from "@/components/Spiner/Spiner";
+import Image from "next/image";
 
 function Profil() {
   const {
@@ -183,8 +183,6 @@ function Profil() {
         </div>
       )} */}
       <div className="container">
-        <Navigation />
-
         <h2 className={s.profil_title}>Личный кабинет</h2>
         <div className={s.blog}>
           <div className={`${s.flexes} flex`} style={{ gap: "24px" }}>
@@ -259,7 +257,7 @@ function Profil() {
                 </label>
               </form>
             </div>
-            {/* 
+            {/*
             <div
               id={s.password}
               className={`${s.ret} flex`}
