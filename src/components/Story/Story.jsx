@@ -24,7 +24,12 @@ export default function Story({ story, setStory }) {
   const [data, setData] = useState();
   const [swiper, setSwiper] = useState(null);
   const { stories } = useSelector((state) => state.stories);
+  const [videoTime, setVideoTime] = useState(0);
 
+  const handleVideoProgress = (loadedSeconds) => {
+    setVideoTime(loadedSeconds * 1000);
+    console.log(loadedSeconds * 1000);
+  };
   return (
     <div className={s.story}>
       <Swiper
@@ -64,8 +69,8 @@ export default function Story({ story, setStory }) {
                                     height={"auto"}
                                     playing={true}
                                     className={s.video}
-                                    onProgress={(progress) => {
-                                      console.log(progress);
+                                    onProgress={(e) => {
+                                      handleVideoProgress(e.loadedSeconds);
                                     }}
                                     url={img.media}
                                   />
@@ -74,14 +79,17 @@ export default function Story({ story, setStory }) {
                             </>
                           ),
                         }))}
-                        defaultInterval={5000}
+                        defaultInterval={30000}
                         width={432}
                         height={720}
                         loop={true}
                         loader={true}
                         keyboardNavigation={true}
                         // storyStyles={storyContent}
-                        onStoryEnd={(s, st) => swiper.slideNext()}
+                        onStoryEnd={(s, st) => {
+                          swiper.slideNext();
+                          setVideoTime(0);
+                        }}
                         // onAllStoriesEnd={(s, st) => setStory(!story)}
                       />
                     </div>
@@ -96,23 +104,6 @@ export default function Story({ story, setStory }) {
           );
         })}
       </Swiper>
-      {/* <div>
-        <div className={s.wrapper}>
-          <ReactInstaStories
-            className={s.stories}
-            stories={stories2}
-            defaultInterval={5000}
-            width={432}
-            height={720}
-            loop={true}
-            loader={true}
-            keyboardNavigation={true}
-            storyStyles={storyContent}
-            onStoryEnd={(s, st) => setStory(!story)}
-            onAllStoriesEnd={(s, st) => console.log("all stories ended", s, st)}
-          />
-        </div>
-      </div> */}
       <button onClick={() => setStory(!story)} className={s.close}>
         <MdClose className={s.logo} />
       </button>

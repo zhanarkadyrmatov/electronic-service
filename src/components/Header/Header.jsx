@@ -22,13 +22,7 @@ import { userProfile } from "@/app/store/slice/signInSlice";
 
 export default function Header() {
   const page = usePathname();
-  const { modal } = useSelector((state) => state.modal);
   const dispatch = useDispatch();
-
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(!open);
-  const { userInfo, userToken } = useSelector((state) => state.signIn);
-
   useEffect(() => {
     const id = JSON?.parse(localStorage.getItem("userToken"));
     if (id !== null) {
@@ -36,16 +30,7 @@ export default function Header() {
     }
   }, []);
 
-  useEffect(() => {
-    if (modal) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-  }, [modal]);
-
   const [time, setTime] = useState(false);
-
   useEffect(() => {
     if (time) {
       document.body.style.overflow = "hidden";
@@ -56,21 +41,20 @@ export default function Header() {
 
   return (
     <>
-      {modal && <Modal />}
       {time && <BurgerMenu setTime={setTime} time={time} />}
       <div className={s.header}>
         <div className="container">
           <div className={s.nav}>
             <div className={s.wrapper}>
-            <Link href={"/"}>
-            <Image
-                src={"/img/servis.svg"}
-                className={s.logo}
-                alt=""
-                width={120}
-                height={50}
-              />
-            </Link>
+              <Link href={"/"}>
+                <Image
+                  src={"/img/servis.svg"}
+                  className={s.logo}
+                  alt=""
+                  width={120}
+                  height={50}
+                />
+              </Link>
               <nav className={s.nav_bar}>
                 <Link
                   href={"/"}
@@ -121,84 +105,6 @@ export default function Header() {
               onClick={() => setTime(!time)}
               className={s.burger}
             />
-          </div>
-
-          <div className={`${s.blok} flex`}>
-            <div className="flex" style={{ gap: "20px", width: "100%" }}>
-              <button className={`${s.btn_catalog} flex ${s.top}`}>
-                <Image src={"/img/catalog.svg"} alt="" width={15} height={20} />
-                Каталог
-                <Image src={"/img/bottom.svg"} alt="" width={13} height={20} />
-              </button>
-              <div className={`${s.input_go} between`}>
-                <input type="text" placeholder="Что найти?" />
-                <FiSearch className={s.search} size={20} />
-              </div>
-            </div>
-
-            <div className={`${s.button}`}>
-              <Link href={"/pages/Filter"} className={s.filter}>
-                <div className={s.image}>
-                  <Image src={filtr} alt="" width={14} height={14} />
-                </div>
-                <p>Фильтр</p>
-              </Link>
-
-              <div className={s.item}>
-                <div className={s.image}>
-                  <Image src={favorites} alt="" width={17} height={17} />
-                </div>
-                <p>Избранные</p>
-              </div>
-
-              <Link href={"/pages/Basket"} className={s.item}>
-                <div className={s.image}>
-                  <Image src={basket} alt="" width={16} height={16} />
-                </div>
-                <p>Корзина</p>
-              </Link>
-
-              {userInfo ? (
-                <Link className={s.user_logo} href={"/pages/Profil"}>
-                  {userInfo.avatar ? (
-                    <img
-                      className={s.logo}
-                      src={
-                        "https://www.imgacademy.com/sites/default/files/2009-stadium-about.jpg"
-                      }
-                      alt=""
-                    />
-                  ) : (
-                    <Image
-                      className={s.avatar}
-                      src={user}
-                      alt=""
-                      width={20}
-                      height={20}
-                    />
-                  )}
-                </Link>
-              ) : (
-                <div
-                  className={s.item}
-                  onClick={() => dispatch(handleModal(!modal))}
-                >
-                  <div className={s.login}>
-                    <Image src={registr} alt="" width={14} height={14} />
-                  </div>
-                  <p>Войти</p>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className={s.mobil_input}>
-            <div className={`${s.mobil_search}`}>
-              <input type="text" placeholder="Что найти?" />
-              <FiSearch className={s.search} size={20} style={{ cursor: "pointer" }} />
-            </div>
-            <div className={s.logo}>
-              <Image src={filtr} alt="" width={14} height={14} />
-            </div>
           </div>
         </div>
       </div>

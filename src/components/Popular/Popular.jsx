@@ -7,7 +7,6 @@ import Card from "../Cards/Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPopularData } from "@/app/store/slice/popularSlice";
 
-
 export default function Popular() {
   const { data } = useSelector((state) => state.popular);
   const dispatch = useDispatch();
@@ -17,7 +16,7 @@ export default function Popular() {
   }, []);
 
   const cartData = data?.results;
-
+  console.log(cartData);
   return (
     <div className={s.popular}>
       <div className={`${s.block} between`} style={{ margin: "20px 0" }}>

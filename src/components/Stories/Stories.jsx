@@ -26,7 +26,6 @@ export const Stories = () => {
     setStory(!story);
   };
 
-  console.log(stories);
   return (
     <>
       {story && <Story setStory={setStory} story={story} />}

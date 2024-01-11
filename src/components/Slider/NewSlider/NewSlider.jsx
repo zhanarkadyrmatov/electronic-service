@@ -55,7 +55,13 @@ export default function NewSlider() {
         {banner?.map((e) => {
           return (
             <SwiperSlide key={e.id} className={s.new_slide}>
-              <Image height={396} width={1280} src={e.banner} alt="" />
+              <Image
+                height={396}
+                width={1280}
+                src={e.banner}
+                objectFit="cover"
+                alt=""
+              />
             </SwiperSlide>
           );
         })}
