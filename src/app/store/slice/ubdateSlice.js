@@ -6,7 +6,6 @@ const backendURL = "https://api.cheberel.kg";
 export const updateAvatarDate = createAsyncThunk(
   "auth/update_avatar",
   async function (selectedFile, { rejectWithValue, dispatch }) {
-    console.log(selectedFile);
     try {
       const token = localStorage.getItem("userToken")?.replaceAll('"', "");
       const formData = new FormData();
