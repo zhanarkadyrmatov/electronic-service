@@ -8,6 +8,7 @@ import { FaMinus, FaPlus } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBasketData } from "@/app/store/slice/basketSlice";
+import Navigation from "@/components/Navigation/Navigation";
 
 export default function page() {
   const [modal, setModat] = useState(false);
@@ -21,6 +22,8 @@ export default function page() {
 
   console.log(data);
   return (
+   <div className="container">
+    <Navigation />
     <div className={s.basket}>
       {modal && (
         <div className={s.basket_modal}>
@@ -208,7 +211,7 @@ export default function page() {
       {loading ? (
         <>Loading...</>
       ) : (
-        <div className="container">
+        <div>
           <div className={s.baskets}>
             <h2>Корзина</h2>
             <div className={s.wrapper}>
@@ -283,5 +286,6 @@ export default function page() {
         </div>
       )}
     </div>
+   </div>
   );
 }

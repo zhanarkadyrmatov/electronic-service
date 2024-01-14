@@ -7,6 +7,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useForm } from 'react-hook-form';
+import Navigation from "@/components/Navigation/Navigation";
 
 
 export default function Filter() {
@@ -24,7 +25,9 @@ export default function Filter() {
 
   return (
     <>
-      <div className={`${s.filter} container`}>
+     <div className="container">
+      <Navigation />
+      <div className={`${s.filter} `}>
         <div className={s.accordion}>
           <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
             <AccordionSummary
@@ -112,6 +115,7 @@ export default function Filter() {
                 <input type="submit" /> */}
             </form>
       </div>
+     </div>
     </>
 
   )

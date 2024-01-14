@@ -5,6 +5,7 @@ import Image from "next/image";
 import { YandexMap } from "@/components/maps/yandexMap";
 import s from "../pages.module.scss";
 import { YandexMob } from "@/components/maps/yandexMob";
+import Navigation from "@/components/Navigation/Navigation";
 
 const data = [
   {
@@ -54,6 +55,7 @@ function page() {
   return (
     <>
       <div className="container">
+        <Navigation />
         <div className={s.contacts}>
           <div className={s.contact}>
             <h3>Контакты</h3>

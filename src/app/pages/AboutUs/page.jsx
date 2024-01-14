@@ -4,6 +4,7 @@ import React from "react";
 import s from "../pages.module.scss";
 import Image from "next/image";
 import img from "../../../../public/img/o.svg";
+import Navigation from "@/components/Navigation/Navigation";
 
 const data = [
   {
@@ -65,23 +66,23 @@ const check = [
 const imgs = [
   {
     id: 1,
-    img: "/img/сайт.svg",
+    img: "/img/aq1.svg",
     title: "Разработка сайтов",
   },
   {
     id: 2,
     img: "/img/сайт.svg",
-    title: "Разработка сайтов",
+    title: "Продвижение в соц сетях",
   },
   {
     id: 3,
-    img: "/img/сайт.svg",
-    title: "Разработка сайтов",
+    img: "/img/aq2.svg",
+    title: "Маркетинговый план",
   },
   {
     id: 4,
-    img: "/img/сайт.svg",
-    title: "Разработка сайтов",
+    img: "/img/aq3.svg",
+    title: "Дизайн",
   },
 ];
 
@@ -89,6 +90,7 @@ function page() {
   return (
     <>
       <div className="container">
+    <Navigation />
         <div className={s.abouts}>
           <div className={`${s.arod} `}>
             <div className={s.about_one}>

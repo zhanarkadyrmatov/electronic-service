@@ -22,6 +22,30 @@ export const fetchFavoritesData = createAsyncThunk(
   }
 );
 
+export const fetchFavoritesPatchData = createAsyncThunk(
+  "auth/favorites_add_delete",
+  async (id, { rejectWithValue }) => {
+    try {
+      const token = localStorage.getItem("userToken")?.replaceAll('"', "");
+      const response = await axios.patch(
+        `${backendURL}/auth/favorites_add_delete/`,
+        { product_id: id },
+        {
+          headers: {
+            accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error);
+    }
+  }
+);
+
 const favoritesSlice = createSlice({
   name: "favorites",
   initialState: {
@@ -29,7 +53,11 @@ const favoritesSlice = createSlice({
     status: "idle",
     error: null,
   },
-  reducers: {},
+  reducers: {
+    FilterData: (state, action) => {
+      state.favorites = [action.payload];
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchFavoritesData.pending, (state) => {
       state.status = "loading";
@@ -45,5 +73,5 @@ const favoritesSlice = createSlice({
   },
 });
 
-export const {} = favoritesSlice.actions;
+export const { FilterData } = favoritesSlice.actions;
 export default favoritesSlice.reducer;

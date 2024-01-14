@@ -8,95 +8,25 @@ export const fetchCatalogData = createAsyncThunk(
         const max_price = data[1]
         const categoryId = data[2]
         const page = data[3]
-        console.log(data,'data');
-        console.log(categoryId,'test');
-        if (categoryId !== undefined) {
-            console.log('categoryIdIs', min_price   ,categoryId);
-            if (min_price !== null || max_price !== null) {
-                try {
-                    const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&category_id=${categoryId}&page=${page}`)
-                    const data = await response.json()
-                    console.log(data,'response1');
-                    return data
-                } catch (error) {
-                    return rejectWithValue(error)
-                }
-                
-            } else {
-                console.log('categoryIdIs', min_price   ,categoryId);
-                try {
-                    const response = await fetch(`${backendURL}/products/product_list/?category_id=${categoryId}&page=${page}`)
-                    const data = await response.json()
-                    console.log(data,'response');
-                    return data
-                } catch (error) {
-                    return rejectWithValue(error)
-                }
-            }
-        }
-        if (min_price !== null || max_price !== null) {
-            try {
-                console.log('min_priceIs', min_price   ,max_price ,categoryId); 
-                const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&page=${page}`)
-                const data = await response.json()
-                return data
-            } catch (error) {
-                return rejectWithValue(error)
-            }
-        }
+        console.log(data,'data.Test');
+        console.log(data,'asdasdsadsadasddassa');
+        const params = {}
+        if (min_price) params['min_price'] = min_price
+        if (max_price) params['max_price'] = max_price
+        if (categoryId) params['category_id'] = categoryId
+        if (page) params['page'] = page
         
-        // if (data === null) {
-        //     try {
-        //         const response = await fetch(`${backendURL}/products/product_list/&page=${page}`)
-        //         const data = await response.json()
-        //         console.log(data,'response');
-        //         return data
-        //     } catch (error) {
-        //         return rejectWithValue(error)
-        //     }    
-        // }else {
-          
-        //     if (categoryId === undefined || categoryId === null) {
-
-        //         try {
-        //             const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&page=${page}`)
-        //             const data = await response.json()
-        //             console.log(data,'response1');
-        //             return data
-        //         } catch (error) {
-        //             return rejectWithValue(error)
-        //         }
-                
-        //     } else {
-        //           if (categoryId !== null || categoryId !== undefined) {
-        //         try {
-        //             const response = await fetch(`${backendURL}/products/product_list/?category_id=${categoryId}&page=${page}`)
-        //             const data = await response.json()
-        //             console.log(data,'response');
-        //             return data
-        //         } catch (error) {
-        //             return rejectWithValue(error)
-        //         }
-        //     }  else if ( max_price !== null || min_price !== null) {
-        //         try {
-        //             const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&page=${page}`)
-        //             const data = await response.json()
-        //             console.log(data,'response');
-        //             return data
-        //         } catch (error) {
-        //             return rejectWithValue(error)
-        //         }
-        //     }
-        //         try {
-        //             const response = await fetch(`${backendURL}/products/product_list/?min_price=${min_price}&max_price=${max_price}&category_id=${categoryId}&page=${page}`)
-        //             const data = await response.json()
-        //             console.log(data,'response2');
-        //             return data
-        //         } catch (error) {
-        //             return rejectWithValue(error)
-        //         }
-        //     }   
-        // }
+        let urlParams = new URLSearchParams(params);
+        console.log(urlParams.toString('urlParams'));
+        try {
+            const response = await fetch(`${backendURL}/products/product_list/?${urlParams.toString()}`)
+            const data = await response.json()
+            console.log(data,'response1');
+            return data
+        } catch (error) {
+            console.log(error);
+            return rejectWithValue(error)
+        }
     }
 )
 export const fetchCatalogData2 = createAsyncThunk(
@@ -152,7 +82,6 @@ export const catalogSlice = createSlice({
         builder.addCase(fetchCatalogData.fulfilled, (state, {payload}) => {
             state.status = 'succeeded'
             state.data = payload
-            state.count = payload.count
         })
         builder.addCase(fetchCatalogData.rejected, (state, {payload}) => {
             state.status = 'failed'
@@ -176,7 +105,6 @@ export const catalogSlice = createSlice({
         builder.addCase(fetchCatalogData2.fulfilled, (state, {payload}) => {    
             state.status = 'succeeded'
             state.data = payload
-            state.count = payload.count
         })
         builder.addCase(fetchCatalogData2.rejected, (state, {payload}) => {
             state.status = 'failed'

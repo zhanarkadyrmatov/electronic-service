@@ -10,6 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { FreeMode } from "swiper/modules";
+import { getCategoryPopularData } from "@/app/store/slice/popularSlice";
 
 export default function Categories() {
   const dispatch = useDispatch();
@@ -18,7 +19,11 @@ export default function Categories() {
   useEffect(() => {
     dispatch(fetchCategoryData());
   }, []);
-
+  const onClick = (res) => {
+    dispatch(getCategoryPopularData([1,res]))
+    console.log(res,'res');
+  };
+  console.log(category,'onClick');
   return (
     <>
       <div className={s.categories}>
@@ -29,11 +34,12 @@ export default function Categories() {
         <div className={s.wrapper}>
           {category?.map((item, index) => {
             return (
-              <div key={index}>
+              <div key={index} onClick={()=> onClick(item.id)}>
                 <CategoryCard item={item} />
               </div>
             );
           })}
+          
         </div>
       </div>
     </>

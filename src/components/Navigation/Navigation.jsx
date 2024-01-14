@@ -11,7 +11,7 @@ import registr from "@/../../public/img/aa4.svg";
 import user from "../../../public/img/adam.svg";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
-import { handleModal } from "@/app/store/slice/modalSlice";
+import { handleModal, handleTabProfil } from "@/app/store/slice/modalSlice";
 import Link from "next/link";
 import Modal from "../Modal/Modal";
 import { userProfile } from "@/app/store/slice/signInSlice";
@@ -20,8 +20,6 @@ export default function Navigation() {
   const { userInfo, userToken } = useSelector((state) => state.signIn);
   const { modal } = useSelector((state) => state.modal);
   const dispatch = useDispatch();
-
-  
 
   useEffect(() => {
     if (modal) {
@@ -46,18 +44,22 @@ export default function Navigation() {
           </div>
         </div>
         <div className={`${s.button}`}>
-          <Link href={"/pages/Filter"} className={s.filter}>
+          <Link href={"/pages/catalog"} className={s.filter}>
             <div className={s.image}>
               <Image src={filtr} alt="" width={14} height={14} />
             </div>
             <p>Фильтр</p>
           </Link>
-          <div className={s.item}>
+          <Link
+            href={"/pages/Profil"}
+            onClick={() => dispatch(handleTabProfil(2))}
+            className={s.item}
+          >
             <div className={s.image}>
               <Image src={favorites} alt="" width={17} height={17} />
             </div>
             <p>Избранные</p>
-          </div>
+          </Link>
           <Link href={"/pages/Basket"} className={s.item}>
             <div className={s.image}>
               <Image src={basket} alt="" width={16} height={16} />

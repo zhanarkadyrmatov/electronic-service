@@ -1,7 +1,20 @@
-import React from 'react'
-import s from './page.module.scss'
+import React from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+
 export const Loader = () => {
   return (
-    <h2 className={s.loader}></h2>
-  )
-}
+    <div>
+      <Box
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "50px 0",
+        }}
+      >
+        <CircularProgress />
+      </Box>
+    </div>
+  );
+};

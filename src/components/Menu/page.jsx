@@ -15,9 +15,9 @@ export const BurgerMenu = ({time, setTime}) => {
         <div>
             <div className={s.burger_menu}>
                 <div className={`${s.menu} `}>
-                    <div className="between" style={{paddingBottom:'44px'}}>
+                    <div className="between" style={{ paddingBottom:'36px' }}>
                         <Image src={'/img/servis.svg'} className={s.logo} alt="" width={120} height={50} />
-                        <h3 onClick={() => setTime(!time)}>x</h3>
+                        <Image onClick={() => setTime(!time)} src={'/img/x.svg'} alt="" width={23} height={23} />
                     </div>
                         <nav className={s.nav_bar}>
                             <Link

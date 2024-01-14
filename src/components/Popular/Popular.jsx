@@ -6,9 +6,11 @@ import { CiStar } from "react-icons/ci";
 import Card from "../Cards/Card/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPopularData } from "@/app/store/slice/popularSlice";
+import NothingFound from "../NothingFound/NothingFound";
+import { Loader } from "../Loader/Loader";
 
 export default function Popular() {
-  const { data } = useSelector((state) => state.popular);
+  const { data ,status } = useSelector((state) => state.popular);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -24,8 +26,17 @@ export default function Popular() {
         <button className={s.btn_white}>Показать все</button>
       </div>
       <div className={s.products}>
-        {cartData?.map((item) => (
+      {status === 'loading' && <Loader/>}
+      {status === 'error' && <NothingFound/>}
+      {status === 'succeeded' && (
+        cartData?.map((item) => (
           <Card item={item} />
+        ))
+        
+      )}
+      {status === 'succeeded' && (
+        cartData?.length === 0 && (
+          <NothingFound/>
         ))}
       </div>
     </div>
