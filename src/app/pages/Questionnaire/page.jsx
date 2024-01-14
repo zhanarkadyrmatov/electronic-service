@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import s from "../pages.module.scss";
+import s from "./page.module.scss";
 import { useForm } from "react-hook-form";
 import { InputMask } from "@react-input/mask";
 import { useDispatch, useSelector } from "react-redux";
