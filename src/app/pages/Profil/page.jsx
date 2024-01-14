@@ -18,6 +18,7 @@ import Image from "next/image";
 import NothingFound from "@/components/NothingFound/NothingFound";
 import { Loader } from "@/components/Loader/Loader";
 import { handleTabProfil } from "@/app/store/slice/modalSlice";
+import { applicationDate } from "@/app/store/slice/applicationSlice";
 
 function Profil() {
   const {
@@ -36,6 +37,11 @@ function Profil() {
   const [regis, setRegis] = useState(
     JSON?.parse(localStorage.getItem("regis")) || ""
   );
+
+  console.log(application);
+  useEffect(() => {
+    dispatch(applicationDate());
+  }, []);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];

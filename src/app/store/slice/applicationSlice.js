@@ -8,7 +8,8 @@ export const applicationDate = createAsyncThunk(
   async function (page, { rejectWithValue, dispatch }) {
     console.log(page);
     try {
-      const response = await axios.patch(
+      const token = localStorage.getItem("userToken")?.replaceAll('"', "");
+      const response = await axios.get(
         `${backendURL}/auth/purchase_request_list/`,
         {
           headers: {
