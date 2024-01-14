@@ -18,7 +18,6 @@ export default function RootLayout({ children }) {
         <ProviderRedux>
           <Header />
           {children}
-          
         </ProviderRedux>
       </body>
     </html>

@@ -37,11 +37,6 @@ function Profil() {
     JSON?.parse(localStorage.getItem("regis")) || ""
   );
 
-  console.log(favorites);
-  // useEffect(() => {
-  //   dispatch(fetchFavoritesData());
-  // });
-
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     console.log(file);
