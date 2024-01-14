@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { userProfile } from "./signInSlice";
 const backendURL = "https://api.cheberel.kg";
-
+// slkejrbfekrlsbgi
 export const updateAvatarDate = createAsyncThunk(
   "auth/update_avatar",
   async function (selectedFile, { rejectWithValue, dispatch }) {
