@@ -116,14 +116,11 @@ const Questionnaire = () => {
   };
   const [inputValue1, setInputValue1] = useState(null);
   const handleChange1 = (event) => {
-    const file = event.target.files[0];
-    console.log(file, "asdasdasdassasad");
     setInputValue1(event.target.value);
   };
   const handleDeleteFile1 = () => {
     setInputValue1(null);
   };
-  ///test`1`
   return (
     <div className={`${s.Blocks} container`}>
       <h2>Анкета заявителя</h2>
@@ -239,11 +236,10 @@ const Questionnaire = () => {
               {...register("password_back", {
                 required: "Поле обязательно к заполнению",
               })}
-              onChange={(event) => handleChange1(event)}
-              name="picture"
-              accept="image/*"
               type="file"
+              defaultValue={inputValue1}
               className={s.asdsa}
+              onChange={handleChange1} // Добавляем обработчик события onChange
             />
 
             {inputValue1 !== null ? (
