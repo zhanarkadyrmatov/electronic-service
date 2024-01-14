@@ -44,7 +44,7 @@ export default function Navigation() {
           </div>
         </div>
         <div className={`${s.button}`}>
-          <Link href={"/pages/Filter"} className={s.filter}>
+          <Link href={"/pages/catalog"} className={s.filter}>
             <div className={s.image}>
               <Image src={filtr} alt="" width={14} height={14} />
             </div>
